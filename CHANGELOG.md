@@ -1,3 +1,13 @@
+## 5.2.49 (2026-05-28)
+
+### 🩹 Fixes
+
+- **distribution:** added docs, clarified simple config
+
+### ❤️ Thank You
+
+- Ki Alam
+
 ## 5.2.48 (2026-05-21)
 
 ### 🩹 Fixes

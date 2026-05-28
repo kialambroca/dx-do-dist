@@ -4,10 +4,32 @@
 
 ***
 
-### Usage
+## Usage
 
 :warning: Using npm install for this package is highly discouraged.
 
+The first time you run, an interactive setup will create <USER_HOME>/.dxdo/default.dxo2.config.json; you can have multiple configurations.  the "--config=<config>" has the following resolution:
+
+
+| variation                                 | resolution                             |
+|-------------------------------------------|----------------------------------------|
+| No Config Specified                       | `~/.dxdo/default.dx02.config.json`     |
+| `--config=tenant-name`                    | `~/.dxdo/tenant-name.dx02.config.json` |
+| `--config=tenant-name.dx02.config.json`   | `~/.dxdo/tenant-name.dx02.config.json` |                                      |
+| `--config=./tenant-name.dx02.config.json` | `<CWD>/tenant-name.dx02.config.json`   |                                     
+
+### Full configuration options are available by running 
+
+```dx-do --no-config help configuration```
+
+### via binary
+
+1. Download the binary for your platform
+2. rename to "dx-do" and add to path
+
+```
+dx-do <--config=<config-file>> command-group command <parameter>=<value>
+```
 
 # via npx
 
@@ -20,16 +42,12 @@ npx @dx-do/cli@<version> <--config=<config-file>> command-group command <paramet
 bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parameter>=<value>
 ```
 
-# via binary
 
-```
-dx-do <--config=<config-file>> command-group command <parameter>=<value>
-```
 
 #### Output
 
 ```
-ℹ  info      dx-do v5.2.48 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
+ℹ  info      dx-do v5.2.49 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ℹ  info      Available command-groups: acc, agent, agentic, alarm, alert, apm-universe, asm, attribute, audit, auth, axa, blob, channel, config, dashboard, diagnose, event, experience, graph, help, inventory, jsextension, log, managementmodule, metrex, metric, metricgrouping, nass, o2-alert, o2-managementmodule, o2-metricgrouping, o2-universe, perspective, service, situation, sql, tas, topographer, trace, ui, vertex
