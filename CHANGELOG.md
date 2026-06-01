@@ -1,3 +1,14 @@
+## 5.2.50 (2026-06-01)
+
+### 🩹 Fixes
+
+- **ci:** build util+client, fix artifact extraction path, add pre-publish payload check
+
+### ❤️ Thank You
+
+- Claude Sonnet 4.6
+- Ki Alam
+
 ## 5.2.49 (2026-05-28)
 
 ### 🩹 Fixes
