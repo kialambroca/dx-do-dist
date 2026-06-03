@@ -1,3 +1,25 @@
+## 6.0.1 (2026-06-03)
+
+### 🚀 Features
+
+- **cli/output:** inter-row separators when any row wraps in wrap mode
+
+### 🩹 Fixes
+
+- **ci:** build util+client, fix artifact extraction path, add pre-publish payload check
+- **client,cli:** tests for create and update mm
+- **client,cli:** exit code on thrown exception!
+- **client,cli:** exit code customizable for different command execution failures
+- **distribution:** added docs, clarified simple config
+- **release:** remove npm publish from beta, rename publish to prepublish
+
+### ❤️ Thank You
+
+- Claude Opus 4.7 (1M context)
+- Claude Sonnet 4.6
+- Ki Alam
+- z
+
 ## 5.2.50 (2026-06-01)
 
 ### 🩹 Fixes
