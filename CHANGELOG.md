@@ -1,90 +1,164 @@
-## 6.0.1 (2026-06-03)
+## 6.0.2 (2026-06-04)
 
 ### 🚀 Features
 
+- **cli:** add flagArgument with defaults, default-value note, auto-boolean
+- **cli,client:** APM alert + metricgrouping CRUD parity
 - **cli/output:** inter-row separators when any row wraps in wrap mode
+- **client,corpus,ui:** ground metric typeEnum bitmask + metricId↔entity round-trips
+- **corpus,client,mcp:** teach investigator to size + project minimally before authoring
+- **mcp,ui,corpus,client:** read-only alarm surface for the investigator agent
+- **ui:** query-editor UX pass — copy path, dirty guard, add-above, field help, FILTER_EXPR + WINDOW_CALENDAR + MM SERVICE pickers
+- **ui:** column suggestions for standalone aggregate ops
+- **ui:** dedicated ORDER op editor
+- **ui:** keep home page alive across navigation; unblock main thread during cose
+- **ui:** smarter defaults + load-from-saved-query for NASSQL source ops
+- **ui,cli:** surface build version in the sidebar
 
 ### 🩹 Fixes
 
-- **ci:** build util+client, fix artifact extraction path, add pre-publish payload check
-- **client,cli:** tests for create and update mm
-- **client,cli:** exit code on thrown exception!
-- **client,cli:** exit code customizable for different command execution failures
-- **distribution:** added docs, clarified simple config
-- **release:** remove npm publish from beta, rename publish to prepublish
+- **cli:** correct misleading "optional argument" error for missing required args
+- **cli:** repair alert update-simple/update-summary + add field-by-field tests
+- **cli:** emit canonical bare-REGEX shape for APM metricgrouping create
+- **cli:** use non-conflicting bundle in acc lifecycle test
+- **cli/build:** scope README auto-commit + repair broken exit-code checks
+- **client:** drop accidental @dx-do/source export re-add
+- **release:** publish-{beta,ga} only ship util/client/cli, not corpus/analytics/metrex-api
+- **release:** post-release-push uses 'git push -u all HEAD'
+- **ui:** page no longer leaves a blank band below the viewport
+
+### 💅 Refactors
+
+- **cli/managementmodule:** port create + delete to buildCommand
+- **ui:** cleanup pass — shared discovery widget, op-helpers, centralized EMPTY_COLUMN_HINTS
+
+### 📖 Documentation
+
+- mirror analytics build into GA workflow + new-package checklist
+- restore Build analytics in beta + workflow-mirror invariant
+- **cli:** add createCommand→buildCommand porting guide + tenant/testing/util sections
+- **plans:** migrate v6 wrap-up plan into plans/z (inaugural committed plan)
+
+### 📦 Build
+
+- **repo:** commit plan-mode plans in-repo, per-user via plansDirectory
+- **repo:** replace postinstall with explicit `npm run setup-development`
+
+### ✅ Tests
+
+- **cli:** replace __dirname fixture path with JSON-import + tmp materializer
+- **cli:** fail-closed approved-tenant guard for e2e (bun test preload)
 
 ### ❤️ Thank You
 
 - Claude Opus 4.7 (1M context)
-- Claude Sonnet 4.6
+- Claude Opus 4.8 (1M context)
+- Duane Nielsen
+- z
+
+## 6.0.1-beta.7 (2026-05-15)
+
+### 🚀 Features
+
+- **client,corpus,ui:** ground metric typeEnum bitmask + metricId↔entity round-trips
+- **corpus,client,mcp:** teach investigator to size + project minimally before authoring
+- **mcp,ui,corpus,client:** read-only alarm surface for the investigator agent
+- **ui:** query-editor UX pass — copy path, dirty guard, add-above, field help, FILTER_EXPR + WINDOW_CALENDAR + MM SERVICE pickers
+- **ui:** column suggestions for standalone aggregate ops
+- **ui:** dedicated ORDER op editor
+- **ui:** keep home page alive across navigation; unblock main thread during cose
+- **ui:** smarter defaults + load-from-saved-query for NASSQL source ops
+- **ui,cli:** surface build version in the sidebar
+
+### 🩹 Fixes
+
+- **release:** remove npm publish from beta, rename publish to prepublish
+- **ui:** page no longer leaves a blank band below the viewport
+
+### 💅 Refactors
+
+- **ui:** cleanup pass — shared discovery widget, op-helpers, centralized EMPTY_COLUMN_HINTS
+
+### 📖 Documentation
+
+- restore Build analytics in beta + workflow-mirror invariant
+
+### ❤️ Thank You
+
+- Claude Opus 4.7 (1M context)
 - Ki Alam
 - z
 
-## 5.2.50 (2026-06-01)
+## 6.0.1-beta.6 (2026-05-12)
 
-### 🩹 Fixes
+### 📖 Documentation
 
-- **ci:** build util+client, fix artifact extraction path, add pre-publish payload check
-
-### ❤️ Thank You
-
-- Claude Sonnet 4.6
-- Ki Alam
-
-## 5.2.49 (2026-05-28)
-
-### 🩹 Fixes
-
-- **distribution:** added docs, clarified simple config
+- mirror analytics build into GA workflow + new-package checklist
 
 ### ❤️ Thank You
 
-- Ki Alam
+- Claude Opus 4.7 (1M context)
+- z
 
-## 5.2.48 (2026-05-21)
+## 6.0.1-beta.5 (2026-05-12)
+
+This was a version bump only, there were no code changes.
+
+## 6.0.1-beta.4 (2026-05-12)
+
+This was a version bump only, there were no code changes.
+
+## 6.0.1-beta.3 (2026-05-12)
+
+This was a version bump only, there were no code changes.
+
+## 6.0.1-beta.2 (2026-05-12)
+
+### 🚀 Features
+
+- **cli:** add flagArgument with defaults, default-value note, auto-boolean
+- **cli,client:** APM alert + metricgrouping CRUD parity
+- **cli/output:** inter-row separators when any row wraps in wrap mode
 
 ### 🩹 Fixes
 
-- **client,cli:** exit code customizable for different command execution failures
+- **cli:** correct misleading "optional argument" error for missing required args
+- **cli:** repair alert update-simple/update-summary + add field-by-field tests
+- **cli:** emit canonical bare-REGEX shape for APM metricgrouping create
+- **cli:** use non-conflicting bundle in acc lifecycle test
+- **client:** drop accidental @dx-do/source export re-add
+
+### 💅 Refactors
+
+- **cli/managementmodule:** port create + delete to buildCommand
+
+### 📖 Documentation
+
+- **cli:** add createCommand→buildCommand porting guide + tenant/testing/util sections
+
+### ✅ Tests
+
+- **cli:** replace __dirname fixture path with JSON-import + tmp materializer
 
 ### ❤️ Thank You
 
-- Ki Alam
+- Claude Opus 4.7 (1M context)
+- Duane Nielsen
+- z
 
-## 5.2.47 (2026-05-21)
+## 6.0.1-beta.1 (2026-05-10)
 
-### 🩹 Fixes
+This was a version bump only, there were no code changes.
 
-- **client,cli:** exit code on thrown exception!
-
-### ❤️ Thank You
-
-- Ki Alam
-
-## 5.2.46 (2026-05-18)
-
-### 🩹 Fixes
-
-- **client,cli:** tests for create and update mm
-
-### ❤️ Thank You
-
-- Ki Alam
-
-## 5.2.45 (2026-05-18)
+## 6.0.1-beta.0 (2026-05-10)
 
 ### 🚀 Features
 
 - **cli/output:** inter-row separators when any row wraps in wrap mode
 
-### 🩹 Fixes
-
-- **release:** remove npm publish from beta, rename publish to prepublish
-
 ### ❤️ Thank You
 
 - Claude Opus 4.7 (1M context)
-- Ki Alam
 - z
 
 # 6.0.0 (2026-05-10)

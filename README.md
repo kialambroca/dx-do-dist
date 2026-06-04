@@ -47,7 +47,7 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 #### Output
 
 ```
-ℹ  info      dx-do v6.0.1 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
+ℹ  info      dx-do v6.0.2 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ℹ  info      Available command-groups: acc, agent, agentic, alarm, alert, apm-universe, asm, attribute, audit, auth, axa, blob, channel, config, dashboard, diagnose, event, experience, graph, help, inventory, jsextension, log, managementmodule, metrex, metric, metricgrouping, nass, o2-alert, o2-managementmodule, o2-metricgrouping, o2-universe, perspective, service, situation, sql, tas, topographer, trace, ui, vertex
@@ -208,6 +208,8 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 ⤜ copy-with-metric-grouping.........................: copy an alert with it's metric grouping
 ⤜ analyze...........................................: analyzes an alert and it's threshold
 ⤜ detail............................................: get alert definition
+⤜ delete............................................: deletes an APM alert (dry-run by default)
+⤜ create............................................: creates a new APM simple alert (dry-run by default)
 ```
 #### nass
 ```nass
@@ -420,6 +422,15 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 ⤜ import............................................: imports a management module from json
 ⤜ export............................................: exports a management module and its metric groupings, alerts and calculators.
 ```
+#### metricgrouping
+```metricgrouping
+⤜ update............................................: updates an existing APM metric grouping (dry-run by default)
+⤜ detail............................................: get full detail of an APM metric grouping
+⤜ delete............................................: deletes an APM metric grouping (dry-run by default)
+⤜ create............................................: creates a new APM metric grouping (dry-run by default)
+⤜ list-by-managementmodule..........................: lists all metric groupings in management modules.
+⤜ list-metrics......................................: lists all live metrics in metric grouping
+```
 #### log
 ```log
 ⤜ query.............................................: queries DXO2 Log analytics
@@ -436,11 +447,6 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 ⤜ import............................................: Import Map View Perspective
 ⤜ export............................................: Export Map View Perspective
 ⤜ delete............................................: Delete Map View Perspective
-```
-#### metricgrouping
-```metricgrouping
-⤜ list-by-managementmodule..........................: lists all metric groupings in management modules.
-⤜ list-metrics......................................: lists all live metrics in metric grouping
 ```
 #### asm
 ```asm
