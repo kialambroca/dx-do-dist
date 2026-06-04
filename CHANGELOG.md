@@ -1,3 +1,27 @@
+## 6.0.4 (2026-06-04)
+
+### 🩹 Fixes
+
+- **ci:** avoid pipefail SIGPIPE in publish-payload guard
+- **deps:** resolve npm audit vulnerabilities
+
+### 💅 Refactors
+
+- **cli:** port dashboard-list-by-folder to buildCommand
+- **cli:** port folder-list to buildCommand
+- **cli:** port dashboard-variables-list and dashboard-search to buildCommand
+- **cli:** port high-benefit dashboard commands to buildCommand
+- **cli:** add resolveFolderFromArgs utility; port folder commands to 3-way lookup
+- **cli:** spread resolveFolderArguments in all folder-scoped commands
+- **cli:** move resolveFolderArguments into folder.util and spread in add-folder-tags
+
+### ❤️ Thank You
+
+- Claude Opus 4.8 (1M context)
+- Claude Sonnet 4.6
+- Ki Alam
+- z
+
 ## 6.0.3 (2026-06-04)
 
 ### 🚀 Features
