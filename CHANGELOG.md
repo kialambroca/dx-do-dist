@@ -1,3 +1,18 @@
+## 6.0.3 (2026-06-04)
+
+### 🚀 Features
+
+- **cli:** rewrite embedded dashboard links on folder-import for cross-tenant moves
+
+### 🩹 Fixes
+
+- **ci:** publish-payload guard inspects the real tarball, not npm pack --json
+
+### ❤️ Thank You
+
+- Claude Opus 4.8 (1M context)
+- z
+
 ## 6.0.2 (2026-06-04)
 
 ### 🚀 Features
