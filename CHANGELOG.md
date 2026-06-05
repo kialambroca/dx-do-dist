@@ -1,3 +1,14 @@
+## 6.1.1 (2026-06-05)
+
+### 💅 Refactors
+
+- **client,cli:** improve log ingest API with typed LogIngestOptions
+
+### ❤️ Thank You
+
+- Claude Sonnet 4.6 (1M context)
+- Ki Alam
+
 ## 6.1.0 (2026-06-05)
 
 ### 🚀 Features
