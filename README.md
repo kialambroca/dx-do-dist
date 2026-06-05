@@ -47,7 +47,7 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 #### Output
 
 ```
-ℹ  info      dx-do v6.0.4 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
+ℹ  info      dx-do v6.1.0 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ℹ  info      Available command-groups: acc, agent, agentic, alarm, alert, apm-universe, asm, attribute, audit, auth, axa, blob, channel, config, dashboard, diagnose, event, experience, graph, help, inventory, jsextension, log, managementmodule, metrex, metric, metricgrouping, nass, o2-alert, o2-managementmodule, o2-metricgrouping, o2-universe, perspective, service, situation, sql, tas, topographer, trace, ui, vertex
@@ -213,9 +213,9 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 ```
 #### nass
 ```nass
-⤜ update-metadata-attribute.........................: updates a metric's metadata attribute
-⤜ report-metric-value...............................: reports a single metric value to a metric
-⤜ register-metric...................................: registers a metric
+⤜ update-metadata-attribute.........................: update a single metadata attribute on a metric
+⤜ report-metric-value...............................: register a metric and store a single value for it at the current time
+⤜ register-metric...................................: register a metric in the NASS metadata store
 ⤜ query-metric-data.................................: executes a nass metric data query
 ⤜ query-metadata....................................: executes a nass metadata query
 ⤜ query-metadata-by-ids.............................: executes a nass metadata query
@@ -267,6 +267,7 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 ```help
 ⤜ ui................................................: Explains `dx-do ui start` — the browser-based visual query builder for TAS / NASSQL / Metrics-Metadata queries.
 ⤜ time-formats......................................: explains time formats for 'metric data' and 'agent get-trace-sumaries'.
+⤜ metric-types......................................: explains numericMetricType and enumMetricType for 'nass register-metric' and 'nass report-metric-value'.
 ⤜ bulk-patch........................................: explains vertex bulk-patch
 ⤜ dashboard.........................................: explains dashboard command setup.
 ⤜ configuration.....................................: explains configuration
@@ -276,6 +277,8 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 ```
 #### trace
 ```trace
+⤜ inject-simple.....................................: inject a synthetic APM transaction trace into the tracestore using CLI arguments
+⤜ inject............................................: inject APM transaction trace(s) from a JSON file into the tracestore
 ⤜ trace-details.....................................: get trace details for traceId
 ⤜ query-threaddumps.................................: find threaddumps for an agent
 ⤜ get-threaddump....................................: retrieve a previously collected threaddump
@@ -330,7 +333,7 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 ```
 #### tas
 ```tas
-⤜ store-graph.......................................: stores vertexes and edges
+⤜ store-graph.......................................: store vertices and edges in the TAS topology store from a JSON file
 ⤜ query-json........................................: executes a query defined in a json file
 ⤜ query-all.........................................: finds everything
 ⤜ query-agents......................................: finds everything
@@ -434,6 +437,7 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 #### log
 ```log
 ⤜ query.............................................: queries DXO2 Log analytics
+⤜ ingest............................................: ingest one or more log entries directly into the DXO2 log analytics gateway
 ```
 #### blob
 ```blob
@@ -509,11 +513,12 @@ npx @dx-do/cli alert list
 
 ```
 {
-  "configurationVersion": "3"
-  "cohortId": "<cohortUD from Settings -> Connector Parameters>",
-  "userToken": <DX User Token from Settings -> Manage Tokens -> New Token -> User>,
+  "configurationVersion": "4",
+  "cohortId": "<cohortId from Settings -> Connector Parameters>",
+  "userToken": "<DX User Token from Settings -> Manage Tokens -> New Token -> User>",
   "dxGatewayHost": "https://apmgw.dxi-na1.saas.broadcom.com/",
-  "dxASMToken": <optional token for ASM API usage> 
+  "dxASMToken": "<optional: token for ASM API usage>",
+  "dxLogIngestionURL": "<optional: log gateway base URL for 'log ingest' (e.g. https://logs-gateway.dxi-na1.saas.broadcom.com)>"
 }
 ```
 

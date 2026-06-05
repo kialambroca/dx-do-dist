@@ -1,3 +1,26 @@
+## 6.1.0 (2026-06-05)
+
+### 🚀 Features
+
+- log ingestion and DataStore write operations
+- **client,cli:** DataStore write client for NASS, Metrics Metadata, and TAS store-graph; port nass/tas write commands to buildCommand
+- **client,cli:** add direct log ingestion via DXO2 uim_logs pipeline
+
+### 🩹 Fixes
+
+- **deps:** npm audit fix
+
+### 📖 Documentation
+
+- **cli:** add dxLogIngestionURL to configuration help and readme fragment
+- **cli:** add dxLogIngestionURL to readme footer fragment
+
+### ❤️ Thank You
+
+- Claude Sonnet 4.6
+- Claude Sonnet 4.6 (1M context)
+- Ki Alam
+
 ## 6.0.4 (2026-06-04)
 
 ### 🩹 Fixes
