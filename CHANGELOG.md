@@ -1,3 +1,31 @@
+## 6.2.0 (2026-06-06)
+
+### 🚀 Features
+
+- add blob file store/fetch/delete commands
+
+### 🩹 Fixes
+
+- **cli:** enforce requiredArgument presence in command validation
+- **cli:** require message for log ingest
+
+### 💅 Refactors
+
+- **client:** zod-ify NASS store + log-ingest models/services
+
+### 📖 Documentation
+
+- make Zod the documented route for DataStore models/services
+- **client:** add .describe() field docs to audit + features models
+- **client:** add .describe() field docs to views + tokens models
+- **client:** add .describe() field docs to states + blobstorage models
+
+### ❤️ Thank You
+
+- Claude Opus 4.8 (1M context)
+- z
+- zoobroker
+
 ## 6.1.1 (2026-06-05)
 
 ### 💅 Refactors

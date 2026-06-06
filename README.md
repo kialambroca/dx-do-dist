@@ -47,7 +47,7 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 #### Output
 
 ```
-ℹ  info      dx-do v6.1.1 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
+ℹ  info      dx-do v6.2.0 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ℹ  info      Available command-groups: acc, agent, agentic, alarm, alert, apm-universe, asm, attribute, audit, auth, axa, blob, channel, config, dashboard, diagnose, event, experience, graph, help, inventory, jsextension, log, managementmodule, metrex, metric, metricgrouping, nass, o2-alert, o2-managementmodule, o2-metricgrouping, o2-universe, perspective, service, situation, sql, tas, topographer, trace, ui, vertex
@@ -351,6 +351,14 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 ⤜ dashboard.........................................: summarizes experience dashboard
 ⤜ create............................................: creates an experience
 ```
+#### blob
+```blob
+⤜ store.............................................: stores a local file as a blob (restore it later with `blob fetch`)
+⤜ list-schemas......................................: list current blob schemas
+⤜ list-blobs........................................: list blobs for a schema
+⤜ fetch.............................................: fetches a blob; restores a stored file to disk, or prints content for other blobs
+⤜ delete............................................: deletes a blob (all versions) from a schema
+```
 #### situation
 ```situation
 ⤜ trigger-webhook...................................: triggers a webhook for a situation
@@ -438,12 +446,6 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 ```log
 ⤜ query.............................................: queries DXO2 Log analytics
 ⤜ ingest............................................: ingest one or more log entries directly into the DXO2 log analytics gateway
-```
-#### blob
-```blob
-⤜ list-schemas......................................: list current blob schemas
-⤜ list-blobs........................................: list blobs for a schema
-⤜ fetch.............................................: fetches the content of a blob
 ```
 #### perspective
 ```perspective
