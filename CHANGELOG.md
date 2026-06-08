@@ -1,3 +1,14 @@
+## 6.2.1 (2026-06-08)
+
+### 🚀 Features
+
+- **cli:** add nass register-and-report and report-by-id commands
+
+### ❤️ Thank You
+
+- Claude Sonnet 4.6 (1M context)
+- Ki Alam
+
 ## 6.2.0 (2026-06-06)
 
 ### 🚀 Features

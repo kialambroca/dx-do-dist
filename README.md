@@ -47,7 +47,7 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 #### Output
 
 ```
-ℹ  info      dx-do v6.2.0 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
+ℹ  info      dx-do v6.2.1 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ℹ  info      Available command-groups: acc, agent, agentic, alarm, alert, apm-universe, asm, attribute, audit, auth, axa, blob, channel, config, dashboard, diagnose, event, experience, graph, help, inventory, jsextension, log, managementmodule, metrex, metric, metricgrouping, nass, o2-alert, o2-managementmodule, o2-metricgrouping, o2-universe, perspective, service, situation, sql, tas, topographer, trace, ui, vertex
@@ -215,7 +215,9 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 ```nass
 ⤜ update-metadata-attribute.........................: update a single metadata attribute on a metric
 ⤜ report-metric-value...............................: register a metric and store a single value for it at the current time
+⤜ report-by-id......................................: store a single datapoint for an already-registered metric at the current time
 ⤜ register-metric...................................: register a metric in the NASS metadata store
+⤜ register-and-report...............................: register a metric and store a single datapoint for it at the current time
 ⤜ query-metric-data.................................: executes a nass metric data query
 ⤜ query-metadata....................................: executes a nass metadata query
 ⤜ query-metadata-by-ids.............................: executes a nass metadata query
