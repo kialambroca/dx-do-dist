@@ -1,3 +1,14 @@
+## 6.2.2 (2026-06-12)
+
+### 🚀 Features
+
+- **cli:** add dashboard-list-by-meta command
+
+### ❤️ Thank You
+
+- Claude Opus 4.8 (1M context)
+- z
+
 ## 6.2.1 (2026-06-08)
 
 ### 🚀 Features
