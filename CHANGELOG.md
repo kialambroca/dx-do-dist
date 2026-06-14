@@ -1,3 +1,14 @@
+## 6.2.3 (2026-06-14)
+
+### 🩹 Fixes
+
+- **client:** treat empty-string log fields as omitted in temp_fields
+
+### ❤️ Thank You
+
+- Claude Opus 4.8 (1M context)
+- z
+
 ## 6.2.2 (2026-06-12)
 
 ### 🚀 Features
