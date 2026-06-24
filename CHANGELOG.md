@@ -1,3 +1,19 @@
+## 6.3.0 (2026-06-24)
+
+### 🚀 Features
+
+- **service:** add create/associate/dissociate/export/import + content editing commands
+
+### 📖 Documentation
+
+- **cli:** fix copy-pasted help text in alarm/event create commands
+
+### ❤️ Thank You
+
+- Claude Opus 4.8
+- Claude Opus 4.8 (1M context)
+- z
+
 ## 6.2.3 (2026-06-14)
 
 ### 🩹 Fixes

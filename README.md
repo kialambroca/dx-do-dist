@@ -47,7 +47,7 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 #### Output
 
 ```
-ℹ  info      dx-do v6.2.3 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
+ℹ  info      dx-do v6.3.0 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ℹ  info      Available command-groups: acc, agent, agentic, alarm, alert, apm-universe, asm, attribute, audit, auth, axa, blob, channel, config, dashboard, diagnose, event, experience, graph, help, inventory, jsextension, log, managementmodule, metrex, metric, metricgrouping, nass, o2-alert, o2-managementmodule, o2-metricgrouping, o2-universe, perspective, service, situation, sql, tas, topographer, trace, ui, vertex
@@ -297,15 +297,23 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 #### service
 ```service
 ⤜ top-level-services................................: shows top level services
+⤜ set-content.......................................: replaces an existing service’s content queries (dry-run by default; no content clears all)
 ⤜ search............................................: show services matching search term
 ⤜ slis..............................................: show the service SLIs (and child service SLIs)
 ⤜ overview..........................................: dump the service overview as json
 ⤜ metrics...........................................: dump the service metrics as json
 ⤜ inventory-overlap.................................: shows inventory overlaps for services
 ⤜ inventory.........................................: shows inventory for a service
+⤜ import............................................: imports a service export file (from export / export-hierarchy) into the tenant (dry-run by default)
+⤜ export-hierarchy..................................: exports a service and its entire subtree (descendants + association edges) to a re-importable JSON file
+⤜ export............................................: exports a single service to a re-importable JSON file
+⤜ dissociate........................................: removes a parent→child association, keeping the child as a detached service (dry-run by default)
+⤜ detail............................................: retrieves a service (optionally with its subservices) as json
 ⤜ dependency-graph..................................: shows a dependency graph for a service
+⤜ create............................................: creates a service with content queries (dry-run by default; dry-run previews matching entities)
+⤜ associate.........................................: associates a child service under a parent (AggregateOf edge; dry-run by default)
+⤜ add-content.......................................: adds content queries to an existing service (dry-run by default)
 ⤜ delete-service....................................: deletes service (and optionally it's subservices)
-⤜ create-empty-service..............................: creates a simple empty service
 ⤜ all-services......................................: shows all services
 ```
 #### graph
