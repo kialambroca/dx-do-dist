@@ -1,3 +1,19 @@
+## 6.3.1 (2026-06-25)
+
+### 🚀 Features
+
+- **auth:** add 'auth list-users' command
+- **auth:** model ess users v2 and switch list-users to it
+
+### 📖 Documentation
+
+- **all:** create claude resources from cursor skills/rules and improve contributing.md
+
+### ❤️ Thank You
+
+- Claude Opus 4.8
+- z
+
 ## 6.3.0 (2026-06-24)
 
 ### 🚀 Features

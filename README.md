@@ -47,7 +47,7 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 #### Output
 
 ```
-ℹ  info      dx-do v6.3.0 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
+ℹ  info      dx-do v6.3.1 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ℹ  info      Available command-groups: acc, agent, agentic, alarm, alert, apm-universe, asm, attribute, audit, auth, axa, blob, channel, config, dashboard, diagnose, event, experience, graph, help, inventory, jsextension, log, managementmodule, metrex, metric, metricgrouping, nass, o2-alert, o2-managementmodule, o2-metricgrouping, o2-universe, perspective, service, situation, sql, tas, topographer, trace, ui, vertex
@@ -102,6 +102,7 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 ⤜ user-search.......................................: searches for users
 ⤜ list-groups.......................................: shows all authentication group names
 ⤜ current...........................................: shows auth of current token
+⤜ list-users........................................: lists user accounts for the tenant
 ```
 #### dashboard
 ```dashboard
