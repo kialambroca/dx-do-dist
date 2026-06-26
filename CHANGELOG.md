@@ -1,3 +1,19 @@
+## 6.3.2 (2026-06-26)
+
+### 🚀 Features
+
+- **sli:** add SLI list/export/import commands and SLIService
+- **sli:** add include-service and exclude-service commands
+
+### 🩹 Fixes
+
+- **sli:** block import of SLIs bound to multiple services
+
+### ❤️ Thank You
+
+- Claude Opus 4.8
+- z
+
 ## 6.3.1 (2026-06-25)
 
 ### 🚀 Features

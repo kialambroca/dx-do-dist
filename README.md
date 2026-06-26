@@ -47,10 +47,10 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 #### Output
 
 ```
-ℹ  info      dx-do v6.3.1 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
+ℹ  info      dx-do v6.3.2 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
-ℹ  info      Available command-groups: acc, agent, agentic, alarm, alert, apm-universe, asm, attribute, audit, auth, axa, blob, channel, config, dashboard, diagnose, event, experience, graph, help, inventory, jsextension, log, managementmodule, metrex, metric, metricgrouping, nass, o2-alert, o2-managementmodule, o2-metricgrouping, o2-universe, perspective, service, situation, sql, tas, topographer, trace, ui, vertex
+ℹ  info      Available command-groups: acc, agent, agentic, alarm, alert, apm-universe, asm, attribute, audit, auth, axa, blob, channel, config, dashboard, diagnose, event, experience, graph, help, inventory, jsextension, log, managementmodule, metrex, metric, metricgrouping, nass, o2-alert, o2-managementmodule, o2-metricgrouping, o2-universe, perspective, service, situation, sli, sql, tas, topographer, trace, ui, vertex
 ```
 
 
@@ -370,6 +370,14 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 ⤜ list-blobs........................................: list blobs for a schema
 ⤜ fetch.............................................: fetches a blob; restores a stored file to disk, or prints content for other blobs
 ⤜ delete............................................: deletes a blob (all versions) from a schema
+```
+#### sli
+```sli
+⤜ list..............................................: lists the SLIs (Service Level Indicators) configured in the tenant
+⤜ include-service...................................: adds a service to an existing SLI's bound services (dry-run by default)
+⤜ import............................................: imports a raw SLI export into the tenant, substituting ${serviceName} and binding it to serviceName (dry-run by default)
+⤜ export............................................: exports a single SLI to a raw, re-importable JSON file (or stdout)
+⤜ exclude-service...................................: removes a service from an existing SLI's bound services (dry-run by default)
 ```
 #### situation
 ```situation
