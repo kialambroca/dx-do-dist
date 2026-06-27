@@ -47,10 +47,10 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 #### Output
 
 ```
-ℹ  info      dx-do v6.3.2 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
+ℹ  info      dx-do v6.3.3 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
-ℹ  info      Available command-groups: acc, agent, agentic, alarm, alert, apm-universe, asm, attribute, audit, auth, axa, blob, channel, config, dashboard, diagnose, event, experience, graph, help, inventory, jsextension, log, managementmodule, metrex, metric, metricgrouping, nass, o2-alert, o2-managementmodule, o2-metricgrouping, o2-universe, perspective, service, situation, sli, sql, tas, topographer, trace, ui, vertex
+ℹ  info      Available command-groups: acc, agent, agentic, alarm, alert, apm-universe, asm, attribute, audit, auth, axa, blob, channel, config, dashboard, diagnose, event, experience, graph, help, inventory, jsextension, log, maintenance, managementmodule, metrex, metric, metricgrouping, nass, o2-alert, o2-managementmodule, o2-metricgrouping, o2-universe, perspective, service, situation, sli, sql, tas, topographer, trace, ui, vertex
 ```
 
 
@@ -461,6 +461,16 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 ⤜ create............................................: creates a new APM metric grouping (dry-run by default)
 ⤜ list-by-managementmodule..........................: lists all metric groupings in management modules.
 ⤜ list-metrics......................................: lists all live metrics in metric grouping
+```
+#### maintenance
+```maintenance
+⤜ list..............................................: lists the maintenance windows (schedules) configured in the tenant
+⤜ detail............................................: shows a maintenance window: its target members/filter, schedule, and upcoming windows
+⤜ delete............................................: deletes a maintenance window by id (dry-run by default)
+⤜ create-for-services...............................: creates a maintenance window targeting one or more services (dry-run by default)
+⤜ create-for-entities...............................: creates a maintenance window targeting devices/entities by a field match (dry-run by default)
+⤜ create-for-alarms.................................: creates a maintenance window targeting raw alarms by alarm-name match (dry-run by default)
+⤜ create-for-agents.................................: creates a maintenance window targeting agents matched by a pattern (dry-run by default)
 ```
 #### log
 ```log
