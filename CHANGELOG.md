@@ -1,3 +1,16 @@
+## 6.3.4 (2026-06-30)
+
+### 🚀 Features
+
+- **cli:** add `wql analyze` command + ts() selector extractor
+- **nassql:** add WQL source op (model, query editor, cookbook)
+- **nassql:** query-range editor + `wql query` CLI command
+
+### ❤️ Thank You
+
+- Claude Opus 4.8 (1M context)
+- Ki Alam
+
 ## 6.3.3 (2026-06-27)
 
 ### 🚀 Features
