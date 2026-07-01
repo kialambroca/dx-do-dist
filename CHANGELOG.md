@@ -1,3 +1,18 @@
+## 6.3.5 (2026-07-01)
+
+### 🩹 Fixes
+
+- **cli:** de-duplicate repeated validation error messages
+
+### 💅 Refactors
+
+- **cli:** port acc/agent/alarm commands to buildCommand
+
+### ❤️ Thank You
+
+- Claude Sonnet 5
+- Ki Alam
+
 ## 6.3.4 (2026-06-30)
 
 ### 🚀 Features
