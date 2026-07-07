@@ -1,3 +1,27 @@
+## 6.4.0 (2026-07-06)
+
+### 🩹 Fixes
+
+- **cli:** change onlyLatest to default true flag argument
+- **cli:** correct acc list-bundles latest-version ordering across the YYYY->YY change
+- **cli:** change arguments  default false flag arguments
+- **deps:** resolve npm audit vulnerabilities (14 high -> 0)
+- **security:** redact auth tokens from HTTP error logging
+
+### 💅 Refactors
+
+- **cli:** port channel and dashboard commands to buildCommand
+- **cli:** port axa, vertex, experience, apm-universe commands to buildCommand
+- **cli:** port managementmodule, help, graph, config commands to buildCommand
+- **cli:** port service, metric, metrex, trace, perspective, o2-universe, nass to buildCommand
+- **cli:** port auth, topographer, tas, sql, jsextension, situation, attribute, asm to buildCommand
+
+### ❤️ Thank You
+
+- Claude Opus 4.8 (1M context)
+- z
+- zoobroker
+
 ## 6.3.5 (2026-07-01)
 
 ### 🩹 Fixes
