@@ -47,10 +47,10 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 #### Output
 
 ```
-ℹ  info      dx-do v6.4.0 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
+ℹ  info      dx-do v7.0.1-beta.0 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
-ℹ  info      Available command-groups: acc, agent, agentic, alarm, alert, apm-universe, asm, attribute, audit, auth, axa, blob, channel, config, dashboard, diagnose, event, experience, graph, help, inventory, jsextension, log, maintenance, managementmodule, metrex, metric, metricgrouping, nass, o2-alert, o2-managementmodule, o2-metricgrouping, o2-universe, perspective, service, situation, sli, sql, tas, topographer, trace, ui, vertex, wql
+ℹ  info      Available command-groups: acc, agent, agentic, alarm, alert, apm-universe, asm, attribute, audit, auth, axa, blob, channel, config, dashboard, diagnose, event, experience, graph, help, inventory, jsextension, log, maintenance, managementmodule, metrex, metric, metricgrouping, nass, o2-alert, o2-managementmodule, o2-metricgrouping, perspective, service, service-universe, situation, sli, sql, tas, topographer, trace, ui, vertex, wql
 ```
 
 
@@ -261,13 +261,6 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 ⤜ create............................................: creates an APM universe
 ⤜ add-metric-source.................................: adds an agent / regex to an APM universe definition.
 ```
-#### o2-universe
-```o2-universe
-⤜ services..........................................: lists services associated with a universe
-⤜ list..............................................: lists all O2 universes
-⤜ export............................................: dumps a single O2 universe JSON
-⤜ create............................................: creates a o2 universe
-```
 #### ui
 ```ui
 ⤜ start.............................................: Start the dx-do query builder UI server (Fastify + MCP) and open the browser [experimental]
@@ -280,7 +273,9 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 ⤜ bulk-patch........................................: explains vertex bulk-patch
 ⤜ dashboard.........................................: explains dashboard command setup.
 ⤜ configuration.....................................: explains configuration
+⤜ commands-safety-md................................: emits a per-group command safety reference (markdown)
 ⤜ commands-md.......................................: explains commands in md format
+⤜ commands-json.....................................: dumps every command as a machine-readable JSON manifest (safety, usage, args)
 ⤜ commands..........................................: explains commands.
 ⤜ agentic-mcp.......................................: Explains the `dx-do agentic mcp` stdio MCP server and how to wire it into Claude Code / Cursor / mcp-inspector.
 ```
@@ -416,6 +411,17 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 ⤜ create-package....................................: creates a new ACC package from typed args (UI new-package wizard equivalent)
 ⤜ bundle-details....................................: gets bundle details
 ⤜ add-package-bundles...............................: attaches bundles to a package (single PATCH, no draft/publish dance)
+```
+#### service-universe
+```service-universe
+⤜ update............................................: updates a service universe (dry-run by default)
+⤜ remove-access.....................................: revokes a user or group access from a service universe (dry-run by default)
+⤜ list..............................................: lists service universes (OI-owned)
+⤜ get...............................................: shows the full definition of one service universe
+⤜ export............................................: writes a service universe definition to a JSON file
+⤜ delete............................................: deletes a service universe (dry-run by default)
+⤜ create............................................: creates a service universe scoped to a list of services (dry-run by default)
+⤜ add-access........................................: grants a user or group access to a service universe (dry-run by default)
 ```
 #### sql
 ```sql

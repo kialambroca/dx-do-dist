@@ -1,3 +1,41 @@
+## 7.0.1-beta.0 (2026-07-07)
+
+This was a version bump only, there were no code changes.
+
+# 7.0.0 (2026-07-07)
+
+### 🚀 Features
+
+- **cli:** add command safety/usage frontmatter, safe-mode gate, and help commands-json
+- **cli:** classify all commands with safety/usage frontmatter
+- **cli:** add help commands-safety-md generator + committed safety reference
+- **cli:** add service-universe command group (list/get/create/update/delete/export)
+- ⚠️  **cli:** replace o2-universe command group with service-universe
+- **cli:** verify services exist before service-universe create/update
+- **cli:** add service-universe add-access / remove-access (user & group access)
+- **cli:** verify user exists before service-universe add-access (users only)
+- **client:** add ServiceUniverseService + Zod models (service universes)
+
+### ⚠️  Breaking Changes
+
+- **cli:** replace o2-universe command group with service-universe
+  the `o2-universe` command group (list/create/export/services)
+  is removed. Use the new `service-universe` group instead:
+    o2-universe list      → service-universe list
+    o2-universe export    → service-universe get / export
+    o2-universe services  → service-universe get
+    o2-universe create    → service-universe create
+  The O2UniverseService client + models are kept (axa servicify + ui discovery
+  still depend on them). Corpus cookbooks/entities and the safety reference are
+  updated to point at service-universe; the o2-universe e2e test is removed.
+  Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>
+  Claude-Session: https://claude.ai/code/session_01HEihYZXXukKsckLFp6rcP9
+
+### ❤️ Thank You
+
+- Claude Opus 4.8 (1M context)
+- z
+
 ## 6.4.0 (2026-07-06)
 
 ### 🩹 Fixes
