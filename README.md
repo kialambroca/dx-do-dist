@@ -47,10 +47,10 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 #### Output
 
 ```
-ℹ  info      dx-do v7.0.1-beta.0 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
+ℹ  info      dx-do v7.0.1-beta.1 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
-ℹ  info      Available command-groups: acc, agent, agentic, alarm, alert, apm-universe, asm, attribute, audit, auth, axa, blob, channel, config, dashboard, diagnose, event, experience, graph, help, inventory, jsextension, log, maintenance, managementmodule, metrex, metric, metricgrouping, nass, o2-alert, o2-managementmodule, o2-metricgrouping, perspective, service, service-universe, situation, sli, sql, tas, topographer, trace, ui, vertex, wql
+ℹ  info      tenant profile: default → /Users/z/.dxdo/default.dxo2.config.json (readOnly: false)
 ```
 
 
@@ -183,7 +183,7 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 ⤜ debug-token.......................................: shows decoded token
 ⤜ debug.............................................: shows configuration details
 ⤜ connector.........................................: shows connector config for tenant
-⤜ create............................................: create new configuration interactively
+⤜ create............................................: create a new tenant configuration profile (interactive on a TTY, or non-interactive via gatewayHost=/userToken=/cohortId=)
 ```
 #### channel
 ```channel
@@ -269,6 +269,7 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 ```help
 ⤜ ui................................................: Explains `dx-do ui start` — the browser-based visual query builder for TAS / NASSQL / Metrics-Metadata queries.
 ⤜ time-formats......................................: explains time formats for 'metric data' and 'agent get-trace-sumaries'.
+⤜ slis..............................................: explains the SLI group / SLI / SLO / alert model and how to drive it with the sli commands.
 ⤜ metric-types......................................: explains numericMetricType and enumMetricType for 'nass register-metric' and 'nass report-metric-value'.
 ⤜ bulk-patch........................................: explains vertex bulk-patch
 ⤜ dashboard.........................................: explains dashboard command setup.
@@ -343,6 +344,10 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 ⤜ dump-schema.......................................: dumps the metrex configuration schema (for use in IDE)
 ⤜ associate-vertex-metrics..........................: associate metrics to vertices using the output of test-configuration command.
 ```
+#### tenant
+```tenant
+⤜ maintenance.......................................: checks the Broadcom status page for DXO2 SaaS platform maintenance affecting the configured tenant (not user-configured maintenance windows)
+```
 #### tas
 ```tas
 ⤜ store-graph.......................................: store vertices and edges in the TAS topology store from a JSON file
@@ -373,11 +378,23 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 ```
 #### sli
 ```sli
-⤜ list..............................................: lists the SLIs (Service Level Indicators) configured in the tenant
-⤜ include-service...................................: adds a service to an existing SLI's bound services (dry-run by default)
-⤜ import............................................: imports a raw SLI export into the tenant, substituting ${serviceName} and binding it to serviceName (dry-run by default)
-⤜ export............................................: exports a single SLI to a raw, re-importable JSON file (or stdout)
-⤜ exclude-service...................................: removes a service from an existing SLI's bound services (dry-run by default)
+⤜ status............................................: surfaces SLI groups with registration problems (sliStatusCode != 0)
+⤜ set-sli-filter....................................: replaces one SLI's refinement filter, previewing the resulting metric matches (dry-run by default)
+⤜ set-group-filter..................................: replaces an SLI group's metric filters, previewing the resulting metric matches (dry-run by default)
+⤜ remove-slo........................................: removes an SLI's SLO (objective, percentage, and error budget) from a group (dry-run by default)
+⤜ remove-sli........................................: removes an SLI from a group, cascading to its SLO and alerts (dry-run by default)
+⤜ remove-alert......................................: removes an alert from an SLI (dry-run by default)
+⤜ list-groups.......................................: lists the SLI groups (of SLIs, SLOs, and related alerts) configured in the tenant
+⤜ include-service...................................: adds a service to an existing SLI group's bound services (dry-run by default)
+⤜ import............................................: imports a raw SLI group export into the tenant, substituting ${serviceName} and binding it to serviceName (dry-run by default)
+⤜ filter-test.......................................: read-only filter workbench: lists the filterable metric attributes for services and previews what a filter combination matches
+⤜ export............................................: exports a single SLI group to a raw, re-importable JSON file (or stdout)
+⤜ exclude-service...................................: removes a service from an existing SLI group's bound services (dry-run by default)
+⤜ delete-group......................................: permanently deletes an SLI group and everything in it: its SLIs, SLOs, and alerts (dry-run by default)
+⤜ create-group......................................: creates an SLI group with its first SLI: metric filters, a service binding, and the SLI computation (dry-run by default)
+⤜ add-slo...........................................: adds an SLO (objective + error budget) derived from an existing SLI (dry-run by default)
+⤜ add-sli...........................................: adds an SLI (a computed service-level metric) to an existing SLI group (dry-run by default)
+⤜ add-alert.........................................: adds an alert on one of an SLI's produced metrics: the SLI itself, its SLO percentage, or its error budget (dry-run by default)
 ```
 #### situation
 ```situation
@@ -532,13 +549,16 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 ```
 #### agentic
 ```agentic
-⤜ schema............................................: Emit the canonical JSON Schema for a DataStore query payload (TAS / NASSQL / Metrics-Metadata), optionally narrowed to one op. [experimental]
-⤜ mcp...............................................: Run a stdio MCP server for the bound tenant. Wire into Claude Code / Cursor with `claude mcp add` (or equivalent). [experimental]
+⤜ setup.............................................: One-command agentic onboarding: extract the Claude Code plugin to ~/.dxdo/claude/marketplace, manage readOnly profile marks, print the /plugin install block, run doctor.
+⤜ schema............................................: Emit the canonical JSON Schema for a DataStore query payload (TAS / NASSQL / Metrics-Metadata), optionally narrowed to one op.
+⤜ mcp...............................................: Run a stdio MCP server for the bound tenant. Wire into Claude Code / Cursor with `claude mcp add` (or equivalent).
 ⤜ learn-tenant......................................: Reserve the per-tenant corpus storage at ~/.dxdo/<alias>/corpus/ (no-op stub; full learning logic is forthcoming). [experimental]
-⤜ extract-claude-marketplace........................: Extract the embedded Claude Code marketplace + plugins to disk. Writes `<base-directory>/dx-do-claude-marketplace/` containing the marketplace.json and one subdir per plugin. Prints the `/plugin` slash-command sequence to install them. [experimental]
-⤜ corpus-sections...................................: List the sections of the dx-do catalog (queries, cookbooks, entities, …). [experimental]
-⤜ corpus-section-index..............................: List entries in a catalog section. Each row is labelled `<section>/<id>` for copy-paste into `agentic corpus-entry`. [experimental]
-⤜ corpus-entry......................................: Print a catalog entry. `document=<section>/<id>` (e.g. `entities/host`, `cookbooks/tas-quickstart`, `queries/01-discover-vertices`). [experimental]
+⤜ guard.............................................: classifies a Bash command line as a PreToolUse hook decision (allow/ask/deny, silence = defer)
+⤜ extract-claude-marketplace........................: Extract the embedded Claude Code marketplace + plugins to disk. Writes `<base-directory>/dx-do-claude-marketplace/`. Prefer `agentic setup` for the standard onboarding flow.
+⤜ doctor............................................: Health checks for the agentic surface: profiles, auth, extracted Claude marketplace freshness, guard classifier, MCP tool registration.
+⤜ corpus-sections...................................: List the sections of the dx-do catalog (queries, cookbooks, entities, …).
+⤜ corpus-section-index..............................: List entries in a catalog section. Each row is labelled `<section>/<id>` for copy-paste into `agentic corpus-entry`.
+⤜ corpus-entry......................................: Print a catalog entry. `document=<section>/<id>` (e.g. `entities/host`, `cookbooks/tas-quickstart`, `queries/01-discover-vertices`).
 ```
 ### Options
 
@@ -617,7 +637,7 @@ To see which commands are experimental, run any of:
 * `DXDO_ENABLE_EXPERIMENTAL_COMMANDS=true dx-do help commands` — list with `[experimental]` tag.
 * The `README.md` shipped with the binary — generated with experimental commands always included; each is suffixed with `[experimental]`.
 
-When an MCP client (Claude Code, Cursor, mcp-inspector) spawns `dx-do` as a subprocess for a currently-experimental command (e.g. `agentic mcp`), set the env var in the spawn config so the gate is open for the child process. The bundled `investigate@dx-do` Claude Code plugin already does this in its `plugin.json`.
+When an MCP client (Claude Code, Cursor, mcp-inspector) spawns `dx-do` as a subprocess for a currently-experimental command (e.g. `ui start`), set the env var in the spawn config so the gate is open for the child process. (`agentic mcp` and the other `agentic` commands graduated in 7.0 and need no gate.)
 
 
 #### version 3 configuration

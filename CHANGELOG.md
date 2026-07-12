@@ -1,3 +1,61 @@
+## 7.0.1-beta.1 (2026-07-12)
+
+### 🚀 Features
+
+- **claude:** one coherent dx-do plugin — hooks, foundation skill, tenant_info, queries module
+- **cli:** agent-trustworthy CLI — guard verdict engine, tenant readOnly floor, non-TTY + pipe fixes
+- **cli:** frictionless agentic onboarding — agentic setup, agentic doctor, config create fix
+- **client:** SLI composition model — builders, invariants, previews, delete
+- **corpus:** the operate activity — operator flow, operations cookbooks, alert-linkage lexicon, operator skill
+- **corpus:** entity-type→metrics bridge — the missing recipe behind 'which X is slowest?'
+- **corpus:** metric.attr.metric_name in the entity-type→metrics bridge — exact-match, no regex
+- **sli:** full group lifecycle — compose, tune, inspect, remove, delete
+- **sli:** zero-match filter diagnosis — exonerate real uncataloged fields, flag likely typos
+- **tenant:** new command group — tenant maintenance reads the Broadcom status page
+- **tooling:** per-group CLI test shortcut — npm run test-command-group
+- **uapd:** unified-alert-pipeline-driver premise probe — 15s metric publisher with stepped values
+- **uapd:** full driver — scenario-encoded matrix with setup/publish/verify/teardown phases
+- **uapd:** tier N — NEQ escalation-hypothesis discrimination cells
+- **uapd:** package-local tools + thin phase scripts — residue checker and alarm inspector
+- **uapd:** HTML run report + full execution-process README
+- **uapd:** tier S — closeWithNoData / silence semantics
+- **uapd:** tier K — ANY/ALL combineOperator over 3-metric groupings
+- **uapd:** recovery phase — every run now drives its alarms closed before ending
+
+### 🩹 Fixes
+
+- **cli:** Claude-interaction polish — json purity, listing exit codes, guard redirects, tenant line
+- **cli:** plugin tenant binding — read persisted pluginConfigs when spawn env lacks the dialog value; rename dialog to 'dx-do profile'
+- **sli:** finish the column↔filter-field alignment — sourceName and attributeName
+- **uapd:** verify severity from alarm lifecycle events — NEQ 'never escalates' was a measurement artifact
+- **uapd:** match alarms by alert-name prefix — ALL-combine alarms carry no host field
+
+### 💅 Refactors
+
+- **cli:** rename agent.readOnly → top-level readOnly on tenant profiles
+- **sli:** SLI-group nomenclature — the top-level construct is a group of SLIs/SLOs/alerts
+- **uapd:** single shared source per run — cells differentiated by attribute name
+
+### 📖 Documentation
+
+- **internal:** Service Universe design note — HAR-grounded API surface for 7.0
+- **uapd:** alerting-pipeline test matrix — 62 cells across type/operator/resolution/periods/lifecycle tiers
+- **uapd:** ground the matrix in live API shapes — resolution=frequency(ms), MAJOR=warningThreshold, CRITICAL=errorThreshold
+- **uapd:** metric attributes schema — waveform behavior in description, verified round-trip
+- **uapd:** tier B answered — 15s data evaluates correctly at 60s and 6m alert resolutions
+- **uapd:** HIGHLIGHTS.md — shareable campaign summary incl. the NEQ severity discovery
+- **uapd:** closeWithNoData answered — tier S 4/4 green with measured close timing
+- **uapd:** combo1 findings — ANY is per-metric alarms; ALL never fires (candidate pipeline bug)
+- **uapd:** ALL false-fires re-attributed to new-metric membership-resolution lag
+- **uapd:** package CLAUDE.md — tier-authoring recipe, empirical rules, and the debug order
+- **uapd:** spell out the build model — nothing to build, one client-build prerequisite, no typecheck gate
+- **uapd:** original plan document for the unified alert-pipeline driver
+
+### ❤️ Thank You
+
+- Claude Fable 5
+- z
+
 ## 7.0.1-beta.0 (2026-07-07)
 
 This was a version bump only, there were no code changes.
