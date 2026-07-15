@@ -47,7 +47,7 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 #### Output
 
 ```
-ℹ  info      dx-do v7.0.1-beta.1 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
+ℹ  info      dx-do v7.0.1-beta.2 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ℹ  info      tenant profile: default → /Users/z/.dxdo/default.dxo2.config.json (readOnly: false)
@@ -272,6 +272,8 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 ⤜ slis..............................................: explains the SLI group / SLI / SLO / alert model and how to drive it with the sli commands.
 ⤜ metric-types......................................: explains numericMetricType and enumMetricType for 'nass register-metric' and 'nass report-metric-value'.
 ⤜ bulk-patch........................................: explains vertex bulk-patch
+⤜ find..............................................: searches the command surface by task phrase and returns ranked candidates
+⤜ describe..........................................: dumps one command as its full machine-readable manifest entry
 ⤜ dashboard.........................................: explains dashboard command setup.
 ⤜ configuration.....................................: explains configuration
 ⤜ commands-safety-md................................: emits a per-group command safety reference (markdown)
@@ -440,6 +442,12 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 ⤜ create............................................: creates a service universe scoped to a list of services (dry-run by default)
 ⤜ add-access........................................: grants a user or group access to a service universe (dry-run by default)
 ```
+#### queries
+```queries
+⤜ run...............................................: executes a saved query against the bound tenant and prints the result
+⤜ list..............................................: lists saved queries (or folders) from the local query store
+⤜ get...............................................: reads one saved query triplet (payload + tmd + md) from the local query store
+```
 #### sql
 ```sql
 ⤜ examples..........................................: shows example queries
@@ -549,12 +557,12 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 ```
 #### agentic
 ```agentic
-⤜ setup.............................................: One-command agentic onboarding: extract the Claude Code plugin to ~/.dxdo/claude/marketplace, manage readOnly profile marks, print the /plugin install block, run doctor.
+⤜ setup-claude......................................: One-command Claude Code onboarding: extract the Claude Code plugin to ~/.dxdo/claude/marketplace, manage readOnly profile marks, print the /plugin install block, run doctor.
 ⤜ schema............................................: Emit the canonical JSON Schema for a DataStore query payload (TAS / NASSQL / Metrics-Metadata), optionally narrowed to one op.
 ⤜ mcp...............................................: Run a stdio MCP server for the bound tenant. Wire into Claude Code / Cursor with `claude mcp add` (or equivalent).
 ⤜ learn-tenant......................................: Reserve the per-tenant corpus storage at ~/.dxdo/<alias>/corpus/ (no-op stub; full learning logic is forthcoming). [experimental]
 ⤜ guard.............................................: classifies a Bash command line as a PreToolUse hook decision (allow/ask/deny, silence = defer)
-⤜ extract-claude-marketplace........................: Extract the embedded Claude Code marketplace + plugins to disk. Writes `<base-directory>/dx-do-claude-marketplace/`. Prefer `agentic setup` for the standard onboarding flow.
+⤜ extract-claude-marketplace........................: Extract the embedded Claude Code marketplace + plugins to disk. Writes `<base-directory>/dx-do-claude-marketplace/`. Prefer `agentic setup-claude` for the standard onboarding flow.
 ⤜ doctor............................................: Health checks for the agentic surface: profiles, auth, extracted Claude marketplace freshness, guard classifier, MCP tool registration.
 ⤜ corpus-sections...................................: List the sections of the dx-do catalog (queries, cookbooks, entities, …).
 ⤜ corpus-section-index..............................: List entries in a catalog section. Each row is labelled `<section>/<id>` for copy-paste into `agentic corpus-entry`.

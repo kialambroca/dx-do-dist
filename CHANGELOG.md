@@ -1,3 +1,98 @@
+## 7.0.1-beta.2 (2026-07-15)
+
+### 🚀 Features
+
+- **agentic-gen:** isOneOf ratchet — imperative enum sites only move down
+- **agentic-gen:** tool-manifest extraction + validate-grounding-refs (warn)
+- **agentic-gen:** routing corpus section — the MCP-vs-Bash rule as data
+- **agentic-gen:** unified dxdo:gen marker blocks
+- **cli:** registry enrichment seams — invokeStructured, declarative args, lifecycle
+- **cli:** identity cache — cold-start banner RPC eliminated on cache hit
+- **cli:** command-search engine + search-quality fixture suite
+- **cli:** help find / help describe + cli MCP module (cli_find, cli_describe)
+- **cli:** queries list / get / run — saved-query store access from the CLI
+- **cli:** deprecatedNote — the sunset + replacement pointer on deprecated commands
+- **corpus:** lexicon synonyms[] + commandGroups[] — task vocabulary for command search
+- **harness:** e2e catalogs for the 6 uncovered groups + group↔catalog parity check
+- **harness:** the release gate — versioned prompt suite + fatal drift validators
+- **harness:** model observability + pinning
+- **harness:** config-coherent assertion — the split-brain regression guard
+- **harness:** projection A/B machinery — env arm lever + arm-verified cell driver
+- **harness:** projection A/B burn 1 — transcript-based arm verification + report
+- **harness:** direct-demand suite prompts for projection burn 2
+- **harness:** projection A/B burn 2 — direct demand yields full adoption
+- **harness+cli:** AGR-P6 groundwork — audit lint rules, effort metrics, upcoming-maintenance prompt
+- **mcp:** external-module seam + cli module id
+- **mcp+cli:** in-process projection runner behind surface=experiment
+- **release:** verify-release preflight — predicts complete-cli-(ga|beta) success
+
+### 🩹 Fixes
+
+- **agentic-gen:** release gate validates COMMITTED state — #189 beta-publish failure
+- **agentic-gen:** gate resolves workspace imports from committed src — #189 round 3
+- **cli:** typecheck burn-down — workspace goes green
+- **cli:** truthful existence checks + targeted retries for the gate flake
+- **cli:** retry marks via a typed wrapper — bun's options object vs jest-style types
+- **cli:** DXDO_CONFIG_ALIAS honored by the config loader + tenant selection surfaced to agents
+- **cli:** bun bundle targets depend on session-core:build — #189 round 4
+- **corpus:** un-orphan universe/service/application entity docs + extend the leak guard
+- **corpus:** route named-service state questions to the service management surface
+- **deps:** npm audit → 0 vulnerabilities — hey-api 0.99 + scoped js-yaml override
+- **harness:** release-gate report travels with the push
+- **harness:** harness-now guards tracked changes only
+- **harness:** empty MODEL_ARGS expansion under set -u on bash 3.2
+- **harness:** release gate enforces suite coverage; per-unit time/token deltas
+- **release:** verify-release checks node_modules sync — #189 round 2
+
+### 🔥 Performance
+
+- **harness:** concurrent suite fan-out + evaluator manifest cache + codesign skip
+
+### 💅 Refactors
+
+- **claude-plugin:** skills thin rewrite — generated routing table + discoverability contract
+- **cli:** declarative-enum retrofit sweep 1 — 33 isOneOf sites become enumValues
+- **cli:** AGR-P3 curation marks — 41 agent-hidden + 29 deprecated
+- ⚠️  **cli:** rename agentic setup → agentic setup-claude
+- ⚠️  **mcp:** 7.0 MCP breaking window — curated-core cleanup
+- **session-core:** extract session + handlers + query store from ui
+
+### 📖 Documentation
+
+- three stale-claim fixes from the audit (AGR-P0)
+- dependency diagrams + package docs for @dx-do/session-core
+- base docs learn the AGR-P2..P5 surface + nightly launchd installer
+- **agr:** record the projection hybrid decision + detector playbook
+- **build:** verify-release preflight section
+- **corpus:** lexicon commandGroups repoint graph → tas
+- **harness:** how to add an agentic integration test
+- **plans:** README self-references updated to docs/plans
+- **skills:** repoint dead packages/client/bin/queries refs (AGR-P0)
+- **skills:** replace python3 extraction examples with jq (AGR-P0)
+- **skills:** cli-commands learns the AGR-P1/TSG-P1 authoring rules
+
+### ✅ Tests
+
+- **cli:** agentic e2e catalog — read-only smokes (AGR-P0)
+- **cli:** search fixtures robust to suite-order registry drift
+
+### ⚠️  Breaking Changes
+
+- **cli:** rename agentic setup → agentic setup-claude
+- **mcp:** 7.0 MCP breaking window — curated-core cleanup
+  the MCP tool discovery_services is removed (use
+  discovery_service_hierarchy — its byName keys are the flat name list)
+  and module.ui no longer parses (use module.queries). After upgrading:
+  re-run 'dx-do agentic setup', then reconnect the MCP in your host.
+  'dx-do agentic doctor' flags stale installs.
+  Closes #76, #77, #78, #79, #80, #81 (AGR-P4, epic #33) — manual close
+  on merge, base is beta.
+
+### ❤️ Thank You
+
+- Claude Fable 5
+- z
+
 ## 7.0.1-beta.1 (2026-07-12)
 
 ### 🚀 Features
