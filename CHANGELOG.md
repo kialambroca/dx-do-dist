@@ -1,3 +1,45 @@
+## 7.0.1-beta.4 (2026-07-17)
+
+### 🚀 Features
+
+- **ci:** single-builder release workflows — build once, smoke exact, publish everywhere
+- **release:** tool-manifest freshness check + dist-less gate harness — #181 #201
+- **release:** bin/duplicate-release.sh — internal release = download + republish
+
+### 🩹 Fixes
+
+- **cli:** bare-group usage listing no longer advertises deprecated commands
+- **cli:** valid MutationClass in group-listing test — unblocks the gate typecheck
+- **harness:** stem lexer no longer parses shell redirections as commands
+- **mcp:** single writer per dist + typecheck ordering; session-core publish guard — #210 #207
+- **release:** job timeouts on all workflows + explicit tag-push remote — #223 #205
+- **release:** explicit release.projects — session-core rejoins lockstep versioning
+- **ui:** dead validation display, dropped --unknown styling, CSS comment swallowing; warning-clean build — #212 #213
+
+### 💅 Refactors
+
+- **build:** graph-native ordering — ^build targetDefaults + edge diet
+- **build:** cacheable generation targets with complete inputs
+- **build:** single writer per dist + dist-less gate green — #217 #201
+- **build:** npmjs-native lockfile — the registry split-brain ends
+- **ci:** delete workflow Build-lists — the graph orders the build
+- **cli:** bundle.mjs version injection + graph-native build bodies
+- **release:** complete-cli-* ends at the tag push — publishing leaves the laptop
+
+### 📖 Documentation
+
+- **internal:** BUSR design intent draft — single-builder + graph-native target design
+- **internal:** BUSR design doc approved — phases filed (P2 #214, P3 #215, P4 #216)
+
+### ❤️ Thank You
+
+- Claude Fable 5
+- z
+
+## 7.0.1-beta.3 (2026-07-16)
+
+This was a version bump only, there were no code changes.
+
 ## 7.0.1-beta.2 (2026-07-15)
 
 ### 🚀 Features

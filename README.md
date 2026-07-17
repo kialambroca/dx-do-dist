@@ -47,10 +47,10 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 #### Output
 
 ```
-ℹ  info      dx-do v7.0.1-beta.2 on node v22.21.0 on darwin-arm64 via node (ssl: 3.5.4)
+ℹ  info      dx-do v7.0.1-beta.4 on node v24.3.0 on linux-x64 via node (ssl: 1.1.0)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
-ℹ  info      tenant profile: default → /Users/z/.dxdo/default.dxo2.config.json (readOnly: false)
+⚠  warning   no tenant profile configured — run 'dx-do config create alias=default gatewayHost=... userToken=... cohortId=...'
 ```
 
 
