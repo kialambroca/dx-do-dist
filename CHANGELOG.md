@@ -1,3 +1,7 @@
+## 7.0.1-beta.6 (2026-07-18)
+
+This was a version bump only, there were no code changes.
+
 ## 7.0.1-beta.5 (2026-07-18)
 
 ### 🚀 Features
