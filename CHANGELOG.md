@@ -1,3 +1,30 @@
+## 7.0.1-beta.5 (2026-07-18)
+
+### 🚀 Features
+
+- **release:** bin/ship.sh — one-command release day with a typed post-CI challenge
+- **release:** bin/install-release.sh — install a released binary from zoobroker
+- **release:** one-line curl installer for the customer channel
+
+### 🩹 Fixes
+
+- **release:** duplicate-release resume message says what it does
+
+### 💅 Refactors
+
+- **build:** retire install-npmjs — plain npm ci everywhere; gate guards the lockfile registry
+
+### 📖 Documentation
+
+- **build:** BUILD.md rewritten wholesale for the single-builder topology
+- **release:** regenerate the release anatomy from the live beta.4 run
+- **ui:** PrimeNG version ceiling — 21.x is the MIT line, never cross it
+
+### ❤️ Thank You
+
+- Claude Fable 5
+- z
+
 ## 7.0.1-beta.4 (2026-07-17)
 
 ### 🚀 Features

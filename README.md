@@ -1,12 +1,33 @@
-# @dx-do/cli
+# dx-do
 
 #### Command-line execution of DXO2 SaaS operations
 
 ***
 
-## Usage
+## Install
 
-:warning: Using npm install for this package is highly discouraged.
+**One-line install** (macOS Apple silicon, Linux x64, Windows via Git Bash):
+
+```
+curl -fsSL https://raw.githubusercontent.com/kialambroca/dx-do-dist/main/install.sh | bash
+```
+
+* Latest beta instead of GA: `curl -fsSL https://raw.githubusercontent.com/kialambroca/dx-do-dist/main/install.sh | bash -s -- --beta`
+* Exact version: `... | bash -s -- --version 7.0.2`
+* Custom install directory (no sudo needed): `... | bash -s -- --dir "$HOME/bin"`
+
+The installer picks the right binary from [GitHub Releases](https://github.com/kialambroca/dx-do-dist/releases), verifies its SHA-256 checksum, and installs it as `dx-do` on your PATH. Because it downloads with `curl`, the binary arrives without the browser quarantine flag that would otherwise make macOS report it as "damaged".
+
+### Manual download
+
+1. Download the binary for your platform from the [releases page](https://github.com/kialambroca/dx-do-dist/releases)
+2. Rename it to `dx-do` (`dx-do.exe` on Windows), make it executable (`chmod +x` on macOS/Linux), and put it on your PATH
+3. Browser-downloaded binaries are quarantined by the OS — clear that **before** the first launch:
+   * **macOS**: `xattr -d com.apple.quarantine ./dx-do-macos-arm64` — otherwise Gatekeeper reports the binary as "damaged and can't be opened" (the download is fine; if you already launched it once, delete the file and re-download)
+   * **Windows**: `Unblock-File dx-do-windows-x64.exe` in PowerShell, if SmartScreen objects
+   * **Linux**: nothing to clear
+
+## Usage
 
 The first time you run, an interactive setup will create <USER_HOME>/.dxdo/default.dxo2.config.json; you can have multiple configurations.  the "--config=<config>" has the following resolution:
 
@@ -22,24 +43,8 @@ The first time you run, an interactive setup will create <USER_HOME>/.dxdo/defau
 
 ```dx-do --no-config help configuration```
 
-### via binary
-
-1. Download the binary for your platform
-2. rename to "dx-do" and add to path
-
 ```
 dx-do <--config=<config-file>> command-group command <parameter>=<value>
-```
-
-# via npx
-
-```
-npx @dx-do/cli@<version> <--config=<config-file>> command-group command <parameter>=<value>
-```
-# via bunx
-
-```
-bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parameter>=<value>
 ```
 
 
@@ -47,7 +52,7 @@ bunx @dx-do/cli@<version> <--config=<config-file>> command-group command <parame
 #### Output
 
 ```
-ℹ  info      dx-do v7.0.1-beta.4 on node v24.3.0 on linux-x64 via node (ssl: 1.1.0)
+ℹ  info      dx-do v7.0.1-beta.5 on node v24.3.0 on linux-x64 via node (ssl: 1.1.0)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ⚠  warning   no tenant profile configured — run 'dx-do config create alias=default gatewayHost=... userToken=... cohortId=...'
@@ -577,7 +582,7 @@ You may set the ALLOW_INSECURE_HTTPS environment variable to true in order to us
 
 ```
 export ALLOW_INSECURE_HTTPS=true
-npx @dx-do/cli alert list
+dx-do alert list
 ```
 
 ## current version 4 configuration file format
