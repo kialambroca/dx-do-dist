@@ -43,12 +43,28 @@ while [ $# -gt 0 ]; do
 done
 
 OS="$(uname -s)"
-PLATFORM="${OS}-$(uname -m)"
+ARCH="$(uname -m)"
+PLATFORM="${OS}-${ARCH}"
 EXE=""
 case "$PLATFORM" in
   Darwin-arm64)  ASSET="dx-do-macos-arm64" ;;
+  Darwin-x86_64)
+    # An Apple-silicon Mac running a Rosetta-translated shell reports
+    # x86_64; the native arm64 binary is still the right install there.
+    if [ "$(sysctl -n sysctl.proc_translated 2>/dev/null)" = "1" ]; then
+      ASSET="dx-do-macos-arm64"
+    else
+      echo "unsupported: Intel Mac — dx-do ships for Apple silicon (arm64) only" >&2
+      exit 1
+    fi ;;
   Linux-x86_64)  ASSET="dx-do-linux-x64" ;;
+  Linux-aarch64|Linux-arm64)
+    echo "unsupported: Linux ${ARCH} — dx-do ships for Linux x64 only" >&2
+    exit 1 ;;
   MINGW*x86_64|MSYS*x86_64|CYGWIN*x86_64) ASSET="dx-do-windows-x64.exe"; EXE=".exe" ;;
+  MINGW*|MSYS*|CYGWIN*)
+    echo "unsupported: Windows ${ARCH} — dx-do ships for Windows x64 only" >&2
+    exit 1 ;;
   *) echo "unsupported platform: ${PLATFORM} (supported: macOS arm64, Linux x64, Windows x64 via Git Bash)" >&2
      exit 1 ;;
 esac

@@ -1,3 +1,170 @@
+## 7.0.1 (2026-07-21)
+
+### 🚀 Features
+
+- **agentic-gen:** isOneOf ratchet — imperative enum sites only move down
+- **agentic-gen:** tool-manifest extraction + validate-grounding-refs (warn)
+- **agentic-gen:** routing corpus section — the MCP-vs-Bash rule as data
+- **agentic-gen:** unified dxdo:gen marker blocks
+- **ci:** single-builder release workflows — build once, smoke exact, publish everywhere
+- **claude:** one coherent dx-do plugin — hooks, foundation skill, tenant_info, queries module
+- **cli:** agent-trustworthy CLI — guard verdict engine, tenant readOnly floor, non-TTY + pipe fixes
+- **cli:** frictionless agentic onboarding — agentic setup, agentic doctor, config create fix
+- **cli:** registry enrichment seams — invokeStructured, declarative args, lifecycle
+- **cli:** identity cache — cold-start banner RPC eliminated on cache hit
+- **cli:** command-search engine + search-quality fixture suite
+- **cli:** help find / help describe + cli MCP module (cli_find, cli_describe)
+- **cli:** queries list / get / run — saved-query store access from the CLI
+- **cli:** deprecatedNote — the sunset + replacement pointer on deprecated commands
+- **client:** SLI composition model — builders, invariants, previews, delete
+- **corpus:** the operate activity — operator flow, operations cookbooks, alert-linkage lexicon, operator skill
+- **corpus:** entity-type→metrics bridge — the missing recipe behind 'which X is slowest?'
+- **corpus:** metric.attr.metric_name in the entity-type→metrics bridge — exact-match, no regex
+- **corpus:** lexicon synonyms[] + commandGroups[] — task vocabulary for command search
+- **harness:** e2e catalogs for the 6 uncovered groups + group↔catalog parity check
+- **harness:** the release gate — versioned prompt suite + fatal drift validators
+- **harness:** model observability + pinning
+- **harness:** config-coherent assertion — the split-brain regression guard
+- **harness:** projection A/B machinery — env arm lever + arm-verified cell driver
+- **harness:** projection A/B burn 1 — transcript-based arm verification + report
+- **harness:** direct-demand suite prompts for projection burn 2
+- **harness:** projection A/B burn 2 — direct demand yields full adoption
+- **harness+cli:** AGR-P6 groundwork — audit lint rules, effort metrics, upcoming-maintenance prompt
+- **mcp:** external-module seam + cli module id
+- **mcp+cli:** in-process projection runner behind surface=experiment
+- **release:** verify-release preflight — predicts complete-cli-(ga|beta) success
+- **release:** tool-manifest freshness check + dist-less gate harness — #181 #201
+- **release:** bin/duplicate-release.sh — internal release = download + republish
+- **release:** bin/ship.sh — one-command release day with a typed post-CI challenge
+- **release:** bin/install-release.sh — install a released binary from zoobroker
+- **release:** one-line curl installer for the customer channel
+- **sli:** full group lifecycle — compose, tune, inspect, remove, delete
+- **sli:** zero-match filter diagnosis — exonerate real uncataloged fields, flag likely typos
+- **tenant:** new command group — tenant maintenance reads the Broadcom status page
+- **tooling:** per-group CLI test shortcut — npm run test-command-group
+- **uapd:** unified-alert-pipeline-driver premise probe — 15s metric publisher with stepped values
+- **uapd:** full driver — scenario-encoded matrix with setup/publish/verify/teardown phases
+- **uapd:** tier N — NEQ escalation-hypothesis discrimination cells
+- **uapd:** package-local tools + thin phase scripts — residue checker and alarm inspector
+- **uapd:** HTML run report + full execution-process README
+- **uapd:** tier S — closeWithNoData / silence semantics
+- **uapd:** tier K — ANY/ALL combineOperator over 3-metric groupings
+- **uapd:** recovery phase — every run now drives its alarms closed before ending
+
+### 🩹 Fixes
+
+- **agentic-gen:** release gate validates COMMITTED state — #189 beta-publish failure
+- **agentic-gen:** gate resolves workspace imports from committed src — #189 round 3
+- **cli:** Claude-interaction polish — json purity, listing exit codes, guard redirects, tenant line
+- **cli:** plugin tenant binding — read persisted pluginConfigs when spawn env lacks the dialog value; rename dialog to 'dx-do profile'
+- **cli:** typecheck burn-down — workspace goes green
+- **cli:** truthful existence checks + targeted retries for the gate flake
+- **cli:** retry marks via a typed wrapper — bun's options object vs jest-style types
+- **cli:** DXDO_CONFIG_ALIAS honored by the config loader + tenant selection surfaced to agents
+- **cli:** bun bundle targets depend on session-core:build — #189 round 4
+- **cli:** bare-group usage listing no longer advertises deprecated commands
+- **cli:** valid MutationClass in group-listing test — unblocks the gate typecheck
+- **corpus:** un-orphan universe/service/application entity docs + extend the leak guard
+- **corpus:** route named-service state questions to the service management surface
+- **deps:** npm audit → 0 vulnerabilities — hey-api 0.99 + scoped js-yaml override
+- **deps:** resolve npm audit advisories (6 high, 1 low -> 0)
+- **harness:** release-gate report travels with the push
+- **harness:** harness-now guards tracked changes only
+- **harness:** empty MODEL_ARGS expansion under set -u on bash 3.2
+- **harness:** release gate enforces suite coverage; per-unit time/token deltas
+- **harness:** stem lexer no longer parses shell redirections as commands
+- **harness:** tenant-stated-first no longer counts grounding reads as tenant work
+- **installer:** per-architecture detection with Rosetta handling
+- **mcp:** single writer per dist + typecheck ordering; session-core publish guard — #210 #207
+- **release:** verify-release checks node_modules sync — #189 round 2
+- **release:** job timeouts on all workflows + explicit tag-push remote — #223 #205
+- **release:** explicit release.projects — session-core rejoins lockstep versioning
+- **release:** duplicate-release resume message says what it does
+- **sli:** finish the column↔filter-field alignment — sourceName and attributeName
+- **uapd:** verify severity from alarm lifecycle events — NEQ 'never escalates' was a measurement artifact
+- **uapd:** match alarms by alert-name prefix — ALL-combine alarms carry no host field
+- **ui:** dead validation display, dropped --unknown styling, CSS comment swallowing; warning-clean build — #212 #213
+
+### 🔥 Performance
+
+- **harness:** concurrent suite fan-out + evaluator manifest cache + codesign skip
+
+### 💅 Refactors
+
+- **build:** graph-native ordering — ^build targetDefaults + edge diet
+- **build:** cacheable generation targets with complete inputs
+- **build:** single writer per dist + dist-less gate green — #217 #201
+- **build:** npmjs-native lockfile — the registry split-brain ends
+- **build:** retire install-npmjs — plain npm ci everywhere; gate guards the lockfile registry
+- **ci:** delete workflow Build-lists — the graph orders the build
+- **claude-plugin:** skills thin rewrite — generated routing table + discoverability contract
+- **cli:** rename agent.readOnly → top-level readOnly on tenant profiles
+- **cli:** declarative-enum retrofit sweep 1 — 33 isOneOf sites become enumValues
+- **cli:** AGR-P3 curation marks — 41 agent-hidden + 29 deprecated
+- ⚠️  **cli:** rename agentic setup → agentic setup-claude
+- **cli:** bundle.mjs version injection + graph-native build bodies
+- ⚠️  **mcp:** 7.0 MCP breaking window — curated-core cleanup
+- **release:** complete-cli-* ends at the tag push — publishing leaves the laptop
+- **session-core:** extract session + handlers + query store from ui
+- **sli:** SLI-group nomenclature — the top-level construct is a group of SLIs/SLOs/alerts
+- **uapd:** single shared source per run — cells differentiated by attribute name
+
+### 📖 Documentation
+
+- three stale-claim fixes from the audit (AGR-P0)
+- dependency diagrams + package docs for @dx-do/session-core
+- base docs learn the AGR-P2..P5 surface + nightly launchd installer
+- add @dx-do/analytics to the root CLAUDE.md packages table
+- **agr:** record the projection hybrid decision + detector playbook
+- **build:** verify-release preflight section
+- **build:** BUILD.md rewritten wholesale for the single-builder topology
+- **corpus:** lexicon commandGroups repoint graph → tas
+- **harness:** how to add an agentic integration test
+- **internal:** Service Universe design note — HAR-grounded API surface for 7.0
+- **internal:** BUSR design intent draft — single-builder + graph-native target design
+- **internal:** BUSR design doc approved — phases filed (P2 #214, P3 #215, P4 #216)
+- **plans:** README self-references updated to docs/plans
+- **release:** regenerate the release anatomy from the live beta.4 run
+- **skills:** repoint dead packages/client/bin/queries refs (AGR-P0)
+- **skills:** replace python3 extraction examples with jq (AGR-P0)
+- **skills:** cli-commands learns the AGR-P1/TSG-P1 authoring rules
+- **uapd:** alerting-pipeline test matrix — 62 cells across type/operator/resolution/periods/lifecycle tiers
+- **uapd:** ground the matrix in live API shapes — resolution=frequency(ms), MAJOR=warningThreshold, CRITICAL=errorThreshold
+- **uapd:** metric attributes schema — waveform behavior in description, verified round-trip
+- **uapd:** tier B answered — 15s data evaluates correctly at 60s and 6m alert resolutions
+- **uapd:** HIGHLIGHTS.md — shareable campaign summary incl. the NEQ severity discovery
+- **uapd:** closeWithNoData answered — tier S 4/4 green with measured close timing
+- **uapd:** combo1 findings — ANY is per-metric alarms; ALL never fires (candidate pipeline bug)
+- **uapd:** ALL false-fires re-attributed to new-metric membership-resolution lag
+- **uapd:** package CLAUDE.md — tier-authoring recipe, empirical rules, and the debug order
+- **uapd:** spell out the build model — nothing to build, one client-build prerequisite, no typecheck gate
+- **uapd:** original plan document for the unified alert-pipeline driver
+- **ui:** PrimeNG version ceiling — 21.x is the MIT line, never cross it
+
+### ✅ Tests
+
+- **cli:** agentic e2e catalog — read-only smokes (AGR-P0)
+- **cli:** search fixtures robust to suite-order registry drift
+
+### ⚠️  Breaking Changes
+
+- **cli:** rename agentic setup → agentic setup-claude
+- **mcp:** 7.0 MCP breaking window — curated-core cleanup
+  the MCP tool discovery_services is removed (use
+  discovery_service_hierarchy — its byName keys are the flat name list)
+  and module.ui no longer parses (use module.queries). After upgrading:
+  re-run 'dx-do agentic setup', then reconnect the MCP in your host.
+  'dx-do agentic doctor' flags stale installs.
+  Closes #76, #77, #78, #79, #80, #81 (AGR-P4, epic #33) — manual close
+  on merge, base is beta.
+  Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+  Claude-Session: https://claude.ai/code/session_01HEihYZXXukKsckLFp6rcP9
+
+### ❤️ Thank You
+
+- Claude Fable 5
+- z
+
 ## 7.0.1-beta.6 (2026-07-18)
 
 This was a version bump only, there were no code changes.
