@@ -52,7 +52,7 @@ dx-do <--config=<config-file>> command-group command <parameter>=<value>
 #### Output
 
 ```
-ℹ  info      dx-do v7.0.1 on node v24.3.0 on linux-x64 via node (ssl: 1.1.0)
+ℹ  info      dx-do v7.1.0 on node v24.3.0 on linux-x64 via node (ssl: 1.1.0)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ⚠  warning   no tenant profile configured — run 'dx-do config create alias=default gatewayHost=... userToken=... cohortId=...'
@@ -66,23 +66,6 @@ dx-do <--config=<config-file>> command-group command <parameter>=<value>
 ⤜ query.............................................: run a WQL expression as a NASSQL query over a time range
 ⤜ analyze...........................................: extract ts() selectors from a WQL query, resolve their metrics, and show attribute value histograms
 ```
-#### agent
-```agent
-⤜ vertices..........................................: gets vertices for agent
-⤜ trace.............................................: starts trace on specified agents
-⤜ query-by-regex....................................: query by regex
-⤜ query-by-name.....................................: ensure a specific agent exists.
-⤜ metric-count-summary..............................: retrieves metric counts for agents as csv
-⤜ count-via-atc.....................................: count agents using the /atc/agents request.
-⤜ statuses..........................................: lists all agents statuses
-⤜ list..............................................: lists all agents
-⤜ licensing-beta....................................: generate licensing report with configuration
-⤜ licensing.........................................: generate licensing report
-⤜ licensing-config-generate.........................: creates a default licensingConfigFile to be modified for licensing-beta command.
-⤜ attributes........................................: gets attributes for agent vertex
-⤜ get-agent-traces..................................: retrieves traces
-⤜ trace-summaries...................................: retrieves trace summaries for an agent
-```
 #### vertex
 ```vertex
 ⤜ vertex-type-metric-mapping........................: dumps metric mapping for a vertex type
@@ -90,19 +73,11 @@ dx-do <--config=<config-file>> command-group command <parameter>=<value>
 ⤜ get-vertex-trace-summaries........................: retrieves trace summaries for vertices
 ⤜ vertex-definitions................................: dumps all metric mappings for all vertices
 ⤜ vertex-definition.................................: dumps vertex definition for a single vertex type
-⤜ attributes........................................: list ATC attributes
-⤜ state.............................................: provides state on a single vertex
-⤜ search............................................: search for matching vertices in a universe
-⤜ search-all........................................: search for matching vertices in all universes
-⤜ query-mapped-metrics..............................: executes metric query for a vertex's mapped metrics.
 ⤜ patch-universe....................................: patch matching vertices in a universe
-⤜ override-vertex-metric-mapping....................: dumps performance specifier and metric root for a vertex type
 ⤜ generate-patch-from-csv...........................: generates a bulk-patch file from a CSV
-⤜ detail............................................: provides detail on a single vertex
 ⤜ bulk-patch-schema.................................: generates the bulk-patch schema
 ⤜ bulk-patch-rollback...............................: rolls back a bulk-patch with a rollback file.
 ⤜ bulk-patch........................................: patches mutiple vertices using the bulk-patch file.
-⤜ attribute-values..................................: gets values for an attribute
 ⤜ all-metric-mappings...............................: dumps all metric mappings for all vertices
 ⤜ add-vertex-definition.............................: add vertex definition from a file
 ```
@@ -268,7 +243,7 @@ dx-do <--config=<config-file>> command-group command <parameter>=<value>
 ```
 #### ui
 ```ui
-⤜ start.............................................: Start the dx-do query builder UI server (Fastify + MCP) and open the browser [experimental]
+⤜ start.............................................: Start the dx-do query builder UI (React) server (Fastify + MCP) and open the browser
 ```
 #### help
 ```help
@@ -325,32 +300,6 @@ dx-do <--config=<config-file>> command-group command <parameter>=<value>
 ⤜ delete-service....................................: deletes service (and optionally it's subservices)
 ⤜ all-services......................................: shows all services
 ```
-#### graph
-```graph
-⤜ test-vertex-type-mapping..........................: tests vertexes for type mapping
-⤜ summary...........................................: summarizes vertices & edges
-⤜ summary-at........................................: summarizes vertices & edges at a specific time
-⤜ store.............................................: stores vertexes and edges using the (legacy) APM interface
-⤜ status-check......................................: summarizes vertices alerts
-⤜ export............................................: exports universe graph at a configurable time
-⤜ summarize-edges...................................: summarizes application edges
-```
-#### metric
-```metric
-⤜ test-time-format..................................: allows testing of time parsing
-⤜ data-metric.......................................: gets metric values for a single metric.
-⤜ id................................................: gets metric id for a single metric.
-⤜ data..............................................: gets metric values
-⤜ attributes........................................: gets attributes for metric (or metric's agent, if metric doesn't belong to a vertex)
-```
-#### metrex
-```metrex
-⤜ test-configuration................................: test a metrex configuration
-⤜ generate-vertex-definition........................: generate a vertex definition from a metrex configuration
-⤜ generate-sample...................................: generate a sample metrex configuration schema
-⤜ dump-schema.......................................: dumps the metrex configuration schema (for use in IDE)
-⤜ associate-vertex-metrics..........................: associate metrics to vertices using the output of test-configuration command.
-```
 #### tenant
 ```tenant
 ⤜ maintenance.......................................: checks the Broadcom status page for DXO2 SaaS platform maintenance affecting the configured tenant (not user-configured maintenance windows)
@@ -382,6 +331,20 @@ dx-do <--config=<config-file>> command-group command <parameter>=<value>
 ⤜ list-blobs........................................: list blobs for a schema
 ⤜ fetch.............................................: fetches a blob; restores a stored file to disk, or prints content for other blobs
 ⤜ delete............................................: deletes a blob (all versions) from a schema
+```
+#### agent
+```agent
+⤜ trace.............................................: starts trace on specified agents
+⤜ query-by-regex....................................: query by regex
+⤜ query-by-name.....................................: ensure a specific agent exists.
+⤜ metric-count-summary..............................: retrieves metric counts for agents as csv
+⤜ statuses..........................................: lists all agents statuses
+⤜ list..............................................: lists all agents
+⤜ licensing-beta....................................: generate licensing report with configuration
+⤜ licensing.........................................: generate licensing report
+⤜ licensing-config-generate.........................: creates a default licensingConfigFile to be modified for licensing-beta command.
+⤜ get-agent-traces..................................: retrieves traces
+⤜ trace-summaries...................................: retrieves trace summaries for an agent
 ```
 #### sli
 ```sli
@@ -538,7 +501,8 @@ dx-do <--config=<config-file>> command-group command <parameter>=<value>
 ⤜ layers............................................: lists all topology layers with a count of entities on each layer
 ⤜ list-inventorize-rules............................: shows rules for creating inventory from metrics
 ⤜ delete-inventorize-rule...........................: deletes an inventorize rule
-⤜ create-inventorize-rule...........................: creates a rule for creating inventory from metrics, dryrun mode by default, set mode=create to execute.
+⤜ create-inventorize-rule-from-file.................: installs a locally saved inventorize rule draft onto the bound tenant; dryrun mode by default, set mode=create to execute.
+⤜ create-inventorize-rule...........................: saves (creates or updates) a rule that materializes inventory from metrics; dryrun mode by default, set mode=create to execute.
 ⤜ attributes........................................: list all available attributes
 ```
 #### event

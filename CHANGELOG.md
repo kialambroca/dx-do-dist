@@ -1,3 +1,138 @@
+## 7.1.0 (2026-08-06)
+
+### 🚀 Features
+
+- **cli:** harness=record|replay + harness-dir args on ui start (UIR-P0)
+- **cli:** align create-inventorize-rule with the Topology Creator API + showPreviewMetrics
+- **client:** inventorize calibration driver + Phase 0 empirical probes
+- **client:** topology-rules module — Zod rule schema + JEXL emulator + projection
+- **client:** export audit/features/states/tokens from datastore sub-barrel
+- **harness:** slice-port workflow pipeline — scout, tiered port, gates, adversarial review, PR (UIR-P2 #264)
+- **harness:** slice-port supports multi-flow journeys (comma-separated args.flow)
+- **harness:** slice-port gains a lint gate (gate 2)
+- **harness:** slice-port isolates its harness port via an uncommitted local config
+- **inventorize:** tenant-CN labels, default rule name, rule download, draft copy-filename, install-from-file
+- **session-core:** DXDO_DIR override + /api/health readiness probe (UIR-P0)
+- **tools:** metric-replay — replay a configured metric set with fake data
+- **ui:** harness mode — golden-flow record/replay inside the real server (UIR-P0)
+- **ui:** golden-flows Playwright scaffold + first recorded flow (UIR-P0)
+- **ui:** SPA testability pass — aria contract strings + structural stamps (UIR-P0)
+- **ui:** golden flows — bind-session + browse-open-queries; record-mode flow independence (UIR-P0)
+- **ui:** golden flows complete — all nine flows recorded and 5x-green (UIR-P0)
+- **ui:** compare-sequences — the API-sequence equivalence oracle (UIR-P0)
+- **ui:** migration-matrix generator — the UIR-P2 work queue (UIR-P0 #257)
+- **ui:** web-react scaffold — Vite + React 19 + strict TS + Mantine 9 (UIR-P1 #260)
+- **ui:** generated browser contracts + lockstep guards (UIR-P1 #261)
+- **ui:** web-react app shell — routing, dark theme, session pill; parity flows green (UIR-P1 #262)
+- **ui:** web-react op-editor toolbox — zod-form, discovery widgets, chips, op-note, help catalog (UIR-P2 #263)
+- **ui:** port service-diagnostics page to web-react (UIR-P2)
+- **ui:** port TAS op-tree editor slice to web-react (UIR-P2)
+- **ui:** port MM QuerySpecifier visual editor to web-react (UIR-P2)
+- **ui:** port NASSQL step editor to web-react (UIR-P2)
+- **ui:** port query-editor save round-trip to web-react (UIR-P2)
+- **ui:** port output-pane slice to web-react (UIR-P2)
+- **ui:** port queries-list left-panel browser to web-react (UIR-P2)
+- **ui:** port home topology graph core to web-react (#266 PR1)
+- **ui:** port style-drawer to web-react (UIR-P2)
+- **ui:** add ServicePicker React component (service-picker slice WIP)
+- **ui:** wire ServicePicker into HomeGraphPage + add unit tests (UIR-P2 service-picker slice)
+- **ui:** port TRAVERSE op editor to web-react (UIR-P2)
+- **ui:** port ColumnInput component to web-react (UIR-P2)
+- **ui:** port dirty-confirm-dialog to web-react (UIR-P2)
+- **ui:** port state-tree (VertexStateFilter) editor to web-react (UIR-P2)
+- **ui:** port NASSQL FILTER predicate tree to web-react (UIR-P2)
+- **ui:** port TasOpJoin editor to web-react (UIR-P2)
+- **ui:** port NASSQL agg spec-row editor to web-react (UIR-P2)
+- **ui:** port NASSQL ORDER step editor to web-react (UIR-P2)
+- **ui:** port NASSQL WQL op editor to web-react (UIR-P2)
+- **ui:** port NASSQL queryRange editor to web-react (UIR-P2)
+- **ui:** port saved-query picker to web-react (UIR-P2)
+- **ui:** port NASSQL SCRIPT op editor to web-react (UIR-P2)
+- **ui:** port WINDOW_CALENDAR op editor to web-react (UIR-P2)
+- **ui:** port NASSQL GROUP op editor to web-react (UIR-P2)
+- **ui:** port NASSQL TOP/BOTTOM op editor to web-react (UIR-P2)
+- **ui:** port NASSQL KEEP op editor to web-react (UIR-P2)
+- **ui:** serve React by default from `dx-do ui start`; add `ui start-ng` for legacy Angular
+- **ui:** NASSQL editor step lifecycle controls + top-level options (UIR-P3 G4)
+- **ui:** TAS results — click "other attributes" to see all attributes in a dialog
+- **ui:** MM results — click the attributes cell to see all attributes in a dialog
+- **ui:** cut the released binary over to the React UI + ungate ui start (UIR-P3 #267)
+- **ui:** inventorize handlers, local drafts store, /api/inventorize routes + simulate engine
+- **ui:** Inventorize page — rule editor, local drafts, simulation pane
+- **ui:** replace placeholder glyph icons with Material icons (react-icons)
+- **ui:** non-modal JEXL reference window for inventorize custom attributes
+- **ui:** simulation Associated metrics table (source/attribute) replaces metric-id list
+
+### 🩹 Fixes
+
+- **cli:** dev launcher crashed without shell $_; stems generator ANSI/stderr robustness
+- **cli:** generate-embedded-assets must not be nx-cached (gitignored inputs hash to nothing)
+- **cli:** channel import no longer overwrites nonzero policy keyLevels
+- **deps:** npm audit fix — fast-uri host-confusion advisories (high)
+- **deps:** clear all npm audit advisories (17 -> 0)
+- **harness:** slice-port tolerates stringified workflow args
+- **harness:** slice-port forbids git stash — the stash stack is shared across worktrees
+- **harness:** slice-port mandates early WIP commits (uncommitted work is unrecoverable under interference)
+- **ui:** record-mode home seeding from committed seed-home, not the developer's live ~/.dxdo
+- **ui:** drop eslint-disable directives for the uninstalled react-hooks rule
+- **ui:** Save disabled state means clean-after-refetch; restore canonical port 4498
+- **ui:** cancel in-flight discovery fetches before refresh-all reset
+- **ui:** address #310 review — cancel rejection, keep-alive slash, test determinism
+- **ui:** re-fit cytoscape on reveal only after a hidden-viewport layout
+- **ui:** refetch queries list and reset selection on tenant rebind
+- **ui:** restore canonical harness port 4498 (worktree override leak)
+- **ui:** restore canonical port 4498; carry alias provenance note into column-flow
+- **ui:** restore canonical harness port 4498 (worktree override leak)
+- **ui:** restore canonical harness port 4498 (worktree override leak)
+- **ui:** restore canonical port 4498; honest test name for the op-picker render check
+- **ui:** restore canonical harness port 4498 (worktree override leak)
+- **ui:** restore canonical harness port 4498 (worktree override leak)
+- **ui:** restore canonical harness port 4498 (worktree override leak)
+- **ui:** visible toast when copying a query path (Closes #335)
+- **ui:** make NASSQL querySpecifier interactive + correctly labeled (UIR-P3 G3)
+- **ui:** pin queries-list header/filter, scroll only the list (independently of the editor)
+- **ui:** bound AppShell.Main to the viewport so pages scroll internally
+- **ui:** make query-editor tab panels use the full vertical space
+- **ui:** wrap long MM attribute/name values instead of widening the table
+- **ui:** type the MM query handoff in simulateInventorizeRuleHandler
+- **ui:** FilterChipsSection Mantine Grid typing; docs: inventorize calibration ledger
+- **ui:** blank inventorize rule name — crash on create, 400 on simulate; rename Local drafts
+
+### 🔥 Performance
+
+- **ui:** swap home-graph layout cose → fcose
+
+### 💅 Refactors
+
+- **cli:** delete the 29 AGR-P3-deprecated commands (sunset 7.1.0)
+- **cli:** restore managementmodule update — mis-curated, customer-used
+- **client:** InventoryService inventorize methods — Zod validation, save upsert, no stdout leak
+- **ui:** split query editor and results into two panes (UIR-P3 G2)
+- **ui:** move Save/Run/Delete into the query pane tab row
+- **ui:** retire the Angular tree, mirrors, and Prime deps (UIR-P3 #268)
+- **ui:** remove session-core re-export shim (sunset 7.1.0)
+
+### 📖 Documentation
+
+- **build:** record @hono/node-server audit acceptance + SKIP_NPM_AUDIT guidance
+- **cli:** ui.md — Inventorize page section (no-test-mode warnings, drafts, simulation)
+- **ui:** golden-flow harness knowledge capture — dev loop, determinism rules, Playwright fieldcraft
+- **ui:** UIR Angular→React port retrospective (self-contained HTML)
+- **ui:** revise UIR retrospective for a Sales-Engineering audience
+
+### ✅ Tests
+
+- **ui:** oracle hardening — nested seed flow, bound diagnostics re-record, analytics types guard
+- **ui:** add unit tests for DirtyConfirmDialog (UIR-P2)
+- **ui:** make the script-editor onChange test a real assertion
+- **ui:** drive the window-calendar mutations through the real Select portal
+
+### ❤️ Thank You
+
+- Claude Fable 5
+- Claude Opus 4.8
+- z
+
 ## 7.0.1 (2026-07-21)
 
 ### 🚀 Features
