@@ -1,3 +1,26 @@
+## 7.2.0 (2026-08-09)
+
+### 🚀 Features
+
+- **cli:** tagged-metric registration — tags= argument with @tags/TYPE_TAGS support
+- **cli:** tenant-identity stamp — tenantId/tenantCN on v4 profiles, verified each run
+- **cli:** resolve profiles from ~/.dxo2/configurations drop directory
+
+### 🩹 Fixes
+
+- **cli:** make nx lint cli usable — scope to authored sources, zero errors
+- **ui:** restore generated projection contracts copy clobbered in #382
+
+### 💅 Refactors
+
+- **cli:** remove dist-node build, consolidate dev builds into npm run build-dev
+
+### ❤️ Thank You
+
+- Claude Fable 5
+- Claude Opus 4.8
+- z
+
 ## 7.1.0 (2026-08-06)
 
 ### 🚀 Features
