@@ -1,3 +1,15 @@
+## 7.2.1 (2026-08-12)
+
+### 🩹 Fixes
+
+- **cli:** key acc list-bundles latest-dedupe by name+type, deterministic output
+- **client:** stable two-key sort for ACC bundle paging
+
+### ❤️ Thank You
+
+- Claude Fable 5
+- z
+
 ## 7.2.0 (2026-08-09)
 
 ### 🚀 Features
