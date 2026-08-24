@@ -1,3 +1,24 @@
+## 7.3.0 (2026-08-24)
+
+### 🚀 Features
+
+- **cli:** tenant version command with implied DXO2 platform version
+- **client:** add nass-store-merge-probe tool
+- **client:** probe merge semantics across the metric-type matrix
+- **client:** export captured requests as runnable curl
+
+### 🩹 Fixes
+
+- **cli:** let NO_COLOR beat FORCE_COLOR, and make the harness hermetic
+- **cli:** stop related[] pointing agents at hidden commands
+
+### ❤️ Thank You
+
+- Claude Fable 5
+- Claude Opus 5 (1M context)
+- z
+- zoobroker
+
 ## 7.2.1 (2026-08-12)
 
 ### 🩹 Fixes
