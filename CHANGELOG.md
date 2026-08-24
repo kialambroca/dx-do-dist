@@ -1,3 +1,14 @@
+## 7.4.0 (2026-08-24)
+
+### 🚀 Features
+
+- **client:** hoist gateway host and cohort into curl script variables
+
+### ❤️ Thank You
+
+- Claude Opus 5 (1M context)
+- zoobroker
+
 ## 7.3.0 (2026-08-24)
 
 ### 🚀 Features
