@@ -52,7 +52,7 @@ dx-do <--config=<config-file>> command-group command <parameter>=<value>
 #### Output
 
 ```
-ℹ  info      dx-do v7.4.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
+ℹ  info      dx-do v7.5.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ⚠  warning   no tenant profile configured — run 'dx-do config create alias=default gatewayHost=... userToken=... cohortId=...'
@@ -179,6 +179,7 @@ dx-do <--config=<config-file>> command-group command <parameter>=<value>
 #### help
 ```help
 ⤜ agentic-mcp.......................................: Explains the `dx-do agentic mcp` stdio MCP server and how to wire it into Claude Code / Cursor / mcp-inspector.
+⤜ channels..........................................: explains notification channels vs policies vs templates, the supported channel kinds, and the dry-run / test / save flow of the channel write commands.
 ⤜ commands..........................................: explains commands.
 ⤜ commands-json.....................................: dumps every command as a machine-readable JSON manifest (safety, usage, args)
 ⤜ commands-md.......................................: explains commands in md format
@@ -268,6 +269,17 @@ dx-do <--config=<config-file>> command-group command <parameter>=<value>
 ⤜ user-search.......................................: searches for users
 ⤜ validate-configuration-keys.......................: validates keys
 ```
+#### config
+```config
+⤜ base64............................................: prints the bound tenant configuration as the base64 value DXDO_CONFIGURATION expects (the output is a credential)
+⤜ create............................................: create a new tenant configuration profile (interactive on a TTY, or non-interactive via gatewayHost=/userToken=/cohortId=)
+⤜ connector.........................................: shows connector config for tenant
+⤜ debug.............................................: shows configuration details
+⤜ debug-token.......................................: shows decoded token
+⤜ generate-agent-token..............................: generates an agent token
+⤜ generate-user-token...............................: generates an user token
+⤜ upgrade...........................................: upgrade legacy dx-do configuration to current version
+```
 #### axa
 ```axa
 ⤜ bulk-servicify....................................: creates service and universe for 'orphaned' AXA applications
@@ -296,15 +308,34 @@ dx-do <--config=<config-file>> command-group command <parameter>=<value>
 ⤜ update-profile....................................: updates a AXA data collection profile
 ⤜ upload-application-ba-extension...................: upload new custom AXA BrowserAgent extension javascript.
 ```
-#### config
-```config
-⤜ create............................................: create a new tenant configuration profile (interactive on a TTY, or non-interactive via gatewayHost=/userToken=/cohortId=)
-⤜ connector.........................................: shows connector config for tenant
-⤜ debug.............................................: shows configuration details
-⤜ debug-token.......................................: shows decoded token
-⤜ generate-agent-token..............................: generates an agent token
-⤜ generate-user-token...............................: generates an user token
-⤜ upgrade...........................................: upgrade legacy dx-do configuration to current version
+#### channel
+```channel
+⤜ create-email-channel..............................: creates an email (SMTP) notification channel (dry-run by default)
+⤜ create-policy.....................................: creates a notification policy: which alarms go to which channels (dry-run by default)
+⤜ create-service-now-integration....................: creates a ServiceNow ticketing (ITSM) integration (dry-run by default)
+⤜ create-webhook-channel............................: creates a generic webhook notification channel (dry-run by default)
+⤜ delete-channel....................................: permanently deletes a notification channel of any protocol (dry-run by default)
+⤜ delete-policy.....................................: permanently deletes a notification policy (dry-run by default)
+⤜ delete-template...................................: permanently deletes a message template (dry-run by default; refuses templates in use)
+⤜ list-policy-fields................................: lists the alarm fields (and closed vocabularies) a policy filter can match on, per alarm category
+⤜ list-template-variables...........................: lists the ${variable} placeholders message templates and webhook payloads can use, per alarm category
+⤜ update-email-channel..............................: updates an email (SMTP) notification channel — omitted fields keep their values (dry-run by default)
+⤜ update-policy.....................................: updates a notification policy — omitted fields keep their values (dry-run by default)
+⤜ update-service-now-integration....................: updates a ServiceNow ticketing (ITSM) integration — omitted fields keep their values (dry-run by default)
+⤜ update-webhook-channel............................: updates a generic webhook notification channel — omitted fields keep their values (dry-run by default)
+⤜ create-template...................................: creates a message template for channels (dry-run by default)
+⤜ create-velocity-map-from-csv......................: creates a velocity map for use for advanced templates
+⤜ create-velocity-maps-from-csv.....................: creates multiple velocity maps for use for advanced templates
+⤜ disable-channel...................................: disable a channel
+⤜ enable-channel....................................: enable a channel
+⤜ export-all........................................: exports every channel, policy, and template to a file (the input of `channel import`)
+⤜ export............................................: exports one channel as JSON, optionally with the policies that deliver to it
+⤜ import............................................: imports channels, templates, and policies from a `channel export-all` file — into the same or another tenant (dry-run by default)
+⤜ list..............................................: lists all channels
+⤜ list-policies.....................................: lists all channel policies
+⤜ list-templates....................................: lists all channel templates
+⤜ policy-detail.....................................: describes details for policy
+⤜ update-template...................................: updates a message template — omitted fields keep their values (dry-run by default)
 ```
 #### experience
 ```experience
@@ -318,21 +349,6 @@ dx-do <--config=<config-file>> command-group command <parameter>=<value>
 ⤜ import............................................: imports an experience configuration from file 
 ⤜ list..............................................: lists Experience names & ids 
 ⤜ summarize.........................................: summarizes an experience
-```
-#### channel
-```channel
-⤜ create-template...................................: create a channel message template
-⤜ create-velocity-map-from-csv......................: creates a velocity map for use for advanced templates
-⤜ create-velocity-maps-from-csv.....................: creates multiple velocity maps for use for advanced templates
-⤜ disable-channel...................................: disable a channel
-⤜ enable-channel....................................: enable a channel
-⤜ export............................................: exports all channels/templates to file
-⤜ import............................................: imports channels/templates from file
-⤜ list..............................................: lists all channels
-⤜ list-policies.....................................: lists all channel policies
-⤜ list-templates....................................: lists all channel templates
-⤜ policy-detail.....................................: describes details for policy
-⤜ update-template...................................: update an existing channel message template
 ```
 #### sql
 ```sql
@@ -516,6 +532,7 @@ dx-do <--config=<config-file>> command-group command <parameter>=<value>
 #### tenant
 ```tenant
 ⤜ maintenance.......................................: checks the Broadcom status page for DXO2 SaaS platform maintenance affecting the configured tenant (not user-configured maintenance windows)
+⤜ products..........................................: lists the tenant's products (AXA, APM, DOI, LA, DXDASHBOARD, …) and their provisioning status
 ⤜ version...........................................: reports the tenant product versions and the implied DXO2 platform version
 ```
 #### ui
@@ -559,7 +576,7 @@ dx-do alert list
   "userToken": "<DX User Token from Settings -> Manage Tokens -> New Token -> User>",
   "dxGatewayHost": "https://apmgw.dxi-na1.saas.broadcom.com/",
   "dxASMToken": "<optional: token for ASM API usage>",
-  "dxLogIngestionURL": "<optional: log gateway base URL for 'log ingest' (e.g. https://logs-gateway.dxi-na1.saas.broadcom.com)>"
+  "dxLogIngestionURL": "<optional: log gateway base URL for 'log ingest', no trailing slash. Omit on DXO2 SaaS tenants with Log Analytics provisioned — it is derived as https://logs-gateway.dxi-<na1|eu1>.saas.broadcom.com from dxGatewayHost; set it for on-premise gateways or to override>"
 }
 ```
 

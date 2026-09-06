@@ -1,3 +1,78 @@
+## 7.5.0 (2026-09-06)
+
+### 🚀 Features
+
+- tenant products command; log ingest derives its SaaS gateway from Log Analytics provisioning
+- log ingest takes severity as a first-class argument, sent as logseverity
+- **build:** pin Bun 1.4.0 and revalidate the 1.4-built binary
+- **build:** bun.lock cutover — bun is the package manager; gate, CI and docs follow
+- **cli:** channel create/update/delete for email, webhook, ServiceNow (dry-run by default)
+- **cli:** channel export by id (+ related policies); bulk export → export-all
+- **cli:** channel import rewritten for cross-tenant restore (plan, name+protocol match, updateExisting)
+- **cli:** policy CRUD, template delete, in-use guards on channel/template deletes
+- **cli:** channel list-template-variables — ${field} placeholders per alarm kind
+- **cli:** modernize channel create-template / update-template — dry-run, file bodies, placeholder checks
+- **cli:** config base64 — emit the bound profile as a DXDO_CONFIGURATION value
+- **cli:** acc download-bundle defaults destinationDirectory to the OS temp directory
+- **ui:** inventorize polish — field-level validation notices, draft-delete confirm, list filters
+- **ui:** inventorize dirty-guard when switching rules, drafts, or starting a new rule
+- **ui:** inventorize simulate — cap per-vertex metric detail, sample-metric picker + explicit sample load
+
+### 🩹 Fixes
+
+- **cli:** channel import refuses redacted exports before writing anything
+- **cli:** route data output through process.stdout.write — piped JSON over 64 KB was truncated
+- **cli:** inventory metrics takes externalIds as a prefix family, not a comma list
+- **cli:** refuse unknown --flags and undeclared command arguments
+- **cli:** perspective list declares output options
+- **client:** label captured requests with the command that ran; retire DXDO_POSTMAN_META
+- **client:** merge probe posts interval counters as merge-on-count
+- **client:** id tiebreaker for ACC package paging
+- **lint:** nx lint cli and nx lint analytics back to zero errors
+- **lint:** zero errors on main — dependency-checks on the bundled libs, empty debug fn
+- **uapd:** real typecheck target, three narrowing errors, human-facing README
+- **ui:** derive generate-web-react-contracts' Nx cache key from the manifest
+
+### 💅 Refactors
+
+- **build:** run every package's tests under bun test; retire Jest
+- **build:** bun/bunx replace node, npx and ts-node as the script runner
+- **cli:** retire npm-era strings and dead completion templates; drop engines.npm
+- **cli:** remove the six genesis-era compiled .js twins from src/
+- **cli:** audit of commands without output options — six declare them, guard test for the rest
+- **client:** make client:lint green — ignore generated ASM output, precise model types, NOT_IN enum fix
+
+### 📖 Documentation
+
+- **cli:** alarm create-alarm severity help says 'minor' by default, as the code does
+- **internal:** bun-migration evaluation is a record of decision — executed
+- **inventorize:** sourceName battery write-up with wire bodies, expected vs actual (26.8.2)
+- **inventorize:** name the sourceName battery write-up after the Topology Creator
+- **inventorize:** sourceName battery confirmed on ITOM-DX-DEMO-DEV (same pipe-literal fit)
+- **inventorize:** demo-dev re-check — grouped alternation works, pipe-less parens and quantifiers are literal
+- **inventorize:** sourceName construct matrix — 12 sources x 22 rules, 22/22 agree with the refined model
+- **inventorize:** engine fingerprint — java.util.regex, CASE_INSENSITIVE, behind the Topology Creator preprocessor
+- **inventorize:** matrix — computed plain-Java column, {n} literal inside pipe groups, four-digit addendum
+
+### 📦 Build
+
+- **deps:** quarantine-safe lockfile — Nx 23.1.2, nothing younger than 7 days; fix the gate-red help page
+- **deps:** make lint:deps green — drop unused deps, point knip at the React SPA
+- **deps:** Nx 23.2.0, drop the quarantine cooldown and the stale pins
+- **nx:** Nx 22.7.8 → 23.2.0 under npm; pin buildLibsFromSource in every rollup config
+
+### ✅ Tests
+
+- **cli:** live inventorize sourceName battery — 26.8.2 still pipe-literal, not full regex
+- **cli:** live inventorize suite carries the 2026-09-04 dialect — 5 sources, 23 cases, pinned emulator gaps
+- **cli:** test-inventorize-live takes minutes, sweeps INVENTORIZE_TEST_/INVTEST_ rules, prints metrics and final tables
+
+### ❤️ Thank You
+
+- Claude Fable 5
+- Claude Fable 5.1
+- zoobroker
+
 ## 7.4.0 (2026-08-24)
 
 ### 🚀 Features
