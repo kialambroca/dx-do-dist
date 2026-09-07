@@ -1,3 +1,24 @@
+## 7.6.0 (2026-09-07)
+
+### 🚀 Features
+
+- **cli:** shell tab-completion for zsh and bash with completion enable|disable and config doctor
+- **cli:** shell completion enable for Git Bash on Windows
+- **cli:** bash 4.4+ completion shows descriptions in category order
+- **client:** curl export takes DXDO_COHORT in either spelling and mentions the cohort once
+- **corpus:** lexicon entry for SLI / SLO / SLI groups and where breaches show up
+- **release:** add linux-arm64 and windows-arm64 to the release set
+
+### 🩹 Fixes
+
+- **cli:** detect Git Bash and MSYS2 without an exported SHELL
+- **harness:** evaluator ignores heredoc prose and counts dx-do stems in command position only
+
+### ❤️ Thank You
+
+- Claude Fable 5.1
+- zoobroker
+
 ## 7.5.0 (2026-09-06)
 
 ### 🚀 Features

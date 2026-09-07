@@ -58,14 +58,15 @@ case "$PLATFORM" in
       exit 1
     fi ;;
   Linux-x86_64)  ASSET="dx-do-linux-x64" ;;
-  Linux-aarch64|Linux-arm64)
-    echo "unsupported: Linux ${ARCH} — dx-do ships for Linux x64 only" >&2
-    exit 1 ;;
+  Linux-aarch64|Linux-arm64) ASSET="dx-do-linux-arm64" ;;
   MINGW*x86_64|MSYS*x86_64|CYGWIN*x86_64) ASSET="dx-do-windows-x64.exe"; EXE=".exe" ;;
+  # Windows on ARM: Git for Windows reports MINGW64_NT-…-aarch64; MSYS2's
+  # CLANGARM64 environment reports CLANGARM64_NT-…-aarch64.
+  MINGW*aarch64|MSYS*aarch64|CYGWIN*aarch64|CLANGARM64*) ASSET="dx-do-windows-arm64.exe"; EXE=".exe" ;;
   MINGW*|MSYS*|CYGWIN*)
-    echo "unsupported: Windows ${ARCH} — dx-do ships for Windows x64 only" >&2
+    echo "unsupported: Windows ${ARCH} — dx-do ships for Windows x64 and arm64 only" >&2
     exit 1 ;;
-  *) echo "unsupported platform: ${PLATFORM} (supported: macOS arm64, Linux x64, Windows x64 via Git Bash)" >&2
+  *) echo "unsupported platform: ${PLATFORM} (supported: macOS arm64, Linux x64/arm64, Windows x64/arm64 via Git Bash)" >&2
      exit 1 ;;
 esac
 

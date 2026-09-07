@@ -24,7 +24,7 @@ The installer picks the right binary from [GitHub Releases](https://github.com/k
 2. Rename it to `dx-do` (`dx-do.exe` on Windows), make it executable (`chmod +x` on macOS/Linux), and put it on your PATH
 3. Browser-downloaded binaries are quarantined by the OS — clear that **before** the first launch:
    * **macOS**: `xattr -d com.apple.quarantine ./dx-do-macos-arm64` — otherwise Gatekeeper reports the binary as "damaged and can't be opened" (the download is fine; if you already launched it once, delete the file and re-download)
-   * **Windows**: `Unblock-File dx-do-windows-x64.exe` in PowerShell, if SmartScreen objects
+   * **Windows**: `Unblock-File dx-do-windows-x64.exe` (or `dx-do-windows-arm64.exe` on Windows on ARM) in PowerShell, if SmartScreen objects
    * **Linux**: nothing to clear
 
 ## Usage
@@ -52,7 +52,7 @@ dx-do <--config=<config-file>> command-group command <parameter>=<value>
 #### Output
 
 ```
-ℹ  info      dx-do v7.5.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
+ℹ  info      dx-do v7.6.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ⚠  warning   no tenant profile configured — run 'dx-do config create alias=default gatewayHost=... userToken=... cohortId=...'
@@ -273,6 +273,7 @@ dx-do <--config=<config-file>> command-group command <parameter>=<value>
 ```config
 ⤜ base64............................................: prints the bound tenant configuration as the base64 value DXDO_CONFIGURATION expects (the output is a credential)
 ⤜ create............................................: create a new tenant configuration profile (interactive on a TTY, or non-interactive via gatewayHost=/userToken=/cohortId=)
+⤜ doctor............................................: Health checks for this installation: binary version and PATH, tenant profiles, shell completion.
 ⤜ connector.........................................: shows connector config for tenant
 ⤜ debug.............................................: shows configuration details
 ⤜ debug-token.......................................: shows decoded token
@@ -336,6 +337,13 @@ dx-do <--config=<config-file>> command-group command <parameter>=<value>
 ⤜ list-templates....................................: lists all channel templates
 ⤜ policy-detail.....................................: describes details for policy
 ⤜ update-template...................................: updates a message template — omitted fields keep their values (dry-run by default)
+```
+#### completion
+```completion
+⤜ disable...........................................: Remove shell tab-completion: delete ~/.dxdo/completion and the marker block from your shell rc file.
+⤜ enable............................................: Install shell tab-completion: write ~/.dxdo/completion and add a marker block to your shell rc file.
+⤜ script............................................: Print the shell tab-completion script for zsh or bash (the manual install route).
+⤜ status............................................: Report the installed shell completion: shells, rc files, and whether the files match this dx-do version.
 ```
 #### experience
 ```experience
