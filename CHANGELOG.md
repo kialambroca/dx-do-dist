@@ -1,3 +1,19 @@
+## 7.7.0 (2026-09-07)
+
+### 🚀 Features
+
+- **alarm:** alarm queue create / update / delete / preferences commands on a Zod client model
+- **cli:** audit store command + automatic command-execution audit
+
+### 🩹 Fixes
+
+- **cli:** alarm list progress label said 'open' when includeClosed=true
+
+### ❤️ Thank You
+
+- Claude Fable 5.1
+- zoobroker
+
 ## 7.6.0 (2026-09-07)
 
 ### 🚀 Features

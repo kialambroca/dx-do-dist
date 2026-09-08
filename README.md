@@ -52,7 +52,7 @@ dx-do <--config=<config-file>> command-group command <parameter>=<value>
 #### Output
 
 ```
-ℹ  info      dx-do v7.6.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
+ℹ  info      dx-do v7.7.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ⚠  warning   no tenant profile configured — run 'dx-do config create alias=default gatewayHost=... userToken=... cohortId=...'
@@ -65,10 +65,15 @@ dx-do <--config=<config-file>> command-group command <parameter>=<value>
 ```alarm
 ⤜ acknowledge.......................................: acknowledges an alarm
 ⤜ create-alarm......................................: creates an alarm via jarvis ingestion
+⤜ create-queue......................................: creates an alarm queue: a saved alarm filter with display preferences (dry-run by default)
+⤜ delete-queue......................................: permanently deletes an alarm queue (dry-run by default)
 ⤜ detail............................................: dumps alarm details
 ⤜ lifecycle.........................................: shows alarm lifecycle
+⤜ queue-fields......................................: lists the alarm fields (and closed vocabularies) an alarm queue filter can match on
 ⤜ related...........................................: gets related alarms
+⤜ set-queue-preferences.............................: pins / unpins an alarm queue or makes it your default: per-user preferences (dry-run by default)
 ⤜ trigger-webhook...................................: triggers a webhook for an alarm
+⤜ update-queue......................................: updates an alarm queue: omitted fields keep their values (dry-run by default)
 ⤜ analyze...........................................: shows counts of alarm by [source product] and managementmodule / type
 ⤜ assign............................................: assigns an alarm to a troubleshooter
 ⤜ bulk-lifecycle....................................: shows alarm lifecycle
@@ -260,6 +265,7 @@ dx-do <--config=<config-file>> command-group command <parameter>=<value>
 #### audit
 ```audit
 ⤜ query.............................................: query data-store audit events
+⤜ store.............................................: store an audit record in the tenant audit store
 ```
 #### auth
 ```auth
