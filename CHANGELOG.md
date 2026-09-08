@@ -1,3 +1,18 @@
+## 7.7.1 (2026-09-08)
+
+### 🚀 Features
+
+- **alarm,inventory:** alarm filters (service / situation) and inventory queues as separate command families
+
+### 🩹 Fixes
+
+- **alarm:** category-aware queue reads, inventory queue shape, and the exists / does_not_exists conditions
+
+### ❤️ Thank You
+
+- Claude Fable 5.1
+- zoobroker
+
 ## 7.7.0 (2026-09-07)
 
 ### 🚀 Features

@@ -52,7 +52,7 @@ dx-do <--config=<config-file>> command-group command <parameter>=<value>
 #### Output
 
 ```
-ℹ  info      dx-do v7.7.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
+ℹ  info      dx-do v7.7.1 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ⚠  warning   no tenant profile configured — run 'dx-do config create alias=default gatewayHost=... userToken=... cohortId=...'
@@ -65,14 +65,20 @@ dx-do <--config=<config-file>> command-group command <parameter>=<value>
 ```alarm
 ⤜ acknowledge.......................................: acknowledges an alarm
 ⤜ create-alarm......................................: creates an alarm via jarvis ingestion
+⤜ create-filter.....................................: creates a saved filter for the Service Alarms or Situations view (dry-run by default)
 ⤜ create-queue......................................: creates an alarm queue: a saved alarm filter with display preferences (dry-run by default)
+⤜ delete-filter.....................................: permanently deletes a service / situation filter (dry-run by default)
 ⤜ delete-queue......................................: permanently deletes an alarm queue (dry-run by default)
 ⤜ detail............................................: dumps alarm details
+⤜ filter-detail.....................................: dumps one service / situation filter definition
+⤜ filter-fields.....................................: lists the fields (and closed vocabularies) a service or situation filter can match on
 ⤜ lifecycle.........................................: shows alarm lifecycle
+⤜ list-filters......................................: lists the saved filters of the Service Alarms and Situations views
 ⤜ queue-fields......................................: lists the alarm fields (and closed vocabularies) an alarm queue filter can match on
 ⤜ related...........................................: gets related alarms
 ⤜ set-queue-preferences.............................: pins / unpins an alarm queue or makes it your default: per-user preferences (dry-run by default)
 ⤜ trigger-webhook...................................: triggers a webhook for an alarm
+⤜ update-filter.....................................: updates a service / situation filter: omitted fields keep their values (dry-run by default)
 ⤜ update-queue......................................: updates an alarm queue: omitted fields keep their values (dry-run by default)
 ⤜ analyze...........................................: shows counts of alarm by [source product] and managementmodule / type
 ⤜ assign............................................: assigns an alarm to a troubleshooter
@@ -256,11 +262,19 @@ dx-do <--config=<config-file>> command-group command <parameter>=<value>
 ⤜ create-inventorize-rule-from-file.................: installs a locally saved inventorize rule draft onto the bound tenant; dryrun mode by default, set mode=create to execute.
 ⤜ delete-inventorize-rule...........................: deletes an inventorize rule
 ⤜ list-inventorize-rules............................: shows rules for creating inventory from metrics
+⤜ create-queue......................................: creates an inventory queue: a saved Monitored Inventory filter with grouping and columns (dry-run by default)
+⤜ delete-queue......................................: permanently deletes an inventory queue (dry-run by default)
 ⤜ layers............................................: lists all topology layers with a count of entities on each layer
+⤜ list-queues.......................................: lists the inventory queues (saved filters of the Monitored Inventory page)
 ⤜ lookup............................................: searches inventory using free text search, be aware that this may not support all product sources
 ⤜ metrics...........................................: finds metrics associated with inventory
+⤜ queue-detail......................................: dumps one inventory queue definition
+⤜ queue-fields......................................: lists the attributes an inventory queue can match on (all=true: every attribute usable as a column)
+⤜ queue-groups......................................: lists the group-by choices of the Monitored Inventory page
 ⤜ search............................................: searches inventory
+⤜ set-queue-preferences.............................: pins / unpins an inventory queue or makes it the default (dry-run by default)
 ⤜ sources...........................................: lists all sources of inventory items
+⤜ update-queue......................................: updates an inventory queue: omitted fields keep their values (dry-run by default)
 ```
 #### audit
 ```audit
