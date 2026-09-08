@@ -1,3 +1,19 @@
+## 7.7.2 (2026-09-08)
+
+### 🩹 Fixes
+
+- **cli:** completion enable no longer tells zsh users to source the rc file
+
+### 📖 Documentation
+
+- **cli:** README usage starts with `config create alias=default`; dxo2 filenames
+- **cli:** README --config table shows the real resolution order
+
+### ❤️ Thank You
+
+- Claude Fable 5.1
+- zoobroker
+
 ## 7.7.1 (2026-09-08)
 
 ### 🚀 Features

@@ -29,30 +29,34 @@ The installer picks the right binary from [GitHub Releases](https://github.com/k
 
 ## Usage
 
-The first time you run, an interactive setup will create <USER_HOME>/.dxdo/default.dxo2.config.json; you can have multiple configurations.  the "--config=<config>" has the following resolution:
+Create the default tenant profile first:
 
+```
+dx-do config create alias=default
+```
 
-| variation                                 | resolution                             |
-|-------------------------------------------|----------------------------------------|
-| No Config Specified                       | `~/.dxdo/default.dx02.config.json`     |
-| `--config=tenant-name`                    | `~/.dxdo/tenant-name.dx02.config.json` |
-| `--config=tenant-name.dx02.config.json`   | `~/.dxdo/tenant-name.dx02.config.json` |                                      |
-| `--config=./tenant-name.dx02.config.json` | `<CWD>/tenant-name.dx02.config.json`   |                                     
+On a terminal this prompts for the gateway host, user token and cohort id and writes `~/.dxdo/default.dxo2.config.json`; pass `gatewayHost=... userToken=... cohortId=...` to skip the prompts (scripts, agents). If you skip this step, the first command that needs a tenant asks for the same three values on a terminal, and fails with a pointer to `config create` when stdin is not a terminal.
+
+One profile per tenant — `dx-do config create alias=<name>` adds another, and `--config=<value>` picks it. The value is tried in this order; the first file that exists wins:
+
+| `--config=` value | tried, in order |
+|---|---|
+| omitted | `~/.dxdo/default.dxo2.config.json` (environment overrides: see `help configuration`) |
+| `tenant-name` | `./tenant-name.dxo2.config.json`, then `~/.dxdo/tenant-name.dxo2.config.json`, then `~/.dxo2/configurations/tenant-name.dxo2.config.json` |
+| `./tenant-name.dxo2.config.json` — any path ending in `.dxo2.config.json` | that path only, relative to the current directory or absolute; it is never looked up under `~/.dxdo` |
 
 ### Full configuration options are available by running 
 
 ```dx-do --no-config help configuration```
 
 ```
-dx-do <--config=<config-file>> command-group command <parameter>=<value>
+dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ```
-
-
 
 #### Output
 
 ```
-ℹ  info      dx-do v7.7.1 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
+ℹ  info      dx-do v7.7.2 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ⚠  warning   no tenant profile configured — run 'dx-do config create alias=default gatewayHost=... userToken=... cohortId=...'
