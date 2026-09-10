@@ -1,3 +1,19 @@
+## 7.8.0 (2026-09-10)
+
+### 🚀 Features
+
+- **alarm,client:** alarm enrichment rule CRUD, reorder and field catalogs
+- **alarm,client:** ticket enrichment rule CRUD and field catalogs
+
+### 🩹 Fixes
+
+- **alarm,client:** enrichment rule names are unique; teach add-then-remove
+
+### ❤️ Thank You
+
+- Claude Opus 5 (1M context)
+- zoobroker
+
 ## 7.7.2 (2026-09-08)
 
 ### 🩹 Fixes

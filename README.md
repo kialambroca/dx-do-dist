@@ -56,7 +56,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 #### Output
 
 ```
-ℹ  info      dx-do v7.7.2 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
+ℹ  info      dx-do v7.8.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ⚠  warning   no tenant profile configured — run 'dx-do config create alias=default gatewayHost=... userToken=... cohortId=...'
@@ -69,18 +69,31 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ```alarm
 ⤜ acknowledge.......................................: acknowledges an alarm
 ⤜ create-alarm......................................: creates an alarm via jarvis ingestion
+⤜ create-enrichment-rule............................: creates an alarm enrichment rule (dry-run by default, previewing what it would match)
 ⤜ create-filter.....................................: creates a saved filter for the Service Alarms or Situations view (dry-run by default)
 ⤜ create-queue......................................: creates an alarm queue: a saved alarm filter with display preferences (dry-run by default)
+⤜ create-ticket-enrichment-rule.....................: creates a ticket enrichment rule for an ITSM channel (dry-run by default)
+⤜ delete-enrichment-rule............................: permanently deletes an alarm enrichment rule (dry-run by default)
 ⤜ delete-filter.....................................: permanently deletes a service / situation filter (dry-run by default)
 ⤜ delete-queue......................................: permanently deletes an alarm queue (dry-run by default)
+⤜ delete-ticket-enrichment-rule.....................: permanently deletes a ticket enrichment rule (dry-run by default)
 ⤜ detail............................................: dumps alarm details
+⤜ enrichment-attributes.............................: lists the topology vertex types, or the attributes of one, that enrichment can read
+⤜ enrichment-fields.................................: lists the alarm fields an enrichment rule can match on
+⤜ enrichment-rule-detail............................: shows one alarm enrichment rule, its match filter, mappings and evaluation position
 ⤜ filter-detail.....................................: dumps one service / situation filter definition
 ⤜ filter-fields.....................................: lists the fields (and closed vocabularies) a service or situation filter can match on
 ⤜ lifecycle.........................................: shows alarm lifecycle
+⤜ list-enrichment-custom-fields.....................: lists the custom alarm slots enrichment can write to and what each one holds
 ⤜ list-filters......................................: lists the saved filters of the Service Alarms and Situations views
+⤜ list-ticket-enrichment-rules......................: lists the ticket enrichment rules that fill service-desk fields from alarms
 ⤜ queue-fields......................................: lists the alarm fields (and closed vocabularies) an alarm queue filter can match on
+⤜ register-enrichment-custom-field..................: binds a custom alarm slot to an attribute name so enrichment rules can use it (dry-run by default)
 ⤜ related...........................................: gets related alarms
+⤜ reorder-enrichment-rule...........................: moves an alarm enrichment rule in the evaluation order (dry-run by default)
 ⤜ set-queue-preferences.............................: pins / unpins an alarm queue or makes it your default: per-user preferences (dry-run by default)
+⤜ ticket-enrichment-fields..........................: lists the service-desk fields of an ITSM channel, or the alarm fields a ticket rule can read
+⤜ ticket-enrichment-rule-detail.....................: shows one ticket enrichment rule and the field maps it applies
 ⤜ trigger-webhook...................................: triggers a webhook for an alarm
 ⤜ update-filter.....................................: updates a service / situation filter: omitted fields keep their values (dry-run by default)
 ⤜ update-queue......................................: updates an alarm queue: omitted fields keep their values (dry-run by default)
@@ -89,7 +102,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ bulk-lifecycle....................................: shows alarm lifecycle
 ⤜ clear.............................................: clears an alarm
 ⤜ explain-enrichment-rules..........................: gives an simplified explanation of enrichment rules
-⤜ list-enrichment-rules.............................: lists alarm enrichment rules
+⤜ list-enrichment-rules.............................: lists alarm enrichment rules in evaluation order
 ⤜ list-queues.......................................: lists alarm queues
 ⤜ queue-detail......................................: dumps queue details
 ⤜ list..............................................: lists alarms
@@ -194,6 +207,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 #### help
 ```help
 ⤜ agentic-mcp.......................................: Explains the `dx-do agentic mcp` stdio MCP server and how to wire it into Claude Code / Cursor / mcp-inspector.
+⤜ alarm-enrichment..................................: explains how vertex attributes, the custom-field registry, and enrichment rules line up, the order that decides which rule wins, and the preview-backed dry run.
 ⤜ channels..........................................: explains notification channels vs policies vs templates, the supported channel kinds, and the dry-run / test / save flow of the channel write commands.
 ⤜ commands..........................................: explains commands.
 ⤜ commands-json.....................................: dumps every command as a machine-readable JSON manifest (safety, usage, args)
@@ -206,6 +220,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ bulk-patch........................................: explains vertex bulk-patch
 ⤜ metric-types......................................: explains numericMetricType and enumMetricType for 'nass register-metric' and 'nass report-metric-value'.
 ⤜ slis..............................................: explains the SLI group / SLI / SLO / alert model and how to drive it with the sli commands.
+⤜ ticket-enrichment.................................: explains the ITSM channel prerequisite, the two field catalogs on either side of a map, and why the alarm type decides which alarm fields a rule may use.
 ⤜ time-formats......................................: explains time formats for 'metric data' and 'agent get-trace-sumaries'.
 ⤜ ui................................................: Explains `dx-do ui start` — the browser-based visual query builder for TAS / NASSQL / Metrics-Metadata queries.
 ```
