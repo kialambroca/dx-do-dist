@@ -56,7 +56,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 #### Output
 
 ```
-ℹ  info      dx-do v7.8.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
+ℹ  info      dx-do v7.9.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ⚠  warning   no tenant profile configured — run 'dx-do config create alias=default gatewayHost=... userToken=... cohortId=...'
@@ -272,6 +272,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ slis..............................................: show the service SLIs (and child service SLIs)
 ⤜ search............................................: show services matching search term
 ⤜ set-content.......................................: replaces an existing service’s content queries (dry-run by default; no content clears all)
+⤜ update-service....................................: updates a service’s attributes — description, location, tags, properties (dry-run by default; name and type are fixed at creation)
 ⤜ top-level-services................................: shows top level services
 ```
 #### inventory
@@ -434,12 +435,6 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 #### attribute
 ```attribute
 ⤜ dump..............................................: dumps all attributes by layer
-```
-#### topographer
-```topographer
-⤜ dump-schema.......................................: dumps the topographer configuration schema (for use in IDE)
-⤜ generate-sample...................................: generate a sample topographer configuration
-⤜ test-configuration................................: test a topographer configuration
 ```
 #### event
 ```event

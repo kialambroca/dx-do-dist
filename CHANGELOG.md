@@ -1,3 +1,52 @@
+## 7.9.0 (2026-09-17)
+
+### 🚀 Features
+
+- **alarm:** create-alarm takes externalId.<n> and alarmURL
+- **client:** integration-base prerequisites — TAS store schemas, per-call timeouts, log payload
+- **integration:** @dx-do/integration v1 — staged entities, one method per metric family, PER_INTERVAL, logs, dry run, AGENT
+- **integration:** accumulate repeated metric reports per interval; rate takes event counts
+- **integration:** report process health and deployment attributes on the AGENT
+- **integration:** raise and clear alarms on staged entities
+- **integration:** log streams on entities, and a dotted file slot for every record
+- **integration:** dedicated logging doc, and close the live-smoke gaps
+- **service,client:** service type on create and a service update-service command
+
+### 🩹 Fixes
+
+- **ci:** build each packed npm package through Nx before bun pm pack
+- **cli:** log query honours limit
+- **cli:** correct custom_numeric help and the custom index error message
+- **cli,mcp:** keep JSON output parseable under FORCE_COLOR, and load cli_describe eagerly
+- **client:** append .log to an undotted log source file
+- **integration:** per-host metric sources; quickstart shows reporting for a different host
+- **integration:** reserve each metric's 15 s slot before storing; carry skipped per-interval values
+- **integration:** send whole interval counts, carrying the rounding remainder per metric
+
+### 💅 Refactors
+
+- **cli:** remove @dx-do/metrex-api and the topographer group
+
+### 📖 Documentation
+
+- **corpus:** the UI's type change is dropped too — serviceType is fixed at creation
+- **integration:** quickstart and monitoring-loop sample; fix log close() hang and trailing undefined
+- **integration:** document truncated roll-ups of whole-valued INT and LONG buckets
+- **integration:** record how the Log Analytics search bar queries
+- **internal:** commit the Metrics-by-Inventory analysis with what dx-jmx has since fixed
+
+### ✅ Tests
+
+- **integration:** accumulator matrix across every API metric type
+- **integration:** add bun run smoke-integration-live with a TTL in minutes
+
+### ❤️ Thank You
+
+- Claude Fable 5.1
+- Claude Opus 5
+- Claude Opus 5 (1M context)
+- zoobroker
+
 ## 7.8.0 (2026-09-10)
 
 ### 🚀 Features
