@@ -56,7 +56,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 #### Output
 
 ```
-ℹ  info      dx-do v7.10.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
+ℹ  info      dx-do v7.11.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ⚠  warning   no tenant profile configured — run 'dx-do config create alias=default gatewayHost=... userToken=... cohortId=...'
@@ -545,6 +545,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ inspect-alarms....................................: provides alarms from situation inspection 
 ⤜ list-custom-situation-policies....................: lists the custom situation policies that control how alarms are clustered into situations
 ⤜ list-policy-fields................................: lists the alarm fields, clustering fields and naming operations a custom situation policy can use
+⤜ preview-custom-situation-policy...................: replays an existing custom situation policy over recent alarms: how many matched and what it would have clustered
 ⤜ show-clustering-config............................: shows the tenant-wide clustering configuration that governs how situations are formed
 ⤜ summary...........................................: show the generative AI summary for a situation
 ⤜ trigger-webhook...................................: triggers a webhook for a situation

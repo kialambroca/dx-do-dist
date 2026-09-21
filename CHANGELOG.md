@@ -1,3 +1,19 @@
+## 7.11.0 (2026-09-21)
+
+### 🚀 Features
+
+- **build:** monthly override review — probe, and a self-updating issue
+- **cli,harness:** preview an existing custom situation policy, and cover situations in the suite
+
+### 📖 Documentation
+
+- **corpus,cli:** ground the enrichment -> situation-policy dependency
+
+### ❤️ Thank You
+
+- Claude Opus 5 (1M context)
+- zoobroker
+
 ## 7.10.0 (2026-09-21)
 
 ### 🚀 Features
