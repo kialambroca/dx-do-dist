@@ -56,7 +56,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 #### Output
 
 ```
-ℹ  info      dx-do v7.9.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
+ℹ  info      dx-do v7.10.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ⚠  warning   no tenant profile configured — run 'dx-do config create alias=default gatewayHost=... userToken=... cohortId=...'
@@ -214,6 +214,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ commands-md.......................................: explains commands in md format
 ⤜ commands-safety-md................................: emits a per-group command safety reference (markdown)
 ⤜ configuration.....................................: explains configuration
+⤜ custom-situations.................................: explains situations as alarm clusters, the filter / root-cause / clustering parts of a custom situation policy, the dry-run preview flow, and why an update replaces the policy id.
 ⤜ dashboard.........................................: explains dashboard command setup.
 ⤜ describe..........................................: dumps one command as its full machine-readable manifest entry
 ⤜ find..............................................: searches the command surface by task phrase and returns ranked candidates
@@ -534,11 +535,20 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ```situation
 ⤜ query.............................................: finds situations
 ⤜ alarm-data........................................: provides the situation alarm data
+⤜ create-custom-situation-policy....................: creates a custom situation policy controlling how alarms cluster into situations (dry-run by default)
+⤜ delete-custom-situation-policy....................: permanently deletes a custom situation policy (dry-run by default)
 ⤜ detail............................................: show details for situation
+⤜ detail-custom-situation-policy....................: shows one custom situation policy: its filter, root-cause filter, clustering fields and windows
+⤜ disable-algorithmic-situations....................: turns OFF tenant-wide algorithmic situations so custom situation policies take effect (dry-run by default)
+⤜ enable-algorithmic-situations.....................: turns ON tenant-wide algorithmic situations, which overrides custom situation policies (dry-run by default)
 ⤜ inspect...........................................: provides entire situation inspection json
 ⤜ inspect-alarms....................................: provides alarms from situation inspection 
+⤜ list-custom-situation-policies....................: lists the custom situation policies that control how alarms are clustered into situations
+⤜ list-policy-fields................................: lists the alarm fields, clustering fields and naming operations a custom situation policy can use
+⤜ show-clustering-config............................: shows the tenant-wide clustering configuration that governs how situations are formed
 ⤜ summary...........................................: show the generative AI summary for a situation
 ⤜ trigger-webhook...................................: triggers a webhook for a situation
+⤜ update-custom-situation-policy....................: updates a custom situation policy; an update can replace the policy id (dry-run by default)
 ```
 #### service-universe
 ```service-universe

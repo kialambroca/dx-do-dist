@@ -1,3 +1,26 @@
+## 7.10.0 (2026-09-21)
+
+### 🚀 Features
+
+- **cli:** de-rank destructive commands when a query carries no destructive intent
+- **cli,client:** custom situation policy CRUD in the situation group
+- **cli,client:** algorithmic-situations toggle and warnings on policy commands
+- **corpus,cli:** lexicon entry for custom situations and fix command-search ranking
+- **harness:** record why a suite unit failed, not just that it did
+
+### 📖 Documentation
+
+- **cli:** frame custom situation policy status as the enable/disable control
+- **cli:** ground `help slis` on the Bash route and on SLO breach status
+- **client:** warn that setTenantConfigAttributes is raw access to undocumented internals
+- **release:** document the npmjs Trusted Publisher bootstrap for new packages
+
+### ❤️ Thank You
+
+- Claude Opus 5
+- Claude Opus 5 (1M context)
+- zoobroker
+
 ## 7.9.0 (2026-09-17)
 
 ### 🚀 Features
