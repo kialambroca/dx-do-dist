@@ -56,7 +56,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 #### Output
 
 ```
-ℹ  info      dx-do v7.11.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
+ℹ  info      dx-do v7.12.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ⚠  warning   no tenant profile configured — run 'dx-do config create alias=default gatewayHost=... userToken=... cohortId=...'
@@ -202,6 +202,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ learn-tenant......................................: Reserve the per-tenant corpus storage at ~/.dxdo/<alias>/corpus/ (no-op stub; full learning logic is forthcoming). [experimental]
 ⤜ mcp...............................................: Run a stdio MCP server for the bound tenant. Wire into Claude Code / Cursor with `claude mcp add` (or equivalent).
 ⤜ schema............................................: Emit the canonical JSON Schema for a DataStore query payload (TAS / NASSQL / Metrics-Metadata), optionally narrowed to one op.
+⤜ setup-agy.........................................: One-command Antigravity onboarding: extract the agy plugin to ~/.dxdo/agy/plugins, manage readOnly profile marks, print the `agy plugin install` block, run doctor.
 ⤜ setup-claude......................................: One-command Claude Code onboarding: extract the Claude Code plugin to ~/.dxdo/claude/marketplace, manage readOnly profile marks, print the /plugin install block, run doctor.
 ```
 #### help

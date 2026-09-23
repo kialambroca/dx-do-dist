@@ -1,3 +1,38 @@
+## 7.12.0 (2026-09-23)
+
+### 🚀 Features
+
+- **ATE-P1:** cut threshold-task turns 32 → 14 (197s → 88s)
+- **agy:** generate packages/agy, register the host, add setup-agy
+- **cli:** close agentic setup with the tenant-binding block
+- **cli:** route --help onto the existing help paths; help exits 0
+- **harness:** sandboxed agy integration harness + suite --host
+- **harness:** record model turns; chart turns and tool calls per run
+
+### 🩹 Fixes
+
+- **build:** record the packages/agy workspace in bun.lock
+- **session-core:** point service search hits at service overview
+- **session-core,mcp:** repair and harden discovery_search_by_name
+
+### 💅 Refactors
+
+- **cli:** extract an agent-host registry
+- **harness:** host-aware transcript normalizer + vacuity guard
+
+### 📖 Documentation
+
+- model x effort matrix for the alert-threshold task
+- add Gemini 3.8 Flash to the alert-threshold matrix
+- **harness:** chart every committed integration-suite report over time
+
+### ❤️ Thank You
+
+- Claude Opus 5 (1M context)
+- Claude Opus 5.5 (1M context)
+- z
+- zoobroker
+
 ## 7.11.0 (2026-09-21)
 
 ### 🚀 Features
