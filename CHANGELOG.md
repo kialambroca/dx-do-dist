@@ -1,3 +1,25 @@
+## 7.12.1 (2026-09-23)
+
+### 🚀 Features
+
+- **log:** log import, logtype discovery, and a pluggable log ingestion transport (LOG-P1, #698)
+- **log:** `log import field.<name>=<value>` adds constant custom fields to every entry
+- **metric-lab:** synthetic series with planted truth, SAX analysis, scored reports
+- **metric-lab:** sweep runner and builder-side strip binning (#694, #695)
+- **metric-lab:** second symbol channel — per-segment std beside the mean
+- **metric-lab:** time-of-day slot reference — two phase-tolerant measures
+- **metric-lab:** window-level std and kurtosis letters as channels
+
+### 🩹 Fixes
+
+- **build:** guard bun.lock against workspaces and deps committed without it
+
+### ❤️ Thank You
+
+- Claude Fable 5.1
+- Claude Opus 5.5 (1M context)
+- zoobroker
+
 ## 7.12.0 (2026-09-23)
 
 ### 🚀 Features

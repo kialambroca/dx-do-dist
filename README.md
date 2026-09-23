@@ -56,7 +56,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 #### Output
 
 ```
-ℹ  info      dx-do v7.12.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
+ℹ  info      dx-do v7.12.1 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ⚠  warning   no tenant profile configured — run 'dx-do config create alias=default gatewayHost=... userToken=... cohortId=...'
@@ -459,7 +459,10 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ```
 #### log
 ```log
+⤜ import............................................: imports exported log data (OpenSearch Dashboards CSV, NDJSON/JSON hits, or any CSV) into DXO2 Log Analytics — dry-run by default
 ⤜ ingest............................................: ingest one or more log entries directly into the DXO2 log analytics gateway
+⤜ list-fields.......................................: lists the indexed fields of one log analytics logtype with their index type
+⤜ list-logtypes.....................................: lists the tenant's log analytics logtypes — one per log index family *_logs_<logtype>_*
 ⤜ query.............................................: queries DXO2 Log analytics
 ```
 #### maintenance
@@ -630,7 +633,9 @@ dx-do alert list
   "userToken": "<DX User Token from Settings -> Manage Tokens -> New Token -> User>",
   "dxGatewayHost": "https://apmgw.dxi-na1.saas.broadcom.com/",
   "dxASMToken": "<optional: token for ASM API usage>",
-  "dxLogIngestionURL": "<optional: log gateway base URL for 'log ingest', no trailing slash. Omit on DXO2 SaaS tenants with Log Analytics provisioned — it is derived as https://logs-gateway.dxi-<na1|eu1>.saas.broadcom.com from dxGatewayHost; set it for on-premise gateways or to override>"
+  "dxLogIngestionURL": "<optional: uim_logs log gateway base URL for the 'legacy' transport, no trailing slash. Omit on DXO2 SaaS tenants with Log Analytics provisioned — it is derived as https://logs-gateway.dxi-<na1|eu1>.saas.broadcom.com from dxGatewayHost; set it for on-premise gateways or to override>",
+  "dxCustomLogIngestionURL": "<optional: host serving the Log Analytics custom JSON ingestion API (la/v2/api/ingestion/logs) for the 'custom' transport, no trailing slash. Omit on DXO2 SaaS — dxGatewayHost itself serves it; set it only for an on-premise OI host>",
+  "dxLogIngestionTransport": "<optional: auto | custom | legacy — the transport 'log ingest' / 'log import' use when the command gives no transport= (default auto). custom = the Log Analytics custom JSON API on the gateway host, only for logtypes 'log list-logtypes' shows as cust_<logtype> (anything else is accepted and dropped silently, so the CLI refuses it); legacy = the uim_logs pipeline on the logs-gateway host, the path to the generic index; auto = custom when the logtype is enabled for it, else legacy>"
 }
 ```
 
