@@ -1,3 +1,24 @@
+## 7.12.2 (2026-09-24)
+
+### 🚀 Features
+
+- **log:** `log query time-field=` and `includes=` — read legacy-imported rows by their original time
+- **metric-lab:** fleet scenario, pooled baselines and the cross-instance table
+
+### 🩹 Fixes
+
+- **log:** log import takes the logtype from the rows and refuses timestamped imports onto uim_logs
+
+### 📖 Documentation
+
+- **corpus:** operations-logs cookbook, log-ingestion lexicon entry, log gotchas
+- **metric-lab:** primer on the analytics vocabulary for non-data-scientists
+
+### ❤️ Thank You
+
+- Claude Fable 5.1
+- zoobroker
+
 ## 7.12.1 (2026-09-23)
 
 ### 🚀 Features
