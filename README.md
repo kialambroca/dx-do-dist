@@ -56,7 +56,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 #### Output
 
 ```
-ℹ  info      dx-do v7.12.2 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
+ℹ  info      dx-do v7.13.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ⚠  warning   no tenant profile configured — run 'dx-do config create alias=default gatewayHost=... userToken=... cohortId=...'
@@ -220,6 +220,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ describe..........................................: dumps one command as its full machine-readable manifest entry
 ⤜ find..............................................: searches the command surface by task phrase and returns ranked candidates
 ⤜ bulk-patch........................................: explains vertex bulk-patch
+⤜ inventorize.......................................: explains inventorize (Topology Creator) rules: when to create one, the sourceName matching dialect, folders and nesting, external IDs, and the JEXL context for custom attributes.
 ⤜ metric-types......................................: explains numericMetricType and enumMetricType for 'nass register-metric' and 'nass report-metric-value'.
 ⤜ slis..............................................: explains the SLI group / SLI / SLO / alert model and how to drive it with the sli commands.
 ⤜ ticket-enrichment.................................: explains the ITSM channel prerequisite, the two field catalogs on either side of a map, and why the alarm type decides which alarm fields a rule may use.

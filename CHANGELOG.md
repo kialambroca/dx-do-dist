@@ -1,3 +1,37 @@
+## 7.13.0 (2026-09-25)
+
+### 🚀 Features
+
+- **client:** expected inventory carries the Topology Creator's standard vertex attributes
+- **mcp:** inventorize module — inventorize_list and inventorize_simulate
+- **ui:** inventorize help panel, sample-metric inspector, sourceName hints
+- **ui:** subsystem card home page; topology graph moves to /topology-art
+
+### 🩹 Fixes
+
+- **cli:** stop the help exit-code test leaking -1 into bun test
+- **client:** metrics shallower than nest_levels build no vertex
+
+### 💅 Refactors
+
+- **client:** inventorize emulator reproduces the measured Topology Creator semantics
+- **client:** emulate attribute-filter targets and dotted parent folders (demo-dev)
+
+### 📖 Documentation
+
+- **corpus,cli:** inventorize cookbook, help inventorize, dialect lint on dry runs
+
+### ✅ Tests
+
+- **harness:** inventorize suite prompts and baseline → after report
+- **ui:** inventorize golden flow
+
+### ❤️ Thank You
+
+- Claude Opus 5.5 (1M context)
+- z
+- zoobroker
+
 ## 7.12.2 (2026-09-24)
 
 ### 🚀 Features
