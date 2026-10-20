@@ -1,3 +1,156 @@
+## 7.14.0 (2026-10-20)
+
+### 🚀 Features
+
+- lint:scripts keeps root scripts in <family>:<action>
+- **analytics:** metric-facts engine, dxdo.metric-facts/1 contract and session-core handler
+- **analytics:** sawtooth = asymmetric fill-then-drain cycle (turning points, Q24)
+- **analytics:** weekly pattern in metric describe-behavior
+- **analytics:** weekly pattern reports its core and fringe
+- **analytics:** structure section replaces weeklyPattern; fixed-order factual statement
+- **analytics:** structure packet round-2 fixes — balanced excursions, gauge troughs, block scale, sawtooth wording; judge negation guard
+- **bench:** reconcile the catalogue with the schema, runner fixes, pilot round
+- **cli:** section headings in command-group listings
+- **cli:** roll out command sections, carry them in commands-json and the README
+- **cli:** metric anomaly-detection group CRUD
+- **cli:** metric describe-behavior and MCP metric_describe_behavior (experimental)
+- **cli:** metric roll-up and MCP metric_roll_up (experimental)
+- **cli:** agent list-lifecycle-events and lifecycle markers in describe-behavior (experimental)
+- **cli:** export and import custom situation policies
+- **client:** datastore-driver relational assertions and --strict
+- **client:** driver --strict reports needs-data examples as NOT ASSERTED
+- **client:** op-set drift check against the server's known type ids
+- **client:** recorded COLLECT_* and NASSQL response fixtures with key-coverage tests
+- **corpus:** baseline examples carry bounds; the corpus run is a shape smoke test
+- **harness:** A/B arms for the metric-facts gate, and its pre-fixed ground truth
+- **harness:** metric-facts agent benchmark runner and catalogue conventions
+- **mcp:** route agents to the metric-resolution and application-lifecycle cookbooks
+- **mcp:** route agents to the metric-facts tools — always-load, skill pointers, output hints
+- **mcp:** metric-facts pointer on tenant_info, discovery_capabilities and metric-source search hits
+- **mcp:** state the bound tenant once per session
+- **mcp:** route inventorize rule questions through server instructions
+- **metric-facts:** lift the experimental gate — describe-behavior, roll-up and lifecycle events on the default surface
+- **metric-lab:** run 18, the normal-range rule on 11 real metrics (Q22)
+- **metric-lab:** run 19, the asymmetry sawtooth test against the drain-step test
+- **metric-lab:** run 20, rise and fall from turning points
+- **metric-lab:** run 21 structure check — hour-of-week departures and weekly patterns
+- **metric-lab:** run 22 level-shift check — trailing medians, floor, band vs robust z
+- **metric-lab:** run 23 — reference-consistent level shifts, held-out import, pattern core
+- **metric-lab:** run 24 fidelity check — the ranked description packet (days, weekly profile, stretches)
+- **metric-lab:** run 25 — packet seeds from s6 and s24, an hours list, gauge troughs, weekday ranking
+- **metric-lab:** run 26 — K grows with the range, p10 trough, Sunday core/edge check
+- **platform-sanity:** scaffold the dev-only platform sanity package
+- **platform-sanity:** declarative fixture catalogue with derived facts
+- **platform-sanity:** layer-aware edges, acyclic by construction
+- **platform-sanity:** seeder with dry-run default and run records
+- **platform-sanity:** verify step, entity TTL option, seed source override
+- **platform-sanity:** bulk area, 240 entities across four layers
+- **platform-sanity:** probe runner and the multi-FROM error-ratio probe
+- **platform-sanity:** SCRIPT probes against the seeded world
+- **platform-sanity:** ingested alarms and the STATUS/STATE probe
+- **platform-sanity:** services, cross-service edges and the SERVICE probe
+- **platform-sanity:** metric sources per group, APM and service universes
+- **platform-sanity:** assert NASS through service universes; includeMetricFilter matrix
+- **platform-sanity:** overlapping service, sanity:touch, NASS through service universes
+- **platform-sanity:** shape-twins probe for the corpus examples that need tenant data
+- **platform-sanity:** prove WQL params; fix the bare-name WQL examples
+- **platform-sanity:** harness:datastore-contract, rejection twins and a TREND pair
+- **platform-sanity:** fixture-world slots for independent, concurrent runs
+- **ui:** browse, run and copy samples and other tenants' saved queries
+
+### 🩹 Fixes
+
+- **analytics:** lifecycle sourcePattern that matches nothing is an error that names the pattern to use
+- **cli:** fit markdown help to the terminal width and drop HTML comments
+- **cli:** wrap help prose and list items at word boundaries within the width
+- **cli:** make cli:lint green — BOM escapes and a justified readline import
+- **client:** datastore 2.25 contract refresh — stateId, SCRIPT, TREND, driver, corpus
+- **client:** act on the adversarial review of #947-#950
+- **corpus:** lifecycle catalog accepts the <Product>:Launch Time variant
+- **corpus:** triage the silent-zero examples; DESCRIBE counts its columns
+- **docs-meta:** file-issues DoD names a real conventional-commit type
+- **harness:** tenant-stated-first checks the stated tenant, not call order
+- **harness:** drop workspace:* from platform-sanity so npm ls passes
+- **platform-sanity:** shape twins ignore the integration AGENT hub
+- **platform-sanity:** read ranges run to now (or just before the touch)
+
+### 💅 Refactors
+
+- name the non-release root scripts <family>:<action>
+- name the release family release:<action>
+- **analytics:** lazy lifecycle reads in describe-behavior, and a reads counter
+- **platform-sanity:** sanity: script family
+
+### 📖 Documentation
+
+- script-families sweep: stragglers that print an old script name
+- **analytics:** define the package as ingested-data and operational-mechanics analysis
+- **auto-update:** park self-update design with notify-only reservation
+- **bench:** the four THE_LABORATORY benchmark cases (truth first)
+- **bench:** seven demo-dev cases — held-out V cases and the rolling EM cases
+- **bench:** eight pinned demo-dev cases — truth first
+- **bench:** round 1 answered — R1–R3 met on Sonnet; spot-check recorded
+- **bench:** pre-register rounds 2–5 (new surface, Haiku, Opus subset, compact JSON)
+- **bench:** round 2 answered — R1–R3 met on the new surface; regression check fails on two cases
+- **bench:** round 3 (Haiku) answered — inconclusive on adoption (77 %); R1'–R3 hold
+- **bench:** round 4 (Opus, 8 cases) answered — R1'–R3 met; gate lifts for Opus
+- **bench:** round 5 (compact JSON) answered — measured, not adopted; tranche summary
+- **bench:** record the owner decision — Haiku not required; gate lifts on Sonnet and Opus
+- **bench:** pre-register the #829 B-only probe
+- **bench:** probe p829 answered — correctness restored on all six; definitions and verdict words separated
+- **corpus:** application lifecycle and metric resolution cookbooks
+- **corpus:** reading metric facts cookbook, normal-range and sawtooth lexicon
+- **corpus:** metric provenance — producer recognition, the app-level metric and its decoys
+- **corpus:** sentinels and reference metrics — scopes, how to find a reference, expected relationships
+- **corpus:** GROUP/WINDOW order is not a rule; the entity column must be in GROUP
+- **corpus:** TAS JOIN NOT returns only input vertices with no edges
+- **harness:** metric-facts A/B stage 1 results — gate stays, compact JSON inconclusive
+- **harness:** correct the metric-facts A/B P4 truth — 10-04 was an ordinary Sunday
+- **internal:** fixture-world probes — cross-layer edge and pipe paths
+- **internal:** fixture-world probe — backdating and same-slot merge
+- **internal:** first seeded write, read-back and the unexplained E1 inflation
+- **internal:** interval-counter inflation repro with simple values
+- **internal:** standalone bash + curl repro for the interval-counter inflation
+- **internal:** script-families rename map draft with the #920 answers
+- **internal:** script-families map decided: no aliases, harness: family
+- **metric-facts:** propose MET-P1, a descriptive metric facts surface
+- **metric-facts:** one metric describe-behavior with excursions; settled names
+- **metric-facts:** resolution spans are 'as served'; the answer rule in the agent's voice
+- **metric-lab:** answer #751, the resolution boundaries are tenant-wide
+- **metric-lab:** pre-register run 19, the sawtooth as an asymmetric fill-then-drain cycle
+- **metric-lab:** pre-register run 20, rise and fall from turning points
+- **metric-lab:** pre-register run 21, coarse structure by hour of week
+- **metric-lab:** run 21 amendment before the run — band history, exclusions
+- **metric-lab:** answer Q25 — coarse structure fails the decision rule
+- **metric-lab:** pre-register run 22, sustained level shifts
+- **metric-lab:** answer Q26 — sustained level shifts fail the rule narrowly
+- **metric-lab:** pre-register run 23 — consistent band, held-out set, pattern core
+- **metric-lab:** answer Q27 — passes on tenant-real, fails on held-out; core ports
+- **metric-lab:** pre-register run 24, fidelity of a ranked description packet (Q28)
+- **metric-lab:** answer Q28 (not ported: seeds, troughs, weekday ranking) and pre-register run 25
+- **metric-lab:** answer Q29 (mechanisms fixed; crowding and trough remain) and pre-register run 26
+- **metric-lab:** answer Q30 — the ranked packet ports with its measured limits
+- **platform-sanity:** includeMetricFilter is the UI's metric-source mapping, not a defect
+- **platform-sanity:** APM universes map via an AGENT anchor; direct ingest uses services
+- **platform-sanity:** AMQ observations are one-time, not a persistent dependency
+- **skill:** document the harness's model + effort pins
+- **skills:** refresh the datastore skills against the repo as it is now
+- **skills:** dev-fixtures examples are .json, only the corpus ones are .json5
+- **ui:** Explore design — the #889 reflection and the #890 decision
+
+### ✅ Tests
+
+- **harness:** suite prompt for metric roll-up — the EM response time hour by hour with its 4-hourly bursts
+- **harness:** accept natural phrasings in three metric answer patterns
+- **harness:** accept web-.* in the inventorize assertion; report 23/23
+
+### ❤️ Thank You
+
+- dx-do harness
+- Ki Alam
+- z
+- zoobroker
+
 ## 7.13.0 (2026-09-25)
 
 ### 🚀 Features

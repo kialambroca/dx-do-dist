@@ -56,7 +56,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 #### Output
 
 ```
-ℹ  info      dx-do v7.13.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
+ℹ  info      dx-do v7.14.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ⚠  warning   no tenant profile configured — run 'dx-do config create alias=default gatewayHost=... userToken=... cohortId=...'
@@ -66,101 +66,134 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ### Command Groups
 
 #### alarm
+##### General
 ```alarm
 ⤜ acknowledge.......................................: acknowledges an alarm
-⤜ create-alarm......................................: creates an alarm via jarvis ingestion
-⤜ create-enrichment-rule............................: creates an alarm enrichment rule (dry-run by default, previewing what it would match)
-⤜ create-filter.....................................: creates a saved filter for the Service Alarms or Situations view (dry-run by default)
-⤜ create-queue......................................: creates an alarm queue: a saved alarm filter with display preferences (dry-run by default)
-⤜ create-ticket-enrichment-rule.....................: creates a ticket enrichment rule for an ITSM channel (dry-run by default)
-⤜ delete-enrichment-rule............................: permanently deletes an alarm enrichment rule (dry-run by default)
-⤜ delete-filter.....................................: permanently deletes a service / situation filter (dry-run by default)
-⤜ delete-queue......................................: permanently deletes an alarm queue (dry-run by default)
-⤜ delete-ticket-enrichment-rule.....................: permanently deletes a ticket enrichment rule (dry-run by default)
-⤜ detail............................................: dumps alarm details
-⤜ enrichment-attributes.............................: lists the topology vertex types, or the attributes of one, that enrichment can read
-⤜ enrichment-fields.................................: lists the alarm fields an enrichment rule can match on
-⤜ enrichment-rule-detail............................: shows one alarm enrichment rule, its match filter, mappings and evaluation position
-⤜ filter-detail.....................................: dumps one service / situation filter definition
-⤜ filter-fields.....................................: lists the fields (and closed vocabularies) a service or situation filter can match on
-⤜ lifecycle.........................................: shows alarm lifecycle
-⤜ list-enrichment-custom-fields.....................: lists the custom alarm slots enrichment can write to and what each one holds
-⤜ list-filters......................................: lists the saved filters of the Service Alarms and Situations views
-⤜ list-ticket-enrichment-rules......................: lists the ticket enrichment rules that fill service-desk fields from alarms
-⤜ queue-fields......................................: lists the alarm fields (and closed vocabularies) an alarm queue filter can match on
-⤜ register-enrichment-custom-field..................: binds a custom alarm slot to an attribute name so enrichment rules can use it (dry-run by default)
-⤜ related...........................................: gets related alarms
-⤜ reorder-enrichment-rule...........................: moves an alarm enrichment rule in the evaluation order (dry-run by default)
-⤜ set-queue-preferences.............................: pins / unpins an alarm queue or makes it your default: per-user preferences (dry-run by default)
-⤜ ticket-enrichment-fields..........................: lists the service-desk fields of an ITSM channel, or the alarm fields a ticket rule can read
-⤜ ticket-enrichment-rule-detail.....................: shows one ticket enrichment rule and the field maps it applies
-⤜ trigger-webhook...................................: triggers a webhook for an alarm
-⤜ update-filter.....................................: updates a service / situation filter: omitted fields keep their values (dry-run by default)
-⤜ update-queue......................................: updates an alarm queue: omitted fields keep their values (dry-run by default)
 ⤜ analyze...........................................: shows counts of alarm by [source product] and managementmodule / type
 ⤜ assign............................................: assigns an alarm to a troubleshooter
 ⤜ bulk-lifecycle....................................: shows alarm lifecycle
 ⤜ clear.............................................: clears an alarm
-⤜ explain-enrichment-rules..........................: gives an simplified explanation of enrichment rules
-⤜ list-enrichment-rules.............................: lists alarm enrichment rules in evaluation order
-⤜ list-queues.......................................: lists alarm queues
-⤜ queue-detail......................................: dumps queue details
+⤜ create-alarm......................................: creates an alarm via jarvis ingestion
+⤜ detail............................................: dumps alarm details
+⤜ lifecycle.........................................: shows alarm lifecycle
 ⤜ list..............................................: lists alarms
+⤜ related...........................................: gets related alarms
+⤜ trigger-webhook...................................: triggers a webhook for an alarm
 ⤜ unacknowledge.....................................: unacks an alarm
 ⤜ update-field......................................: updates an alarm field
 ```
+##### Enrichment rules
+```alarm
+⤜ create-enrichment-rule............................: creates an alarm enrichment rule (dry-run by default, previewing what it would match)
+⤜ delete-enrichment-rule............................: permanently deletes an alarm enrichment rule (dry-run by default)
+⤜ enrichment-attributes.............................: lists the topology vertex types, or the attributes of one, that enrichment can read
+⤜ enrichment-fields.................................: lists the alarm fields an enrichment rule can match on
+⤜ enrichment-rule-detail............................: shows one alarm enrichment rule, its match filter, mappings and evaluation position
+⤜ explain-enrichment-rules..........................: gives an simplified explanation of enrichment rules
+⤜ list-enrichment-custom-fields.....................: lists the custom alarm slots enrichment can write to and what each one holds
+⤜ list-enrichment-rules.............................: lists alarm enrichment rules in evaluation order
+⤜ register-enrichment-custom-field..................: binds a custom alarm slot to an attribute name so enrichment rules can use it (dry-run by default)
+⤜ reorder-enrichment-rule...........................: moves an alarm enrichment rule in the evaluation order (dry-run by default)
+```
+##### Filters
+```alarm
+⤜ create-filter.....................................: creates a saved filter for the Service Alarms or Situations view (dry-run by default)
+⤜ delete-filter.....................................: permanently deletes a service / situation filter (dry-run by default)
+⤜ filter-detail.....................................: dumps one service / situation filter definition
+⤜ filter-fields.....................................: lists the fields (and closed vocabularies) a service or situation filter can match on
+⤜ list-filters......................................: lists the saved filters of the Service Alarms and Situations views
+⤜ update-filter.....................................: updates a service / situation filter: omitted fields keep their values (dry-run by default)
+```
+##### Queues
+```alarm
+⤜ create-queue......................................: creates an alarm queue: a saved alarm filter with display preferences (dry-run by default)
+⤜ delete-queue......................................: permanently deletes an alarm queue (dry-run by default)
+⤜ list-queues.......................................: lists alarm queues
+⤜ queue-detail......................................: dumps queue details
+⤜ queue-fields......................................: lists the alarm fields (and closed vocabularies) an alarm queue filter can match on
+⤜ set-queue-preferences.............................: pins / unpins an alarm queue or makes it your default: per-user preferences (dry-run by default)
+⤜ update-queue......................................: updates an alarm queue: omitted fields keep their values (dry-run by default)
+```
+##### Ticket enrichment rules
+```alarm
+⤜ create-ticket-enrichment-rule.....................: creates a ticket enrichment rule for an ITSM channel (dry-run by default)
+⤜ delete-ticket-enrichment-rule.....................: permanently deletes a ticket enrichment rule (dry-run by default)
+⤜ list-ticket-enrichment-rules......................: lists the ticket enrichment rules that fill service-desk fields from alarms
+⤜ ticket-enrichment-fields..........................: lists the service-desk fields of an ITSM channel, or the alarm fields a ticket rule can read
+⤜ ticket-enrichment-rule-detail.....................: shows one ticket enrichment rule and the field maps it applies
+```
 #### dashboard
+##### General
 ```dashboard
-⤜ add-dashboard-tags................................: adds tags to a dashboard
-⤜ folder-add-permission.............................: adds folder permission for a user by email or userId
-⤜ add-folder-tags...................................: adds tags to all dashboards in a folder
-⤜ folder-create.....................................: creates a folder
+⤜ get-theme.........................................: shows the current theme
+⤜ set-theme.........................................: sets the current theme
+```
+##### Dashboards
+```dashboard
 ⤜ dashboard-export..................................: exports a single dashboard
 ⤜ dashboard-import..................................: creates a new dashboard from an export file.
-⤜ dashboard-list-by-meta............................: lists every dashboard whose meta.<field> matches one of the given values
 ⤜ dashboard-list-by-folder..........................: lists dashboards in folder
+⤜ dashboard-list-by-meta............................: lists every dashboard whose meta.<field> matches one of the given values
 ⤜ dashboard-search..................................: finds dashboards
 ⤜ dashboard-update..................................: updates a dashboard from an export file.
-⤜ user-search.......................................: finds dashboard users
 ⤜ dashboard-variables-list..........................: shows current values of dashboard variables
+⤜ get-dashboard-refresh-options.....................: shows current dashboard refresh options
+⤜ set-dashboard-refresh-options.....................: sets dashboard refresh options
+```
+##### Folders
+```dashboard
+⤜ folder-add-permission.............................: adds folder permission for a user by email or userId
+⤜ folder-create.....................................: creates a folder
 ⤜ folder-details....................................: show details for folder
 ⤜ folder-export.....................................: exports a folder and all dashboards in it.
 ⤜ folder-import.....................................: imports a folder and its dashboards from an export file.
-⤜ get-dashboard-refresh-options.....................: shows current dashboard refresh options
-⤜ get-dashboard-tags................................: shows current dashboard tags
-⤜ folder-permissions................................: gets permissions for a folder
-⤜ get-theme.........................................: shows the current theme
 ⤜ folder-list.......................................: show id/uid/title of all folders.
+⤜ folder-permissions................................: gets permissions for a folder
+⤜ set-folder-refresh-options........................: sets refresh options for all dashboards in folder
+```
+##### Tags
+```dashboard
+⤜ add-dashboard-tags................................: adds tags to a dashboard
+⤜ add-folder-tags...................................: adds tags to all dashboards in a folder
+⤜ get-dashboard-tags................................: shows current dashboard tags
 ⤜ replace-dashboard-tags............................: replaces tags for a dashboard
 ⤜ replace-folder-tags...............................: replaces tags for all dashboards in a folder
-⤜ set-dashboard-refresh-options.....................: sets dashboard refresh options
-⤜ set-folder-refresh-options........................: sets refresh options for all dashboards in folder
-⤜ set-theme.........................................: sets the current theme
 ⤜ summarize-dashboard-tags..........................: shows a summary of all dashboards' tags.
+```
+##### Users
+```dashboard
 ⤜ user-list.........................................: looks up a user by email
+⤜ user-search.......................................: finds dashboard users
 ```
 #### acc
+##### Bundles
 ```acc
-⤜ add-package-bundles...............................: attaches bundles to a package (single PATCH, no draft/publish dance)
 ⤜ bundle-details....................................: gets bundle details
-⤜ create-package....................................: creates a new ACC package from typed args (UI new-package wizard equivalent)
-⤜ delete-package....................................: deletes a package
 ⤜ download-bundle...................................: downloads bundle
-⤜ download-package..................................: downloads a server-assembled tenant-stamped agent package tarball
-⤜ export-packages...................................: exports packages to a file
 ⤜ import-bundle.....................................: import bundle from a bundle tar.gz file
-⤜ import-packages...................................: import packages from an export file
 ⤜ initialize-bundle-directory.......................: initialize a prepared bundle directory
 ⤜ list-bundles......................................: lists acc bundles
-⤜ list-packages.....................................: lists acc packages
-⤜ package-builder-options...........................: lists valid environment combinations for create-package (UI 'new package' wizard data)
+```
+##### Package contents
+```acc
+⤜ add-package-bundles...............................: attaches bundles to a package (single PATCH, no draft/publish dance)
 ⤜ package-bundle-profile............................: fetches a single bundle's profile (property catalog + overrides) within a package
 ⤜ package-bundles...................................: gets package bundles
 ⤜ package-compatible-bundles........................: lists bundles compatible with a package (candidate add-bundle set)
-⤜ package-details...................................: gets package details
 ⤜ package-property-overrides........................: lists property overrides applied on top of bundle defaults for a package
 ⤜ package-required-bundles..........................: lists bundles required by a package (always-shipped framework set)
 ⤜ set-bundle-property...............................: sets a property override on a bundle within a package (single PATCH)
+```
+##### Packages
+```acc
+⤜ create-package....................................: creates a new ACC package from typed args (UI new-package wizard equivalent)
+⤜ delete-package....................................: deletes a package
+⤜ download-package..................................: downloads a server-assembled tenant-stamped agent package tarball
+⤜ export-packages...................................: exports packages to a file
+⤜ import-packages...................................: import packages from an export file
+⤜ list-packages.....................................: lists acc packages
+⤜ package-builder-options...........................: lists valid environment combinations for create-package (UI 'new package' wizard data)
+⤜ package-details...................................: gets package details
 ```
 #### vertex
 ```vertex
@@ -170,26 +203,27 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ bulk-patch-rollback...............................: rolls back a bulk-patch with a rollback file.
 ⤜ bulk-patch-schema.................................: generates the bulk-patch schema
 ⤜ generate-patch-from-csv...........................: generates a bulk-patch file from a CSV
+⤜ get-vertex-trace-summaries........................: retrieves trace summaries for vertices
+⤜ get-vertex-traces.................................: retrieves traces
 ⤜ patch-universe....................................: patch matching vertices in a universe
 ⤜ vertex-definition.................................: dumps vertex definition for a single vertex type
 ⤜ vertex-definitions................................: dumps all metric mappings for all vertices
-⤜ get-vertex-trace-summaries........................: retrieves trace summaries for vertices
-⤜ get-vertex-traces.................................: retrieves traces
 ⤜ vertex-type-metric-mapping........................: dumps metric mapping for a vertex type
 ```
 #### agent
 ```agent
-⤜ trace-summaries...................................: retrieves trace summaries for an agent
 ⤜ get-agent-traces..................................: retrieves traces
-⤜ licensing-config-generate.........................: creates a default licensingConfigFile to be modified for licensing-beta command.
 ⤜ licensing.........................................: generate licensing report
 ⤜ licensing-beta....................................: generate licensing report with configuration
+⤜ licensing-config-generate.........................: creates a default licensingConfigFile to be modified for licensing-beta command.
 ⤜ list..............................................: lists all agents
-⤜ statuses..........................................: lists all agents statuses
+⤜ list-lifecycle-events.............................: lists when the processes behind agents started, restarted, or changed identity (concurrent instances, name reassignments)
 ⤜ metric-count-summary..............................: retrieves metric counts for agents as csv
 ⤜ query-by-name.....................................: ensure a specific agent exists.
 ⤜ query-by-regex....................................: query by regex
+⤜ statuses..........................................: lists all agents statuses
 ⤜ trace.............................................: starts trace on specified agents
+⤜ trace-summaries...................................: retrieves trace summaries for an agent
 ```
 #### agentic
 ```agentic
@@ -206,20 +240,24 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ setup-claude......................................: One-command Claude Code onboarding: extract the Claude Code plugin to ~/.dxdo/claude/marketplace, manage readOnly profile marks, print the /plugin install block, run doctor.
 ```
 #### help
+##### General
 ```help
-⤜ agentic-mcp.......................................: Explains the `dx-do agentic mcp` stdio MCP server and how to wire it into Claude Code / Cursor / mcp-inspector.
-⤜ alarm-enrichment..................................: explains how vertex attributes, the custom-field registry, and enrichment rules line up, the order that decides which rule wins, and the preview-backed dry run.
-⤜ channels..........................................: explains notification channels vs policies vs templates, the supported channel kinds, and the dry-run / test / save flow of the channel write commands.
 ⤜ commands..........................................: explains commands.
 ⤜ commands-json.....................................: dumps every command as a machine-readable JSON manifest (safety, usage, args)
 ⤜ commands-md.......................................: explains commands in md format
 ⤜ commands-safety-md................................: emits a per-group command safety reference (markdown)
+⤜ describe..........................................: dumps one command as its full machine-readable manifest entry
+⤜ find..............................................: searches the command surface by task phrase and returns ranked candidates
+```
+##### Topics
+```help
+⤜ agentic-mcp.......................................: Explains the `dx-do agentic mcp` stdio MCP server and how to wire it into Claude Code / Cursor / mcp-inspector.
+⤜ alarm-enrichment..................................: explains how vertex attributes, the custom-field registry, and enrichment rules line up, the order that decides which rule wins, and the preview-backed dry run.
+⤜ bulk-patch........................................: explains vertex bulk-patch
+⤜ channels..........................................: explains notification channels vs policies vs templates, the supported channel kinds, and the dry-run / test / save flow of the channel write commands.
 ⤜ configuration.....................................: explains configuration
 ⤜ custom-situations.................................: explains situations as alarm clusters, the filter / root-cause / clustering parts of a custom situation policy, the dry-run preview flow, and why an update replaces the policy id.
 ⤜ dashboard.........................................: explains dashboard command setup.
-⤜ describe..........................................: dumps one command as its full machine-readable manifest entry
-⤜ find..............................................: searches the command surface by task phrase and returns ranked candidates
-⤜ bulk-patch........................................: explains vertex bulk-patch
 ⤜ inventorize.......................................: explains inventorize (Topology Creator) rules: when to create one, the sourceName matching dialect, folders and nesting, external IDs, and the JEXL context for custom attributes.
 ⤜ metric-types......................................: explains numericMetricType and enumMetricType for 'nass register-metric' and 'nass report-metric-value'.
 ⤜ slis..............................................: explains the SLI group / SLI / SLO / alert model and how to drive it with the sli commands.
@@ -229,13 +267,13 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ```
 #### alert
 ```alert
+⤜ analyze...........................................: analyzes an alert and it's threshold
+⤜ copy..............................................: copy an alert
+⤜ copy-with-metric-grouping.........................: copy an alert with it's metric grouping
 ⤜ create............................................: creates a new APM simple alert (dry-run by default)
+⤜ debug-by-management-module........................: debug all alerts in a management module.
 ⤜ delete............................................: deletes an APM alert (dry-run by default)
 ⤜ detail............................................: get alert definition
-⤜ analyze...........................................: analyzes an alert and it's threshold
-⤜ copy-with-metric-grouping.........................: copy an alert with it's metric grouping
-⤜ copy..............................................: copy an alert
-⤜ debug-by-management-module........................: debug all alerts in a management module.
 ⤜ disable...........................................: disable an alert.
 ⤜ disable-all.......................................: disable all alerts for a management module
 ⤜ enable............................................: enable an alert.
@@ -247,56 +285,73 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ```
 #### trace
 ```trace
-⤜ get-agent-traces..................................: retrieves traces
 ⤜ collect-threaddump................................: trigger a trace on an agent
+⤜ get-agent-traces..................................: retrieves traces
 ⤜ get-threaddump....................................: retrieve a previously collected threaddump
-⤜ query-threaddumps.................................: find threaddumps for an agent
-⤜ trace-details.....................................: get trace details for traceId
 ⤜ inject............................................: inject APM transaction trace(s) from a JSON file into the tracestore
 ⤜ inject-simple.....................................: inject a synthetic APM transaction trace into the tracestore using CLI arguments
+⤜ query-threaddumps.................................: find threaddumps for an agent
+⤜ trace-details.....................................: get trace details for traceId
 ```
 #### service
+##### General
 ```service
 ⤜ all-services......................................: shows all services
-⤜ delete-service....................................: deletes service (and optionally it's subservices)
-⤜ add-content.......................................: adds content queries to an existing service (dry-run by default)
-⤜ associate.........................................: associates a child service under a parent (AggregateOf edge; dry-run by default)
-⤜ create............................................: creates a service with content queries (dry-run by default; dry-run previews matching entities)
 ⤜ dependency-graph..................................: shows a dependency graph for a service
 ⤜ detail............................................: retrieves a service (optionally with its subservices) as json
-⤜ dissociate........................................: removes a parent→child association, keeping the child as a detached service (dry-run by default)
-⤜ export............................................: exports a single service to a re-importable JSON file
-⤜ export-hierarchy..................................: exports a service and its entire subtree (descendants + association edges) to a re-importable JSON file
-⤜ import............................................: imports a service export file (from export / export-hierarchy) into the tenant (dry-run by default)
 ⤜ inventory.........................................: shows inventory for a service
 ⤜ inventory-overlap.................................: shows inventory overlaps for services
 ⤜ metrics...........................................: dump the service metrics as json
 ⤜ overview..........................................: dump the service overview as json
-⤜ slis..............................................: show the service SLIs (and child service SLIs)
 ⤜ search............................................: show services matching search term
-⤜ set-content.......................................: replaces an existing service’s content queries (dry-run by default; no content clears all)
-⤜ update-service....................................: updates a service’s attributes — description, location, tags, properties (dry-run by default; name and type are fixed at creation)
+⤜ slis..............................................: show the service SLIs (and child service SLIs)
 ⤜ top-level-services................................: shows top level services
 ```
+##### Create and edit
+```service
+⤜ add-content.......................................: adds content queries to an existing service (dry-run by default)
+⤜ create............................................: creates a service with content queries (dry-run by default; dry-run previews matching entities)
+⤜ delete-service....................................: deletes service (and optionally it's subservices)
+⤜ set-content.......................................: replaces an existing service’s content queries (dry-run by default; no content clears all)
+⤜ update-service....................................: updates a service’s attributes — description, location, tags, properties (dry-run by default; name and type are fixed at creation)
+```
+##### Hierarchy
+```service
+⤜ associate.........................................: associates a child service under a parent (AggregateOf edge; dry-run by default)
+⤜ dissociate........................................: removes a parent→child association, keeping the child as a detached service (dry-run by default)
+```
+##### Import and export
+```service
+⤜ export............................................: exports a single service to a re-importable JSON file
+⤜ export-hierarchy..................................: exports a service and its entire subtree (descendants + association edges) to a re-importable JSON file
+⤜ import............................................: imports a service export file (from export / export-hierarchy) into the tenant (dry-run by default)
+```
 #### inventory
+##### General
 ```inventory
 ⤜ attributes........................................: list all available attributes
+⤜ layers............................................: lists all topology layers with a count of entities on each layer
+⤜ lookup............................................: searches inventory using free text search, be aware that this may not support all product sources
+⤜ metrics...........................................: finds metrics associated with inventory
+⤜ search............................................: searches inventory
+⤜ sources...........................................: lists all sources of inventory items
+```
+##### Inventorize rules
+```inventory
 ⤜ create-inventorize-rule...........................: saves (creates or updates) a rule that materializes inventory from metrics; dryrun mode by default, set mode=create to execute.
 ⤜ create-inventorize-rule-from-file.................: installs a locally saved inventorize rule draft onto the bound tenant; dryrun mode by default, set mode=create to execute.
 ⤜ delete-inventorize-rule...........................: deletes an inventorize rule
 ⤜ list-inventorize-rules............................: shows rules for creating inventory from metrics
+```
+##### Queues
+```inventory
 ⤜ create-queue......................................: creates an inventory queue: a saved Monitored Inventory filter with grouping and columns (dry-run by default)
 ⤜ delete-queue......................................: permanently deletes an inventory queue (dry-run by default)
-⤜ layers............................................: lists all topology layers with a count of entities on each layer
 ⤜ list-queues.......................................: lists the inventory queues (saved filters of the Monitored Inventory page)
-⤜ lookup............................................: searches inventory using free text search, be aware that this may not support all product sources
-⤜ metrics...........................................: finds metrics associated with inventory
 ⤜ queue-detail......................................: dumps one inventory queue definition
 ⤜ queue-fields......................................: lists the attributes an inventory queue can match on (all=true: every attribute usable as a column)
 ⤜ queue-groups......................................: lists the group-by choices of the Monitored Inventory page
-⤜ search............................................: searches inventory
 ⤜ set-queue-preferences.............................: pins / unpins an inventory queue or makes it the default (dry-run by default)
-⤜ sources...........................................: lists all sources of inventory items
 ⤜ update-queue......................................: updates an inventory queue: omitted fields keep their values (dry-run by default)
 ```
 #### audit
@@ -306,79 +361,105 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ```
 #### auth
 ```auth
-⤜ list-users........................................: lists user accounts for the tenant
 ⤜ current...........................................: shows auth of current token
 ⤜ list-groups.......................................: shows all authentication group names
+⤜ list-users........................................: lists user accounts for the tenant
 ⤜ user-search.......................................: searches for users
 ⤜ validate-configuration-keys.......................: validates keys
 ```
 #### config
 ```config
 ⤜ base64............................................: prints the bound tenant configuration as the base64 value DXDO_CONFIGURATION expects (the output is a credential)
-⤜ create............................................: create a new tenant configuration profile (interactive on a TTY, or non-interactive via gatewayHost=/userToken=/cohortId=)
-⤜ doctor............................................: Health checks for this installation: binary version and PATH, tenant profiles, shell completion.
 ⤜ connector.........................................: shows connector config for tenant
+⤜ create............................................: create a new tenant configuration profile (interactive on a TTY, or non-interactive via gatewayHost=/userToken=/cohortId=)
 ⤜ debug.............................................: shows configuration details
 ⤜ debug-token.......................................: shows decoded token
+⤜ doctor............................................: Health checks for this installation: binary version and PATH, tenant profiles, shell completion.
 ⤜ generate-agent-token..............................: generates an agent token
 ⤜ generate-user-token...............................: generates an user token
 ⤜ upgrade...........................................: upgrade legacy dx-do configuration to current version
 ```
 #### axa
+##### Applications
 ```axa
-⤜ bulk-servicify....................................: creates service and universe for 'orphaned' AXA applications
+⤜ create-application................................: creates a new AXA application definition.
+⤜ delete-application................................: delete an existing AXA application.
+⤜ get-application-ba-extension......................: gets AXA BrowserAgent extension javascript.
+⤜ get-application-snippet...........................: gets AXA BrowserAgent snippet for an application
+⤜ list-applications.................................: lists all AXA application names/keys
+⤜ upload-application-ba-extension...................: upload new custom AXA BrowserAgent extension javascript.
+```
+##### Business activities
+```axa
+⤜ create-activity...................................: create a business activity for an AXA Application
+⤜ list-activities...................................: lists the business activities defined for an AXA Application
+⤜ list-screens......................................: lists the screens available for business activities defined for an AXA Application
+⤜ show-activity-tree................................: shows activity tree from session events
+```
+##### Crashes
+```axa
 ⤜ crash-all.........................................: list all crashes
 ⤜ crash-detail......................................: get details for a crash
 ⤜ crash-list-by-group...............................: list crashes by group
 ⤜ crash-summary.....................................: summary of crashes
-⤜ create-activity...................................: create a business activity for an AXA Application
-⤜ create-application................................: creates a new AXA application definition.
-⤜ delete-application................................: delete an existing AXA application.
-⤜ dump-sessions-events..............................: dumps filtered AXA session events
+```
+##### Profiles
+```axa
 ⤜ export-profile....................................: exports a AXA data collection profile
-⤜ get-application-ba-extension......................: gets AXA BrowserAgent extension javascript.
 ⤜ get-application-profile...........................: gets the profile/id for an AXA Application
-⤜ get-application-snippet...........................: gets AXA BrowserAgent snippet for an application
 ⤜ import-profile....................................: import a AXA data collection profile
-⤜ list-activities...................................: lists the business activities defined for an AXA Application
-⤜ list-applications.................................: lists all AXA application names/keys
 ⤜ list-profiles.....................................: lists all AXA data collection profiles
-⤜ list-screens......................................: lists the screens available for business activities defined for an AXA Application
-⤜ list-sessions.....................................: dumps filtered AXA session events
-⤜ servicify-application.............................: creates service and universe for 'orphaned' AXA applications
 ⤜ set-application-profile...........................: sets the profile by id for an AXA Application
-⤜ show-activity-tree................................: shows activity tree from session events
-⤜ show-application-service-mapping..................: lists all AXA application names and their associated services
 ⤜ update-profile....................................: updates a AXA data collection profile
-⤜ upload-application-ba-extension...................: upload new custom AXA BrowserAgent extension javascript.
+```
+##### Service mapping
+```axa
+⤜ bulk-servicify....................................: creates service and universe for 'orphaned' AXA applications
+⤜ servicify-application.............................: creates service and universe for 'orphaned' AXA applications
+⤜ show-application-service-mapping..................: lists all AXA application names and their associated services
+```
+##### Sessions
+```axa
+⤜ dump-sessions-events..............................: dumps filtered AXA session events
+⤜ list-sessions.....................................: dumps filtered AXA session events
 ```
 #### channel
+##### General
+```channel
+⤜ export-all........................................: exports every channel, policy, and template to a file (the input of `channel import`)
+⤜ import............................................: imports channels, templates, and policies from a `channel export-all` file — into the same or another tenant (dry-run by default)
+```
+##### Channels
 ```channel
 ⤜ create-email-channel..............................: creates an email (SMTP) notification channel (dry-run by default)
-⤜ create-policy.....................................: creates a notification policy: which alarms go to which channels (dry-run by default)
 ⤜ create-service-now-integration....................: creates a ServiceNow ticketing (ITSM) integration (dry-run by default)
 ⤜ create-webhook-channel............................: creates a generic webhook notification channel (dry-run by default)
 ⤜ delete-channel....................................: permanently deletes a notification channel of any protocol (dry-run by default)
-⤜ delete-policy.....................................: permanently deletes a notification policy (dry-run by default)
-⤜ delete-template...................................: permanently deletes a message template (dry-run by default; refuses templates in use)
-⤜ list-policy-fields................................: lists the alarm fields (and closed vocabularies) a policy filter can match on, per alarm category
-⤜ list-template-variables...........................: lists the ${variable} placeholders message templates and webhook payloads can use, per alarm category
+⤜ disable-channel...................................: disable a channel
+⤜ enable-channel....................................: enable a channel
+⤜ export............................................: exports one channel as JSON, optionally with the policies that deliver to it
+⤜ list..............................................: lists all channels
 ⤜ update-email-channel..............................: updates an email (SMTP) notification channel — omitted fields keep their values (dry-run by default)
-⤜ update-policy.....................................: updates a notification policy — omitted fields keep their values (dry-run by default)
 ⤜ update-service-now-integration....................: updates a ServiceNow ticketing (ITSM) integration — omitted fields keep their values (dry-run by default)
 ⤜ update-webhook-channel............................: updates a generic webhook notification channel — omitted fields keep their values (dry-run by default)
+```
+##### Policies
+```channel
+⤜ create-policy.....................................: creates a notification policy: which alarms go to which channels (dry-run by default)
+⤜ delete-policy.....................................: permanently deletes a notification policy (dry-run by default)
+⤜ list-policies.....................................: lists all channel policies
+⤜ list-policy-fields................................: lists the alarm fields (and closed vocabularies) a policy filter can match on, per alarm category
+⤜ policy-detail.....................................: describes details for policy
+⤜ update-policy.....................................: updates a notification policy — omitted fields keep their values (dry-run by default)
+```
+##### Templates
+```channel
 ⤜ create-template...................................: creates a message template for channels (dry-run by default)
 ⤜ create-velocity-map-from-csv......................: creates a velocity map for use for advanced templates
 ⤜ create-velocity-maps-from-csv.....................: creates multiple velocity maps for use for advanced templates
-⤜ disable-channel...................................: disable a channel
-⤜ enable-channel....................................: enable a channel
-⤜ export-all........................................: exports every channel, policy, and template to a file (the input of `channel import`)
-⤜ export............................................: exports one channel as JSON, optionally with the policies that deliver to it
-⤜ import............................................: imports channels, templates, and policies from a `channel export-all` file — into the same or another tenant (dry-run by default)
-⤜ list..............................................: lists all channels
-⤜ list-policies.....................................: lists all channel policies
+⤜ delete-template...................................: permanently deletes a message template (dry-run by default; refuses templates in use)
+⤜ list-template-variables...........................: lists the ${variable} placeholders message templates and webhook payloads can use, per alarm category
 ⤜ list-templates....................................: lists all channel templates
-⤜ policy-detail.....................................: describes details for policy
 ⤜ update-template...................................: updates a message template — omitted fields keep their values (dry-run by default)
 ```
 #### completion
@@ -393,19 +474,19 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ create............................................: creates an experience
 ⤜ dashboard.........................................: summarizes experience dashboard
 ⤜ delete............................................: delete an experience carefully
-⤜ mapping...........................................: shows mapping from Experience Top-Level to Settings ID
-⤜ report............................................: reports on various parts of an experience hierarchy.
-⤜ settings..........................................: lists Experience settings
 ⤜ export............................................: exports an experience configuration
 ⤜ import............................................: imports an experience configuration from file 
 ⤜ list..............................................: lists Experience names & ids 
+⤜ mapping...........................................: shows mapping from Experience Top-Level to Settings ID
+⤜ report............................................: reports on various parts of an experience hierarchy.
+⤜ settings..........................................: lists Experience settings
 ⤜ summarize.........................................: summarizes an experience
 ```
 #### sql
 ```sql
 ⤜ date-to-timestamp.................................: converts dates to timestamps for use in queries
-⤜ query.............................................: executes an APM sql query
 ⤜ examples..........................................: shows example queries
+⤜ query.............................................: executes an APM sql query
 ```
 #### blob
 ```blob
@@ -447,11 +528,11 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ```
 #### metricgrouping
 ```metricgrouping
-⤜ list-metrics......................................: lists all live metrics in metric grouping
-⤜ list-by-managementmodule..........................: lists all metric groupings in management modules.
 ⤜ create............................................: creates a new APM metric grouping (dry-run by default)
 ⤜ delete............................................: deletes an APM metric grouping (dry-run by default)
 ⤜ detail............................................: get full detail of an APM metric grouping
+⤜ list-by-managementmodule..........................: lists all metric groupings in management modules.
+⤜ list-metrics......................................: lists all live metrics in metric grouping
 ⤜ update............................................: updates an existing APM metric grouping (dry-run by default)
 ```
 #### asm
@@ -478,15 +559,30 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ```
 #### managementmodule
 ```managementmodule
-⤜ export............................................: exports a management module and its metric groupings, alerts and calculators.
-⤜ import............................................: imports a management module from json
-⤜ list..............................................: lists all management modules.
 ⤜ copy..............................................: copy a management module.
 ⤜ create............................................: creates a management module.
 ⤜ delete............................................: delete a management module
 ⤜ download..........................................: downloads a management module
+⤜ export............................................: exports a management module and its metric groupings, alerts and calculators.
+⤜ import............................................: imports a management module from json
+⤜ list..............................................: lists all management modules.
 ⤜ list-calculators..................................: lists calculators in a management module
 ⤜ update............................................: updates a management module.
+```
+#### metric
+##### Anomaly detection
+```metric
+⤜ create-anomaly-detection-group....................: creates a metric anomaly-detection group from product-scoped metric filters, previewing the matching metrics (dry-run by default)
+⤜ delete-anomaly-detection-group....................: permanently deletes a metric anomaly-detection group (dry-run by default)
+⤜ disable-anomaly-detection-group...................: turns anomaly detection off for an anomaly-detection group, keeping its definition
+⤜ enable-anomaly-detection-group....................: turns anomaly detection on for an anomaly-detection group
+⤜ list-anomaly-detection-groups.....................: lists the metric anomaly-detection groups and the tenant anomaly-detection metric budget
+⤜ update-anomaly-detection-group....................: changes an anomaly-detection group's name, description, product or filters, previewing the matching metrics (dry-run by default)
+```
+##### Data description
+```metric
+⤜ describe-behavior.................................: describes one metric over a range: resolution, coverage, normal range, character, structure (day levels, weekly profile, sustained departures) and excursions, as facts in units
+⤜ roll-up...........................................: returns one metric rolled up at query time to a bounded number of buckets, with the min / max envelope
 ```
 #### o2-alert
 ```o2-alert
@@ -527,8 +623,8 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 #### nass
 ```nass
 ⤜ query.............................................: executes a nass query from file containing nassql query json
-⤜ query-metadata-by-ids.............................: executes a nass metadata query
 ⤜ query-metadata....................................: executes a nass metadata query
+⤜ query-metadata-by-ids.............................: executes a nass metadata query
 ⤜ query-metric-data.................................: executes a nass metric data query
 ⤜ register-and-report...............................: register a metric and store a single datapoint for it at the current time
 ⤜ register-metric...................................: register a metric in the NASS metadata store
@@ -537,23 +633,32 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ update-metadata-attribute.........................: update a single metadata attribute on a metric
 ```
 #### situation
+##### General
 ```situation
-⤜ query.............................................: finds situations
 ⤜ alarm-data........................................: provides the situation alarm data
-⤜ create-custom-situation-policy....................: creates a custom situation policy controlling how alarms cluster into situations (dry-run by default)
-⤜ delete-custom-situation-policy....................: permanently deletes a custom situation policy (dry-run by default)
 ⤜ detail............................................: show details for situation
-⤜ detail-custom-situation-policy....................: shows one custom situation policy: its filter, root-cause filter, clustering fields and windows
-⤜ disable-algorithmic-situations....................: turns OFF tenant-wide algorithmic situations so custom situation policies take effect (dry-run by default)
-⤜ enable-algorithmic-situations.....................: turns ON tenant-wide algorithmic situations, which overrides custom situation policies (dry-run by default)
 ⤜ inspect...........................................: provides entire situation inspection json
 ⤜ inspect-alarms....................................: provides alarms from situation inspection 
+⤜ query.............................................: finds situations
+⤜ summary...........................................: show the generative AI summary for a situation
+⤜ trigger-webhook...................................: triggers a webhook for a situation
+```
+##### Algorithmic situations
+```situation
+⤜ disable-algorithmic-situations....................: turns OFF tenant-wide algorithmic situations so custom situation policies take effect (dry-run by default)
+⤜ enable-algorithmic-situations.....................: turns ON tenant-wide algorithmic situations, which overrides custom situation policies (dry-run by default)
+⤜ show-clustering-config............................: shows the tenant-wide clustering configuration that governs how situations are formed
+```
+##### Custom situation policies
+```situation
+⤜ create-custom-situation-policy....................: creates a custom situation policy controlling how alarms cluster into situations (dry-run by default)
+⤜ delete-custom-situation-policy....................: permanently deletes a custom situation policy (dry-run by default)
+⤜ detail-custom-situation-policy....................: shows one custom situation policy: its filter, root-cause filter, clustering fields and windows
+⤜ export-custom-situation-policies..................: exports custom situation policies to a re-importable JSON file (or stdout)
+⤜ import-custom-situation-policies..................: imports custom situation policies from an export file, checking each against this tenant (dry-run by default)
 ⤜ list-custom-situation-policies....................: lists the custom situation policies that control how alarms are clustered into situations
 ⤜ list-policy-fields................................: lists the alarm fields, clustering fields and naming operations a custom situation policy can use
 ⤜ preview-custom-situation-policy...................: replays an existing custom situation policy over recent alarms: how many matched and what it would have clustered
-⤜ show-clustering-config............................: shows the tenant-wide clustering configuration that governs how situations are formed
-⤜ summary...........................................: show the generative AI summary for a situation
-⤜ trigger-webhook...................................: triggers a webhook for a situation
 ⤜ update-custom-situation-policy....................: updates a custom situation policy; an update can replace the policy id (dry-run by default)
 ```
 #### service-universe
@@ -568,24 +673,34 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ update............................................: updates a service universe (dry-run by default)
 ```
 #### sli
+##### General
 ```sli
-⤜ add-alert.........................................: adds an alert on one of an SLI's produced metrics: the SLI itself, its SLO percentage, or its error budget (dry-run by default)
-⤜ add-sli...........................................: adds an SLI (a computed service-level metric) to an existing SLI group (dry-run by default)
-⤜ add-slo...........................................: adds an SLO (objective + error budget) derived from an existing SLI (dry-run by default)
-⤜ create-group......................................: creates an SLI group with its first SLI: metric filters, a service binding, and the SLI computation (dry-run by default)
-⤜ delete-group......................................: permanently deletes an SLI group and everything in it: its SLIs, SLOs, and alerts (dry-run by default)
-⤜ exclude-service...................................: removes a service from an existing SLI group's bound services (dry-run by default)
 ⤜ export............................................: exports a single SLI group to a raw, re-importable JSON file (or stdout)
 ⤜ filter-test.......................................: read-only filter workbench: lists the filterable metric attributes for services and previews what a filter combination matches
 ⤜ import............................................: imports a raw SLI group export into the tenant, substituting ${serviceName} and binding it to serviceName (dry-run by default)
-⤜ include-service...................................: adds a service to an existing SLI group's bound services (dry-run by default)
 ⤜ list-groups.......................................: lists the SLI groups (of SLIs, SLOs, and related alerts) configured in the tenant
-⤜ remove-alert......................................: removes an alert from an SLI (dry-run by default)
-⤜ remove-sli........................................: removes an SLI from a group, cascading to its SLO and alerts (dry-run by default)
-⤜ remove-slo........................................: removes an SLI's SLO (objective, percentage, and error budget) from a group (dry-run by default)
-⤜ set-group-filter..................................: replaces an SLI group's metric filters, previewing the resulting metric matches (dry-run by default)
-⤜ set-sli-filter....................................: replaces one SLI's refinement filter, previewing the resulting metric matches (dry-run by default)
 ⤜ status............................................: surfaces SLI groups with registration problems (sliStatusCode != 0)
+```
+##### Groups
+```sli
+⤜ create-group......................................: creates an SLI group with its first SLI: metric filters, a service binding, and the SLI computation (dry-run by default)
+⤜ delete-group......................................: permanently deletes an SLI group and everything in it: its SLIs, SLOs, and alerts (dry-run by default)
+⤜ exclude-service...................................: removes a service from an existing SLI group's bound services (dry-run by default)
+⤜ include-service...................................: adds a service to an existing SLI group's bound services (dry-run by default)
+⤜ set-group-filter..................................: replaces an SLI group's metric filters, previewing the resulting metric matches (dry-run by default)
+```
+##### SLIs
+```sli
+⤜ add-sli...........................................: adds an SLI (a computed service-level metric) to an existing SLI group (dry-run by default)
+⤜ remove-sli........................................: removes an SLI from a group, cascading to its SLO and alerts (dry-run by default)
+⤜ set-sli-filter....................................: replaces one SLI's refinement filter, previewing the resulting metric matches (dry-run by default)
+```
+##### SLOs and alerts
+```sli
+⤜ add-alert.........................................: adds an alert on one of an SLI's produced metrics: the SLI itself, its SLO percentage, or its error budget (dry-run by default)
+⤜ add-slo...........................................: adds an SLO (objective + error budget) derived from an existing SLI (dry-run by default)
+⤜ remove-alert......................................: removes an alert from an SLI (dry-run by default)
+⤜ remove-slo........................................: removes an SLI's SLO (objective, percentage, and error budget) from a group (dry-run by default)
 ```
 #### tenant
 ```tenant
