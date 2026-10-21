@@ -1,3 +1,17 @@
+## 7.15.0 (2026-10-21)
+
+### 🚀 Features
+
+- **cli:** run the command audit only for TA user tokens
+
+### 🩹 Fixes
+
+- **security:** redact credentials in JSON-text request bodies
+
+### ❤️ Thank You
+
+- zoobroker
+
 ## 7.14.0 (2026-10-20)
 
 ### 🚀 Features
