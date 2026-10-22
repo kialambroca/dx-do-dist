@@ -1,3 +1,28 @@
+## 7.16.0 (2026-10-22)
+
+### 🚀 Features
+
+- **cli,client:** alarm export — every alarm of a long range to JSONL or CSV
+- **client:** return services' customProperties from the service list
+
+### 🩹 Fixes
+
+- **client:** service list paging stops on an empty page and honours a cap
+- **client:** read alarm ranges over 1000 in windows; consolidate the alarm search
+- **client:** read whole alarm and situation lifecycles
+- **corpus,client:** reach saService vertices in TAS; accept layer: null
+- **security:** config debug no longer prints profile secrets
+- **session-core,ui:** explicit limits pass the full-scan guard; show why a run failed
+- **ui:** discovery pickers follow a tenant switch
+
+### 📖 Documentation
+
+- **corpus:** services on the SA layer, tag and property matching, collector limits
+
+### ❤️ Thank You
+
+- zoobroker
+
 ## 7.15.0 (2026-10-21)
 
 ### 🚀 Features

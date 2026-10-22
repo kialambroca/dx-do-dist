@@ -56,7 +56,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 #### Output
 
 ```
-ℹ  info      dx-do v7.15.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
+ℹ  info      dx-do v7.16.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ⚠  warning   no tenant profile configured — run 'dx-do config create alias=default gatewayHost=... userToken=... cohortId=...'
@@ -75,6 +75,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ clear.............................................: clears an alarm
 ⤜ create-alarm......................................: creates an alarm via jarvis ingestion
 ⤜ detail............................................: dumps alarm details
+⤜ export............................................: exports every alarm of a time range to JSONL or CSV, streaming
 ⤜ lifecycle.........................................: shows alarm lifecycle
 ⤜ list..............................................: lists alarms
 ⤜ related...........................................: gets related alarms
