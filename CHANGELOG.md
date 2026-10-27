@@ -1,3 +1,145 @@
+## 7.17.0 (2026-10-27)
+
+### 🚀 Features
+
+- **cli:** service bulk-update — one edit across many services (SVB-P1)
+- **cli:** service import is safe across tenants (SVB-P1)
+- **client:** plan and commit multi-service edits in one save (SVB-P1)
+- **explore:** ranking and rank then fetch
+- **explore:** one set across several metric names
+- **explore:** bucket token and counts per second, per minute, running total
+- **explore:** fold a split into a coarser part
+- **explore:** split by entity attribute, one alias per value
+- **explore:** name and describe an exploration
+- **explore:** copy a debug snapshot of a panel
+- **explore:** one editor per calculation, Save when new or changed
+- **explore:** a Series section; the split leaves the caption
+- **explore:** the chart legend as its own widget
+- **explore:** axis values in three digits, decimal or binary
+- **explore:** text sets as event lanes beside the plot
+- **explore:** Event display popover and summary lanes
+- **explore:** a Metric path card, broken down by part
+- **explore:** a second y axis, and which metrics sit on it
+- **explore:** series names from a token template
+- **explore:** the time control, presets plus keyboard-first duration and anchor
+- **explore:** a global range, and scope and data windows that inherit or adjust from their parent
+- **explore:** entity scoping is here and now, with a warning on past windows
+- **explore:** open a result card in a dialog with its full list, filter and sort
+- **explore:** colour the search cards' titles and pickable rows
+- **explore:** peek at a pick's members from its count
+- **explore:** peek on click, entities as an attribute table, wider source host card
+- **explore:** display filters hide static series, or series always above or below a threshold
+- **explore:** Liquid name templates with a closed filter set
+- **explore:** series groups in the definition, run per group and merged
+- **explore:** series groups in the panel: another split, per-group names, ranking and List
+- **explore:** every series group can add up into a coarser part
+- **explore:** name templates edit in a dialog; a saved one reads as words in the row
+- **explore:** the name template dialog shows the first 10 series' input values
+- **explore:** a service scope keeps the services' own health, SLO and SLI metrics
+- **explore:** a gauge the user says counts up shows its change per second or minute
+- **explore:** derived picks, key transfer: these entities' hosts as one pick
+- **explore:** a "Hosts of" pick brings the entities on its hosts, so entity picks narrow after it
+- **explore:** derived picks, graph relations: related entities n–m hops away
+- **explore:** derived picks, service hierarchy: sub-services, parents, ancestors, siblings, services containing
+- **explore:** service-hierarchy picks without sub-services
+- **explore:** "Exploration:" before a named exploration's title
+- **explore:** scopes phase 1: a definition holds more scopes, each run side by side
+- **explore:** scopes phase 2a: the Scopes stack and its entry points
+- **explore:** scopes phase 2b: a panel with more than one scope saves as a version-2 file
+- **explore:** scopes phase 3: sets per scope, and every scope drawn apart
+- **explore:** scopes phase 4: calculations across scopes
+- **explore:** scopes follow-ups: keys two scopes share, counts per scope, a {{ scope }} name token (#1208, #1209, #1210)
+- **explore:** pair a cross-scope calculation key by key
+- **explore:** read an offset window beside a run, on the same keys
+- **explore:** overlay an offset window on Lines
+- **explore:** Lines as one chart per series; tooltips round
+- **explore:** the metric filter sits under Metrics, and the list folds away
+- **explore:** before and after in List and Number
+- **explore:** List columns size and resize; before-and-after bars go log past 100x
+- **explore:** a panel's name always follows "Exploration:"; new ones are "New Exploration #n"
+- **explore:** ask before losing unsaved work
+- **explore:** ask before a tenant switch closes unsaved work
+- **explore:** time controls say what they drive, and the window popover leads with durations
+- **explore:** unsaved drafts survive a reload
+- **explore:** a panel is named from what it reads and where
+- **explore:** split by each entity in scope
+- **explore:** split choices say how many lines they draw
+- **explore:** clearer words, saved state, a running state and labelled numbers
+- **explore:** a filling last bucket is drawn faded, and metric rows say + Add
+- **explore:** the metric list comes before the "Narrow to" cards
+- **explore:** + Chart on a metric in search adds it without narrowing
+- **explore:** a set's size says the lines it drew
+- **explore:** say when the comparison is in coarser buckets, and match them
+- **explore:** keep/except on a labelled switch, and plainer scope words
+- **explore:** a new metric runs in every scope that has it
+- **harness:** --follow-up resumes the session with a second turn
+- **mcp:** a result budget: over 40k characters a tool result is cut and summarized, never sent raw
+- **platform-sanity:** fixture and probes for Explore result shaping
+- **platform-sanity:** Explore's compiled definitions against the facts
+- **queries:** run_query errors say what to send instead
+- **session-core:** result shaping core and scale for Explore
+- **ui:** Explore stage 1 — scope stack, pick, shape, calculate, save and reopen
+- **ui:** Explore result shapes, Lines · List · Number with a caption of tokens
+- **ui:** Explore names series from the parts that vary
+
+### 🩹 Fixes
+
+- **alarms:** list_alarms filters return filtered alarms instead of a 400
+- **client:** name specifiers require REGEX.pattern / EXACT.names; query_schema knows their ops
+- **corpus:** data.time, empty GROUP, and a TRAVERSE example that works
+- **deps:** align qs direct dep with override so npm ls passes
+- **explore:** anchor caption dropdowns to their word
+- **explore:** draw a line in every candidate preview that has data
+- **explore:** Lines draw sparse series
+- **explore:** entity cards list only entities with metrics in the focus
+- **explore:** 20% headroom above the highest value on the Lines axis
+- **explore:** name text lanes by the source and path parts that differ
+- **explore:** offer the name rows for a single series too
+- **explore:** the time control keeps how a custom range was built
+- **explore:** the anchor focuses on click, has a calendar, and inherit sits beside the date
+- **explore:** warn about entity picks when the data window is past too
+- **explore:** results close on click, part chips read as examples, dashed right-axis lines
+- **explore:** series groups as aligned rows, name rows say whose names, another split stays
+- **explore:** drop the Result heading
+- **explore:** the template dialog shows its input values from the start
+- **explore:** their hosts and related as outlined buttons; a derived chip's inner picks read like chips
+- **explore:** series groups share one bucket size
+- **explore:** scopes: a click anywhere on a row switches to it, names follow the picks, chart settings per scope
+- **explore:** "+ same metric, another name" on a set, with a tooltip
+- **explore:** a right-axis line's offset window is dashed like it
+- **explore:** an offset window takes its line's colour
+- **explore:** the offset window's thin line is dotted
+- **explore:** an offset window in coarser buckets lines up and covers the range
+- **explore:** say how series are combined, and make calculations divide what the sets draw
+- **harness:** lab reset never touches others' services; svb-efficacy baseline
+- **nassql:** unknown-column 400s explain the measured cause; the corpus stops saying time.bucket
+- **service:** service overview marks listed metrics that hold no data, and says why
+- **ui:** a ui start config= server stays on its tenant; re-binds are refused unless rebind=allow
+
+### 📖 Documentation
+
+- define "agentic dx-do" vs "dev session" in CLAUDE.md
+- track the datastore 2.25 observations page
+- **client:** probe multi-service sa/save semantics (SVB-P1)
+- **client:** probe the largest multi-service save and the service cap (SVB-P1)
+- **client:** the service cap is exactly 2000 and rejects crossing saves whole (SVB-P1)
+- **client:** cross-tenant service import keeps foreign metrics (SVB-P1)
+- **crc:** park the post-MBX-P2 corpus reconciliation findings
+- **explore:** Series section, time windows and the time control
+- **explore:** time windows as parents and transforms (§3.6 amendment)
+- **explore:** derived picks pre-read for the #1057 decision
+- **explore:** the scopes model for #1155, after the Opus and Fable review
+- **internal:** NASSQL KEEP on entity and metric attributes
+
+### ✅ Tests
+
+- **harness:** svb-efficacy prompts with a lab snapshot/restore runner (SVB-P1)
+
+### ❤️ Thank You
+
+- Ki Alam
+- zoobroker
+
 ## 7.16.0 (2026-10-22)
 
 ### 🚀 Features

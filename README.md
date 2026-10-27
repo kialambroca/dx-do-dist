@@ -56,7 +56,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 #### Output
 
 ```
-ℹ  info      dx-do v7.16.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
+ℹ  info      dx-do v7.17.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ⚠  warning   no tenant profile configured — run 'dx-do config create alias=default gatewayHost=... userToken=... cohortId=...'
@@ -311,6 +311,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ##### Create and edit
 ```service
 ⤜ add-content.......................................: adds content queries to an existing service (dry-run by default)
+⤜ bulk-update.......................................: applies one set of edits (tags, custom properties, location, description) to every service a selector picks, in one save (dry-run by default)
 ⤜ create............................................: creates a service with content queries (dry-run by default; dry-run previews matching entities)
 ⤜ delete-service....................................: deletes service (and optionally it's subservices)
 ⤜ set-content.......................................: replaces an existing service’s content queries (dry-run by default; no content clears all)
@@ -325,7 +326,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ```service
 ⤜ export............................................: exports a single service to a re-importable JSON file
 ⤜ export-hierarchy..................................: exports a service and its entire subtree (descendants + association edges) to a re-importable JSON file
-⤜ import............................................: imports a service export file (from export / export-hierarchy) into the tenant (dry-run by default)
+⤜ import............................................: imports a service export file (from export / export-hierarchy) into this tenant or another one (dry-run by default)
 ```
 #### inventory
 ##### General
