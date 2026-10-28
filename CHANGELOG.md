@@ -1,3 +1,25 @@
+## 7.17.1 (2026-10-28)
+
+### 🚀 Features
+
+- **explore:** preview a metric's series from its count; hover says type and reducer
+
+### 🩹 Fixes
+
+- **cli:** service import keeps children of a single-service export
+- **explore:** a set's scope chips use the scope's shown name
+- **explore:** a caption token's panel shows on the first click
+
+### 📖 Documentation
+
+- **explore:** training video pipeline and video 1 storyboard
+- **explore:** training videos 02 (worst offenders) and 03 (two scopes)
+- **explore:** training videos 04 (events), 05 (usage vs request, name templates), 06 (traffic and response time)
+
+### ❤️ Thank You
+
+- zoobroker
+
 ## 7.17.0 (2026-10-27)
 
 ### 🚀 Features
