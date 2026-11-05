@@ -56,7 +56,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 #### Output
 
 ```
-ℹ  info      dx-do v7.17.1 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
+ℹ  info      dx-do v7.18.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ⚠  warning   no tenant profile configured — run 'dx-do config create alias=default gatewayHost=... userToken=... cohortId=...'
@@ -91,6 +91,8 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ enrichment-fields.................................: lists the alarm fields an enrichment rule can match on
 ⤜ enrichment-rule-detail............................: shows one alarm enrichment rule, its match filter, mappings and evaluation position
 ⤜ explain-enrichment-rules..........................: gives an simplified explanation of enrichment rules
+⤜ export-enrichment-rules...........................: exports the tenant's alarm enrichment rules and custom-slot bindings to a file for import-enrichment-rules
+⤜ import-enrichment-rules...........................: imports alarm enrichment rules from an export file, matching by name and keeping the target order (dry-run by default)
 ⤜ list-enrichment-custom-fields.....................: lists the custom alarm slots enrichment can write to and what each one holds
 ⤜ list-enrichment-rules.............................: lists alarm enrichment rules in evaluation order
 ⤜ register-enrichment-custom-field..................: binds a custom alarm slot to an attribute name so enrichment rules can use it (dry-run by default)
@@ -302,6 +304,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ detail............................................: retrieves a service (optionally with its subservices) as json
 ⤜ inventory.........................................: shows inventory for a service
 ⤜ inventory-overlap.................................: shows inventory overlaps for services
+⤜ list..............................................: lists the services in the tenant, optionally filtered by name
 ⤜ metrics...........................................: dump the service metrics as json
 ⤜ overview..........................................: dump the service overview as json
 ⤜ search............................................: show services matching search term

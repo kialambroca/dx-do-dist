@@ -1,3 +1,110 @@
+## 7.18.0 (2026-11-05)
+
+### 🚀 Features
+
+- **audit:** no command-audit record for an agent on a read-policy tenant
+- **cli:** export and import alarm enrichment rules across tenants (ENR-P1)
+- **cli:** service list, with filter=; all-services is deprecated
+- **explore:** services containing a set, and their parents
+- **explore:** an SLIs search card and SLI picks
+- **explore:** starter cards on a new panel
+- **explore:** wider service and universe cards, an agent-triplet hint on the source cards
+- **explore:** an End User card and End User app picks
+- **explore:** an Alarms card — the metrics alarms name, narrowed by alarm facets
+- **explore:** reset a panel to its saved version, or back to the start
+- **explore:** say the Alarms card covers only alarms that have metrics
+- **explore:** New on a saved panel replaces it in place with an empty exploration
+- **explore:** a change heatmap layout against the offset window
+- **explore:** the search box names its tenant; the legend says when text sets draw no lanes
+- **explore:** the cursor starts in the search box of a panel that opens empty
+- **explore:** the cursor returns to a search box after every Discard
+- **explore:** panels that follow another panel, Compare copies, a linked crosshair
+- **explore:** save and open workspaces — panels, links and the global range
+- **explore:** export a panel's raw series and calculations — DXO2's rows plus attribute columns
+- **explore:** a narrow pivot over the export's raw rows
+- **explore:** window sources — a time window from an alarm or a situation, padded
+- **explore:** open a saved exploration or workspace by link
+- **explore:** split by several parts at once, saved as version 3
+- **explore:** build a split by several parts on the page, one chart per part
+- **explore:** List columns for key parts and attributes, sortable, saved
+- **explore:** List columns in explore_run and a List CSV download
+- **guard:** agent tenant policy — an allow-list with read/write per tenant
+- **guard:** a dry run is a read — safety.previewByDefault on 79 commands
+- **harness:** explore-bench runner and a conditional follow-up turn
+- **harness:** explore-bench score, judge and report
+- **issues:** board Programs, views over sets of milestones set from the milestone's code
+- **mcp:** give agents the real dx-do ui URL — tenant_info.ui and openInUi
+- **mcp:** several tenants on one MCP — a tenant argument, checked against the agent policy
+- **mcp,corpus,claude-plugin:** point agents at Explore as an offer, never an act
+- **mcp,explore:** explore_save and explore_save_workspace over a compact ExplorationSpec
+- **mcp,explore:** explore_run checks, saves and runs an exploration under a deadline
+- **mcp,harness:** compare tenants — a server instruction, a per-run agent policy and two suite prompts (#1319, #1330)
+- **mcp,harness:** hide any MCP tool by name; sandbox ~/.dxdo saves per harness run
+
+### 🩹 Fixes
+
+- **claude-plugin,corpus:** offer Explore only when the explore tools are there
+- **cli:** sli import points at service search; integration-suite report 30/30
+- **client:** place a names= enrichment import by the whole file
+- **client:** register MONITOR_DOUBLE_DURATION / _PERCENTAGE by name
+- **client:** filter alarms by type with a custom-filter clause — the search ignores includeAlarmTypes
+- **explore:** window sources — padding under the list, item dates, and Apply after a padding change
+- **explore:** event lane names never sit on the lane's bars
+- **explore:** say when a split by agent name merges agents across hosts
+- **guard:** #1336 preview audit — 79/79 clean; shell-produced dry-run=false is the apply; SLI copies via export+import
+- **harness:** the gate pin is a default below prompt pins; flag deltas against another model
+- **maintenance:** create only windows the DXO2 UI can open; UTC is stored as Etc/GMT
+- **mcp,corpus,claude-plugin:** a request for an exploration is a request to save one
+- **mcp,skills:** ask before looking on another tenant when something isn't on the bound one
+- **service:** service create refuses an existing name instead of replacing it
+- **session-core:** discovery_service_counts reads every service page
+- **session-core:** Explore search reads every entity attribute's values, once per scope
+- **session-core,mcp:** alerting_context reports server totals and what it missed
+- **session-core,mcp:** discovery_search_by_name reads past its limit before ranking
+- **session-core,mcp,corpus:** say when a datastore read may be cut short
+- **ui:** open a saved query from a link — /queries?open=<id> and /queries/<id>
+- **ui:** widen the name template dialog and show the whole result name
+- **ui:** the Explore result toolbar wraps, each control in a faint box
+
+### 💅 Refactors
+
+- **explore:** one saved-to-definition lift, shared by the page and the coming MCP tools
+
+### 📖 Documentation
+
+- **bench:** agentic Explore benchmark design, rubric and findings ledger
+- **bench:** record the owner's decision to ship the explore module as a try-this-out release
+- **corpus:** End User (AXA) metric layout, the SLI metric family, alarms that name a metric
+- **corpus:** exported alarm records omit unset fields; filter the file
+- **explore:** End User, SLI and alarm starting points: probe findings and proposal
+- **internal:** attribute-library feasibility on demo-prod; the owner prefers a platform search
+- **internal:** attribute cardinality by entity type on demo-dev and demo-prod
+- **maintenance:** timezone lists, flat and by DXO2 UI entry
+- **mcp:** multi-tenant agentic dx-do design, confirmed
+- **training:** build video 05's name template up one piece at a time
+- **training:** explore videos through termcaster — converter and converted storyboards
+- **training:** termcaster is not available on the dev Mac
+- **training:** explore video 07 memory pools
+- **ui:** Explore help matches the calculation options and range presets
+
+### ✅ Tests
+
+- **bench:** the agentic Explore benchmark's eight cases and their truth
+- **bench:** verify on 2026-11-01, a correction to dev-linux-hot-cpu, round 1 pre-registered
+- **bench:** agentic Explore round 1 results, preliminary until the judge is calibrated
+- **cli:** bulk-update test polls reads and backs off on 429 instead of sleeping 4 × 60 s
+- **harness:** five cross-tenant import/export prompts under demo-dev read / default write
+- **harness:** park the queue-zero prompt (demo-dev lost its data, #1412); accept hour-labelled tables in the roll-up answer
+- **ui:** golden flow for a split by several parts and the List's columns (#1387, #1370)
+
+### ❤️ Thank You
+
+- dx-do harness
+- Ki Alam
+- kialambroca
+- z
+- zoobroker
+
 ## 7.17.1 (2026-10-28)
 
 ### 🚀 Features
