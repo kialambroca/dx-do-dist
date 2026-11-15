@@ -56,7 +56,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 #### Output
 
 ```
-ℹ  info      dx-do v7.18.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
+ℹ  info      dx-do v8.0.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ⚠  warning   no tenant profile configured — run 'dx-do config create alias=default gatewayHost=... userToken=... cohortId=...'
@@ -540,17 +540,21 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ list-metrics......................................: lists all live metrics in metric grouping
 ⤜ update............................................: updates an existing APM metric grouping (dry-run by default)
 ```
-#### asm
-```asm
-⤜ list-folders......................................: lists asm folders
-```
 #### log
 ```log
+⤜ apply-metrics.....................................: makes the log-based metrics in a scope match a file (dry-run by default)
+⤜ create-metric.....................................: creates a log-based metric definition (dry-run by default)
+⤜ delete-metric.....................................: permanently deletes a log-based metric definition (dry-run by default)
+⤜ get-metric........................................: shows one log-based metric definition, and with values=true its recent per-minute counts
 ⤜ import............................................: imports exported log data (OpenSearch Dashboards CSV, NDJSON/JSON hits, or any CSV) into DXO2 Log Analytics — dry-run by default
 ⤜ ingest............................................: ingest one or more log entries directly into the DXO2 log analytics gateway
 ⤜ list-fields.......................................: lists the indexed fields of one log analytics logtype with their index type
 ⤜ list-logtypes.....................................: lists the tenant's log analytics logtypes — one per log index family *_logs_<logtype>_*
+⤜ list-metrics......................................: lists the log-based metric definitions (metrics counted from logs)
+⤜ preview-metric....................................: runs a log-based metric definition over recent logs without saving it
 ⤜ query.............................................: queries DXO2 Log analytics
+⤜ set-metric-status.................................: turns a log-based metric on or off (dry-run by default)
+⤜ update-metric.....................................: changes a log-based metric definition (dry-run by default)
 ```
 #### maintenance
 ```maintenance
@@ -601,7 +605,12 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ```o2-managementmodule
 ⤜ create............................................: creates a new platform management module (dry-run by default)
 ⤜ delete............................................: deletes a platform management module (dry-run by default)
+⤜ export............................................: exports platform management modules (groups and alerts included) as JSON
+⤜ export-transform-template.........................: writes a commented JSON5 management module transform to start your own from
+⤜ import............................................: imports management module export files as new modules, optionally transformed (dry-run by default)
 ⤜ list..............................................: lists all platform management modules
+⤜ migrate...........................................: transforms the tenant's management modules into new ones in one step, e.g. ASM → Synthetics (dry-run by default)
+⤜ transform.........................................: rewrites management module export files with a transform (offline, no tenant)
 ⤜ update............................................: updates a platform management module
 ```
 #### o2-metricgrouping
@@ -610,7 +619,8 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ delete............................................: deletes a platform metric grouping (dry-run by default)
 ⤜ detail............................................: shows full detail of a platform metric grouping
 ⤜ list..............................................: lists platform metric groupings, optionally filtered by management module
-⤜ update............................................: updates a platform metric grouping
+⤜ preview...........................................: lists the live metrics a metric grouping, or a filter file, matches
+⤜ update............................................: updates a platform metric grouping (dry-run by default)
 ```
 #### queries
 ```queries
@@ -707,6 +717,52 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ remove-alert......................................: removes an alert from an SLI (dry-run by default)
 ⤜ remove-slo........................................: removes an SLI's SLO (objective, percentage, and error budget) from a group (dry-run by default)
 ```
+#### synthetic
+##### General
+```synthetic
+⤜ check-monitor.....................................: runs a DXO2 synthetic monitor once, now, from each of its stations and shows what each probe found
+⤜ get-monitor.......................................: shows one DXO2 synthetic monitor in full, at its latest or a given version, optionally with its references resolved
+⤜ list-monitor-history..............................: lists the stored versions of a DXO2 synthetic monitor, newest first
+⤜ list-monitors.....................................: lists DXO2 synthetic monitors, filtered by name, group, tag, type, location, status, target or application
+⤜ summarize-monitors................................: counts DXO2 synthetic monitors, in total or grouped by name, group, type, target, location, tag or status
+```
+##### Alarms
+```synthetic
+⤜ create-monitor-alarms.............................: creates the alarms the synthetics UI offers for a monitor (dry-run by default)
+⤜ delete-monitor-alarms.............................: permanently deletes a synthetic monitor's alarms (dry-run by default)
+⤜ list-monitor-alarms...............................: lists a synthetic monitor's alarms (metric groups and alert specs) with their thresholds
+```
+##### Create and edit
+```synthetic
+⤜ bulk-update-monitors..............................: applies one partial JSON or JSON5 change to every DXO2 synthetic monitor a selector picks (dry-run by default)
+⤜ check-script......................................: checks a webdriver script or JMeter plan file offline, before it is uploaded to a DXO2 synthetic monitor
+⤜ create-connect-monitor............................: creates a DXO2 connect (TCP port) synthetic monitor from arguments (dry-run by default)
+⤜ create-dns-monitor................................: creates a DXO2 dns synthetic monitor that resolves a name from arguments (dry-run by default)
+⤜ create-fullpage-monitor...........................: creates a DXO2 fullpage synthetic monitor that loads a web page with all its resources from arguments (dry-run by default)
+⤜ create-http-monitor...............................: creates a DXO2 http synthetic monitor that checks a website or URL, from arguments (dry-run by default)
+⤜ create-monitor....................................: creates a DXO2 synthetic monitor of any of the 18 types from a JSON or JSON5 body file (dry-run by default)
+⤜ create-ping-monitor...............................: creates a DXO2 ping (ICMP echo) synthetic monitor for a host from arguments (dry-run by default)
+⤜ create-tls-monitor................................: creates a DXO2 tls synthetic monitor that checks a certificate and its expiry from arguments (dry-run by default)
+⤜ delete-monitor....................................: permanently deletes a DXO2 synthetic monitor (dry-run by default)
+⤜ export-monitor....................................: writes a DXO2 synthetic monitor's editable definition as commented JSON5, the file update-monitor takes back
+⤜ export-monitor-script.............................: writes the script a DXO2 webdriver or jmeter monitor runs to a file (or stdout)
+⤜ export-monitor-template...........................: writes a commented JSON5 create template for one synthetic monitor type, listing the tenant's stations
+⤜ export-monitors...................................: writes a set of DXO2 synthetic monitors to one JSON5 file, for import-monitors here or on another tenant
+⤜ import-monitors...................................: creates the synthetic monitors in an export-monitors file, with locations, hosts and names rewritten (dry-run by default)
+⤜ set-monitor-auth..................................: sets, replaces or removes a DXO2 synthetic monitor's basic-auth login or client certificate (dry-run by default)
+⤜ set-monitor-proxy.................................: sets, replaces or removes the HTTP proxy a DXO2 synthetic monitor probes through (dry-run by default)
+⤜ set-monitor-schedule..............................: sets, changes or clears the days and hours a DXO2 synthetic monitor runs (dry-run by default)
+⤜ set-monitor-script................................: uploads a script file and makes a DXO2 webdriver or jmeter monitor run it (dry-run by default)
+⤜ set-monitor-status................................: enables or disables a DXO2 synthetic monitor
+⤜ update-monitor....................................: changes properties of a DXO2 synthetic monitor from a partial JSON or JSON5 file, pinned to the version read (dry-run by default)
+```
+##### Types and values
+```synthetic
+⤜ list-locations....................................: lists the DXO2 monitoring stations (locations) synthetic monitors can run from
+⤜ list-monitor-groups...............................: lists every DXO2 synthetic monitor group with the number of monitors in it
+⤜ list-monitor-tags.................................: lists every tag in use on DXO2 synthetic monitors with the number of monitors carrying it
+⤜ list-monitor-types................................: lists the 18 DXO2 synthetic monitor types with their interval choices and authentication / encryption options
+```
 #### tenant
 ```tenant
 ⤜ maintenance.......................................: checks the Broadcom status page for DXO2 SaaS platform maintenance affecting the configured tenant (not user-configured maintenance windows)
@@ -753,7 +809,6 @@ dx-do alert list
   "cohortId": "<cohortId from Settings -> Connector Parameters>",
   "userToken": "<DX User Token from Settings -> Manage Tokens -> New Token -> User>",
   "dxGatewayHost": "https://apmgw.dxi-na1.saas.broadcom.com/",
-  "dxASMToken": "<optional: token for ASM API usage>",
   "dxLogIngestionURL": "<optional: uim_logs log gateway base URL for the 'legacy' transport, no trailing slash. Omit on DXO2 SaaS tenants with Log Analytics provisioned — it is derived as https://logs-gateway.dxi-<na1|eu1>.saas.broadcom.com from dxGatewayHost; set it for on-premise gateways or to override>",
   "dxCustomLogIngestionURL": "<optional: host serving the Log Analytics custom JSON ingestion API (la/v2/api/ingestion/logs) for the 'custom' transport, no trailing slash. Omit on DXO2 SaaS — dxGatewayHost itself serves it; set it only for an on-premise OI host>",
   "dxLogIngestionTransport": "<optional: auto | custom | legacy — the transport 'log ingest' / 'log import' use when the command gives no transport= (default auto). custom = the Log Analytics custom JSON API on the gateway host, only for logtypes 'log list-logtypes' shows as cust_<logtype> (anything else is accepted and dropped silently, so the CLI refuses it); legacy = the uim_logs pipeline on the logs-gateway host, the path to the generic index; auto = custom when the logtype is enabled for it, else legacy>"

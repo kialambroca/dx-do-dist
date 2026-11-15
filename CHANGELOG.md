@@ -1,3 +1,88 @@
+# 8.0.0 (2026-11-15)
+
+### 🚀 Features
+
+- o2 management module export/import with transforms; asm-to-synthetics migrate
+- alert creators fit the check interval to how often the metrics report
+- **alerts:** attribute-filtered metric groups and preview; synthetics per-station and cross-monitor alarms
+- **cli:** log list-metrics, get-metric, preview-metric and groupable fields
+- **cli:** log create-metric, update-metric, set-metric-status, delete-metric
+- **cli:** log apply-metrics, a scoped declarative sync of log-based metrics
+- **cli:** set a log metric's frequency; updates keep it
+- **client:** LogMetricService for log-based metric definitions
+- **corpus:** an entity type's status read rides its search hit; synthetic monitors get one
+- **harness:** rubric block in prompt specs: required, acceptable, forbidden
+- **harness:** Opus judge grades runs against their rubric
+- **harness:** Pandora is a forbidden source on every prompt
+- **harness:** pass rates per prompt from every manual run
+- **harness:** judge calibration set, proposals and labelling page
+- **harness:** calibrate the judge: owner labels, rubric fixes, pinned output schema
+- **harness): gate rule (b:** one re-run for a failure that broke no invariant
+- **mcp:** entity-type hits in discovery search, with the Explore scope for them
+- **mcp:** agentic mcp serves the dx-do ui on demand, so links work
+- **mcp:** explore specs show a ratio as percent; results say how to quote it
+- **mcp:** an agent-saved exploration's id follows its title; a stale id finds the renamed one
+- **mcp:** an empty name search says synthetic monitors were not checked, and how to look
+- **mcp:** logs module — log metric list, get, fields and preview tools
+- **mcp,harness:** tenant verification before any tenant read; invariants vs indicators
+- **synthetic:** DXO2 integrated synthetic monitors
+- **synthetic:** check-monitor, schedules, UI-compatible monitor alarms and group rules
+- **synthetic:** monitor logins and proxies (basic, client certificate, HTTP proxy)
+- **synthetic:** rename-proof monitor alarms that close without data
+- **synthetic:** offer companion monitors after creating one
+- **synthetic:** export-monitors and import-monitors with location, host and name rewrites
+- **synthetic:** scripted monitors: upload, export, check files, cleanup
+- **synthetic:** check-script lints webdriver scripts and JMeter plans offline
+- **ui:** request gate on the ui server: loopback Host/Origin, optional token
+
+### 🩹 Fixes
+
+- **cli:** filter arguments take a dotted field (groupFilter.k8s.cluster.name.equals=...)
+- **cli:** channel import previews a redacted export; only applying it is refused
+- **cli:** nass query-metadata says how to match a regex, and warns when an exact regex finds nothing
+- **cli:** nass query-metric-data says how to match a regex, and warns when an exact regex finds nothing
+- **cli:** log query takes dotted fields and returns newest rows first
+- **client:** synthetic single-object reads log an expected 404 at debug
+- **corpus:** a log metric 0 is not proof of a quiet source; compare with a preview
+- **harness:** invariants are the checks against harm; command-surface checks are indicators
+- **harness:** seed-logs checks each definition's Total Count; a short series is a note
+- **synthetic:** get-monitor resolved=true reads logins at their pinned version and summarizes the script (#1465, #1468)
+
+### 💅 Refactors
+
+- ⚠️  **client:** remove the legacy ASM integration
+- **mcp:** one serve core and a deep-link seam for the ui
+
+### 📖 Documentation
+
+- agents tell APM and platform alerting apart (MMX-P2 #1546 #1547 #1548)
+- **corpus:** synthetic metric attributes for Explore and metric queries
+- **corpus:** scripted synthetic monitors cookbook with BlazeDemo samples
+- **corpus:** how DX names OpenTelemetry metrics; org_metric_name keeps the OTel name
+- **corpus:** log-based metrics cookbook, lexicon entry and search fixtures
+- **harness:** entity lifetimes on the lab and the refresh approach
+- **internal:** harness evaluation rethink (decided)
+- **training:** outline for the o2-managementmodule import/export video
+- **training:** outlines for the synthetics and log-metrics CLI videos (#1559 #1560)
+
+### ✅ Tests
+
+- **harness:** pin the served ui per run, --ui=off|lazy, default off
+- **harness:** synthetic prompts over permanent lab fixtures, and their seeder
+- **harness:** planted-log fixtures and three log-metric prompts with rubrics
+
+### ⚠️  Breaking Changes
+
+- **client:** remove the legacy ASM integration
+  @dx-do/client no longer exports AsmService or the
+  generated ASM types (the former model/asm/client barrel), ServiceMonolith
+  has no dxASMService, and DXSaaSConfiguration4 no longer declares
+  dxASMbaseAPIURL / dxASMToken. The dx-do asm command group is gone.
+
+### ❤️ Thank You
+
+- zoobroker
+
 ## 7.18.0 (2026-11-05)
 
 ### 🚀 Features
