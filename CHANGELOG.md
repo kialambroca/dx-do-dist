@@ -1,3 +1,61 @@
+# 9.0.0 (2026-11-16)
+
+### 🚀 Features
+
+- **alarm:** lifecycle processing delay and property search
+- **auth:** user group and role commands, live-tested
+- **channel:** route on service attributes; situation templates list rc_alarm / mostImpacted fields
+- **channel,alarm:** filter on one service custom property
+- **cli:** set a service's availability KPI from an SLI
+- **cli:** synthetic check-monitor / check-script fail-on flags
+- **cli:** command search finds both alerting families for neutral phrasing
+- ⚠️  **cli:** alert update-simple / update-summary preview by default
+- **client:** user groups, roles and synthetics access services
+- **corpus:** agents move ASM alerting with migrate and confirm APM alert edits
+- **service:** managed custom property definitions — client + CLI (#1592 #1593)
+- **service:** managed property coverage report + diagnostics rules
+- **service:** export / import custom properties as an editable grid
+- **service:** property-coverage view=routing — policies and queues that filter on a custom property
+- **service:** XLSX format for the property grid export/import
+- **session-core:** alerting_context covers platform alerting and matches APM groupings as the store does
+- **situation:** validate naming templates, incl. split/slice/sliceSegment (#1588 #1589 #1590)
+- **situation:** situation explain + MCP get_situation_explanation — the platform's own explanation
+- **synthetic:** grant, revoke and list access to monitor groups
+
+### 🩹 Fixes
+
+- **client:** availability KPI takes the SLI by name; the id is the SLI group's
+- **dashboard:** Canvas/object-datasource round-trip; refuse a preserveUid import that would overwrite
+- **service:** plain error for a Numbers document or non-workbook zip on import
+
+### 📖 Documentation
+
+- Operationalizing DXO2 Services deck outline
+- services deck outline — service properties are live
+- services deck outline — owner can be a custom property
+- services deck outline — enhancement #4 is property-based routing
+- **corpus:** entity rows for Azure, VCF Operations and 12 uncatalogued lab types
+- **corpus:** alarm and situation lifecycle events, maintenance window status
+- **corpus:** out-of-the-box dashboards by domain, slow queries, Painless
+- **corpus:** managed custom service properties — cookbook, lexicon, routing notes, MCP rule list
+- **corpus:** access administration cookbook and lexicon; MCP gating pinned
+
+### ✅ Tests
+
+- **cli:** projection count includes service list-availability-kpi-slis
+
+### ⚠️  Breaking Changes
+
+- **cli:** alert update-simple / update-summary preview by default
+  scripts that call either command without dry-run=false now
+  only preview.
+  docs/command-safety-reference.md regenerated (it was also behind on the
+  service availability-KPI commands).
+
+### ❤️ Thank You
+
+- zoobroker
+
 # 8.0.0 (2026-11-15)
 
 ### 🚀 Features

@@ -56,7 +56,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 #### Output
 
 ```
-ℹ  info      dx-do v8.0.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
+ℹ  info      dx-do v9.0.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ⚠  warning   no tenant profile configured — run 'dx-do config create alias=default gatewayHost=... userToken=... cohortId=...'
@@ -267,6 +267,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ ticket-enrichment.................................: explains the ITSM channel prerequisite, the two field catalogs on either side of a map, and why the alarm type decides which alarm fields a rule may use.
 ⤜ time-formats......................................: explains time formats for 'metric data' and 'agent get-trace-sumaries'.
 ⤜ ui................................................: Explains `dx-do ui start` — the browser-based visual query builder for TAS / NASSQL / Metrics-Metadata queries.
+⤜ user-groups.......................................: explains user groups, roles and access (who holds what), and how to change them with the auth commands.
 ```
 #### alert
 ```alert
@@ -283,8 +284,8 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ enable-all........................................: enable all alerts for a management module
 ⤜ list..............................................: lists all alerts.
 ⤜ list-by-management-module.........................: lists all alerts in a management module.
-⤜ update-simple.....................................: update a simple alert.
-⤜ update-summary....................................: update a summary alert.
+⤜ update-simple.....................................: update an APM simple alert (dry-run by default).
+⤜ update-summary....................................: update an APM summary alert (dry-run by default).
 ```
 #### trace
 ```trace
@@ -305,6 +306,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ inventory.........................................: shows inventory for a service
 ⤜ inventory-overlap.................................: shows inventory overlaps for services
 ⤜ list..............................................: lists the services in the tenant, optionally filtered by name
+⤜ list-availability-kpi-slis........................: list the SLIs that can be a service’s availability KPI, and the current KPI
 ⤜ metrics...........................................: dump the service metrics as json
 ⤜ overview..........................................: dump the service overview as json
 ⤜ search............................................: show services matching search term
@@ -315,10 +317,22 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ```service
 ⤜ add-content.......................................: adds content queries to an existing service (dry-run by default)
 ⤜ bulk-update.......................................: applies one set of edits (tags, custom properties, location, description) to every service a selector picks, in one save (dry-run by default)
+⤜ clear-availability-kpi............................: removes a service’s availability KPI (dry-run by default)
 ⤜ create............................................: creates a service with content queries (dry-run by default; dry-run previews matching entities)
 ⤜ delete-service....................................: deletes service (and optionally it's subservices)
+⤜ set-availability-kpi..............................: sets a service’s availability KPI to one of its SLIs (dry-run by default)
 ⤜ set-content.......................................: replaces an existing service’s content queries (dry-run by default; no content clears all)
 ⤜ update-service....................................: updates a service’s attributes — description, location, tags, properties (dry-run by default; name and type are fixed at creation)
+```
+##### Custom properties
+```service
+⤜ create-property-definition........................: defines a managed custom service property (dry-run by default)
+⤜ delete-property-definition........................: deletes a managed custom property definition (dry-run by default; refused while services hold the key)
+⤜ export-properties.................................: writes services' custom properties as an editable grid (XLSX or CSV for a spreadsheet, or JSON) for service import-properties
+⤜ import-properties.................................: applies the custom property values edited in a service export-properties file (dry-run by default)
+⤜ list-property-definitions.........................: lists the managed custom property definitions (name, type, required, default, options, usage)
+⤜ property-coverage.................................: reports which services lack the managed custom properties or hold invalid values, plus value hygiene and unmanaged keys
+⤜ update-property-definition........................: changes a managed custom property definition (dry-run by default; the name is fixed)
 ```
 ##### Hierarchy
 ```service
@@ -365,12 +379,26 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ store.............................................: store an audit record in the tenant audit store
 ```
 #### auth
+##### General
 ```auth
 ⤜ current...........................................: shows auth of current token
 ⤜ list-groups.......................................: shows all authentication group names
 ⤜ list-users........................................: lists user accounts for the tenant
 ⤜ user-search.......................................: searches for users
 ⤜ validate-configuration-keys.......................: validates keys
+```
+##### User groups and roles
+```auth
+⤜ audit-access......................................: lists roles and synthetics access that name user groups which do not exist
+⤜ create-user-group.................................: creates a user group (dry-run by default)
+⤜ delete-user-group.................................: deletes a user group (dry-run by default; refused while a role or synthetics access names it)
+⤜ grant-role........................................: grants a role to a user group (dry-run by default)
+⤜ list-roles........................................: lists the roles (built-in and custom) with the groups and users holding each
+⤜ list-user-groups..................................: lists the user groups, with the roles and synthetics access that name each
+⤜ revoke-role.......................................: revokes a role from a user group (dry-run by default)
+⤜ role-detail.......................................: shows one role's holders (groups and users) and description
+⤜ update-user-group.................................: adds or removes a user group's members, renames it or changes its description (dry-run by default)
+⤜ user-group-detail.................................: shows one user group's members and the roles and synthetics access that name it
 ```
 #### config
 ```config
@@ -652,6 +680,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ```situation
 ⤜ alarm-data........................................: provides the situation alarm data
 ⤜ detail............................................: show details for situation
+⤜ explain...........................................: the platform's own explanation of a situation: why it opened, its name, its alarms, why it is (not) stable or closed
 ⤜ inspect...........................................: provides entire situation inspection json
 ⤜ inspect-alarms....................................: provides alarms from situation inspection 
 ⤜ query.............................................: finds situations
@@ -725,6 +754,12 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ list-monitor-history..............................: lists the stored versions of a DXO2 synthetic monitor, newest first
 ⤜ list-monitors.....................................: lists DXO2 synthetic monitors, filtered by name, group, tag, type, location, status, target or application
 ⤜ summarize-monitors................................: counts DXO2 synthetic monitors, in total or grouped by name, group, type, target, location, tag or status
+```
+##### Access
+```synthetic
+⤜ grant-access......................................: grants a user group or user READ or WRITE on the monitors of a monitor group (dry-run by default)
+⤜ list-access.......................................: lists who may READ or WRITE the monitors of each monitor group
+⤜ revoke-access.....................................: revokes a user group's or user's READ or WRITE on a monitor group (dry-run by default)
 ```
 ##### Alarms
 ```synthetic
