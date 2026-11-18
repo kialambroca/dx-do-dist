@@ -1,3 +1,34 @@
+## 9.2.0 (2026-11-18)
+
+### 🚀 Features
+
+- **client,session-core:** adopt an existing dashboard, editing it in place through the spec
+- **harness:** nassql-accuracy, the NASSQL first-try measurement
+- **mcp:** teach the Metrics-Metadata specifier forms where every agent sees them
+- **mcp:** say which columns survive a NASSQL aggregation
+- **mcp,client:** NASSQL grounding where every agent sees it; COUNT requires as
+- **mcp,session-core:** name the NASSQL metric attribute column form (metric.attr.<name>)
+- **session-core:** an unknown NASSQL column comes back with the columns that step can read
+
+### 🩹 Fixes
+
+- **harness:** nassql-accuracy run reads the prompts before checking out --rev
+- **session-core:** the unknown-column hint names the step that really lacks the column
+
+### 📖 Documentation
+
+- **corpus:** dashboard routing falls back to the CLI build when dashboard_build is not offered
+
+### ✅ Tests
+
+- **cli:** o2-alert analyze live tests use whichever Pandemetrikos cluster still reports
+- **cli:** o2-alert analyze fixture comment states the Pandemetrikos cluster hours
+- **cli:** o2-alert analyze live tests replay the Hermes outbox depth specs
+
+### ❤️ Thank You
+
+- zoobroker
+
 ## 9.1.0 (2026-11-18)
 
 ### 🚀 Features
