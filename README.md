@@ -56,7 +56,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 #### Output
 
 ```
-ℹ  info      dx-do v9.2.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
+ℹ  info      dx-do v9.2.1-beta.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ⚠  warning   no tenant profile configured — run 'dx-do config create alias=default gatewayHost=... userToken=... cohortId=...'
@@ -657,6 +657,22 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ list..............................................: lists platform metric groupings, optionally filtered by management module
 ⤜ preview...........................................: lists the live metrics a metric grouping, or a filter file, matches
 ⤜ update............................................: updates a platform metric grouping (dry-run by default)
+```
+#### odc
+```odc
+⤜ activity..........................................: reports what a push-based integration received and published over a range: last processed event, Received/Published counters per data type with dropped requests flagged, and its alarms by status and severity with samples
+⤜ attributes........................................: lists the attributes a push-based integration mapping emits, the schema fields per section: each attribute, its kind, the payload paths it reads and the constant values it can yield
+⤜ delete............................................: deletes a custom push-based integration and reports what was removed (dry-run by default; idempotent)
+⤜ disable...........................................: disables a custom push-based integration: its webhook refuses events with 400 (dry-run by default)
+⤜ duplicate.........................................: copies a push-based integration (mapping, sample payload, description) under a new name or product (dry-run by default)
+⤜ enable............................................: enables a custom push-based integration: its webhook accepts events again (dry-run by default)
+⤜ export............................................: exports a push-based integration to a git-friendly directory: meta.json, payload.json, mapping.jsonata
+⤜ get...............................................: shows a stored push-based integration: its JSONata mapping, sample payload or metadata
+⤜ import............................................: creates or updates a push-based integration from an `odc export` directory, previewing its mapping on the server first (dry-run by default)
+⤜ list..............................................: lists push-based integrations (ODC webhooks): product, name, ootb, enabled, version, updated, last event and the sections each mapping emits
+⤜ preview...........................................: previews what DXO2 will do with an event, a dry run of the payload: runs it through a push-based integration mapping on the server and returns the documents it would ingest, or why they would be refused, per input (stores and sends nothing)
+⤜ send..............................................: sends one event to a push-based integration's webhook, as the source would (dry-run by default: previews it and shows what should land)
+⤜ webhook...........................................: shows the webhook URLs a source POSTs events to for a push-based integration, with token guidance (never a token)
 ```
 #### queries
 ```queries

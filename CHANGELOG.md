@@ -1,3 +1,43 @@
+## 9.2.1-beta.0 (2026-11-18)
+
+### 🚀 Features
+
+- **cli,session-core:** odc command group — list, get, describe, render
+- **cli,session-core:** odc activity — what an integration received and published
+- **cli,session-core:** odc export and odc save (mapping-as-code)
+- **cli,session-core:** odc duplicate, enable, disable, delete
+- **cli,session-core:** odc endpoint and odc send
+- **client:** legacy name and path selection, first-class in the dashboard spec
+- **client:** OdcService + Zod models for push-based integrations (read + render)
+- **client:** OdcService writes and ingest with typed errors
+- **client:** path dropdowns, values cut out of metric names
+- **client:** WQL (AIOps_Advanced_Query) queries and dropdowns in the dashboard spec
+- **client,session-core:** DXO2 alarms links filter like a queue
+- **mcp:** odc module — read, render, activity and gated writes
+- **session-core:** static ODC mapping analysis (describeMapping) over the JSONata AST
+- **session-core:** odc render returns where the documents land
+
+### 🩹 Fixes
+
+- **client:** odc render tells an evaluation error from a syntax error
+- **odc:** honour a mapped externalId in odc send, describe every write/render field
+
+### 💅 Refactors
+
+- **odc:** rename render, save, describe, endpoint to preview, import, attributes, webhook
+
+### 📖 Documentation
+
+- **corpus:** odc-mappings cookbook and ODC lexicon, routed to the odc group
+- **corpus:** odc authoring loop with measured pitfalls, end-to-end agentic run
+- **odc:** ODC surface design with measured odcconnector API facts
+- **odc:** correct two measured claims in the surface design
+
+### ❤️ Thank You
+
+- z
+- zoobroker
+
 ## 9.2.0 (2026-11-18)
 
 ### 🚀 Features
