@@ -1,3 +1,71 @@
+## 9.1.0 (2026-11-18)
+
+### 🚀 Features
+
+- alert analyze replays APM alerts against their metrics' data (ALA-P1)
+- **alert:** o2-alert analyze replays a platform alert spec within a source
+- **cli:** o2-alert enable / disable, one alert or a whole module
+- **cli:** sli add-sli types an expression with sliType=, so it can be the availability KPI
+- **cli:** dx-do dashboard render, per-panel status and images (DSH-P3)
+- **cli:** alert screen — every alert of both families from its status metric
+- **cli,mcp:** dashboard build and spec-schema, CLI and MCP (DSH-P3)
+- **client:** Grafana surface drift check over DX Dashboards' source maps
+- **client:** derive the canvas type surface and report schema drift apart from fixes
+- **client:** Canvas panel Zod model with a parity test against the shipped code
+- **client:** generated option catalog for every DX Dashboards panel, datasource and plugin
+- **client:** AIOps_Metrics panel target model, compiled to dx-do's MM specifier
+- **client:** render DX Dashboards headlessly and report each panel's state
+- **client:** resolve symbolic option defaults in the Grafana catalog
+- **client:** AIOps_Inventory and Elasticsearch panel target models (DSH-P2)
+- **client:** dashboard builder core: spec, expand, option index (DSH-P3)
+- **client:** dashboard builder examples, published to the lab (DSH-P3)
+- **client:** canvas service-map example with an env dropdown (DSH-P3)
+- **client:** attribute-first metrics selection and dropdown variables in the dashboard spec (DSH-P3)
+- **client:** auto legends that show only what tells a panel's series apart (DSH-P4)
+- **client:** dropdowns filled from metric attribute values (DSH-P3)
+- **client:** opt-in dashboard sections, laid out by the builder (DSH-P4)
+- **client:** dashboard links, declared once and emitted per surface (DSH-P3)
+- **client:** pandemetrikos dashboard pages, sibling links by tag, series aggregation
+- **client:** asm-to-synthetics maps the ASM Monitors per-location tree and names what has no Synthetics equivalent
+- **client:** asm-to-synthetics flags the ASM Delhi station as having no Synthetics equivalent
+- **client,cli,mcp:** dashboard describe, a saved dashboard as a spec (DSH-P3)
+- **client,session-core:** dashboard links to DXO2 pages (alarms, service page, console)
+- **mcp:** dashboards module with dashboard_render, panel images as MCP image content (DSH-P3)
+
+### 🩹 Fixes
+
+- **agy:** regenerate driving-dx-do skill after the dashboard routing note
+- **alert:** o2-alert analyze counts alarms the way the platform raises them
+- **analytics:** metric roll-up and describe-behavior read tagged OTel/JMX metrics
+- **client:** describe canvas placement and constraints as the build behaves
+- **client:** Grafana drift runbook and tool fixes from a docs-only dry run
+- **client:** render-dashboard reports crashed and blank panels; matrix corrections
+- **client:** builder match regexes find tagged OTel/JMX metrics
+- **client:** pandemetrikos pages dropdown no longer opens past the window edge
+- **client:** auto legends tell tagged OTel series apart
+- **client:** asm-to-synthetics detects group-level ASM sources, explains its detection, and skips unchanged modules
+- **client:** asm-to-synthetics maps ASM regions as measured: England → UK, Mumbai warned, world and Delhi notes corrected
+- **session-core:** group the metrics-for-source filter so an alternation matches
+
+### 📖 Documentation
+
+- land CRC-P2 memory-reconciliation fixes (text only)
+- **corpus:** add the UIM domain and the capacity-analytics source shape
+- **corpus:** tune an APM alert by replaying it first (ALA-P1)
+- **corpus:** dashboard linking recipe, builder cookbook, and drill-downs by series
+- **internal:** external panel plugin triage for DSH-P2
+- **internal:** DSH capability matrix with the linking row verified on the lab
+- **internal:** dashboard design guidance research for DSH-P4
+- **internal:** render-verify external panel triage on the lab
+- **internal:** record the canvas grouping decision in the capability matrix
+- **internal:** owner-confirmed DSH concern list, 12 concerns in rollout order
+- **internal:** owner decisions on the dashboard design guidance
+- **internal:** DSH-P3 dashboard builder design proposal (needs owner review)
+
+### ❤️ Thank You
+
+- zoobroker
+
 # 9.0.0 (2026-11-16)
 
 ### 🚀 Features

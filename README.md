@@ -56,7 +56,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 #### Output
 
 ```
-ℹ  info      dx-do v9.0.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
+ℹ  info      dx-do v9.1.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ⚠  warning   no tenant profile configured — run 'dx-do config create alias=default gatewayHost=... userToken=... cohortId=...'
@@ -133,6 +133,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ```
 ##### Dashboards
 ```dashboard
+⤜ build.............................................: builds a DX Dashboards dashboard from a dashboard spec: validates it, names each panel's series by what tells them apart, and saves it (dry-run by default)
 ⤜ dashboard-export..................................: exports a single dashboard
 ⤜ dashboard-import..................................: creates a new dashboard from an export file.
 ⤜ dashboard-list-by-folder..........................: lists dashboards in folder
@@ -140,8 +141,11 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ dashboard-search..................................: finds dashboards
 ⤜ dashboard-update..................................: updates a dashboard from an export file.
 ⤜ dashboard-variables-list..........................: shows current values of dashboard variables
+⤜ describe..........................................: describes a saved dashboard as a dashboard spec (the input of `dashboard build`), listing what could not be described in the spec's own terms
 ⤜ get-dashboard-refresh-options.....................: shows current dashboard refresh options
+⤜ render............................................: renders a dashboard in a headless browser: per-panel status (ok, error, plugin-not-found, no-data, not-rendered, blank) and an image of each panel
 ⤜ set-dashboard-refresh-options.....................: sets dashboard refresh options
+⤜ spec-schema.......................................: prints the JSON Schema of the dashboard spec that `dashboard build` takes (every field described)
 ```
 ##### Folders
 ```dashboard
@@ -262,7 +266,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ custom-situations.................................: explains situations as alarm clusters, the filter / root-cause / clustering parts of a custom situation policy, the dry-run preview flow, and why an update replaces the policy id.
 ⤜ dashboard.........................................: explains dashboard command setup.
 ⤜ inventorize.......................................: explains inventorize (Topology Creator) rules: when to create one, the sourceName matching dialect, folders and nesting, external IDs, and the JEXL context for custom attributes.
-⤜ metric-types......................................: explains numericMetricType and enumMetricType for 'nass register-metric' and 'nass report-metric-value'.
+⤜ metric-types......................................: explains numericMetricType and enumMetricType for 'nass register-metric' and 'nass report-metric-value', and how count, merges and read-back work when writing datapoints.
 ⤜ slis..............................................: explains the SLI group / SLI / SLO / alert model and how to drive it with the sli commands.
 ⤜ ticket-enrichment.................................: explains the ITSM channel prerequisite, the two field catalogs on either side of a map, and why the alarm type decides which alarm fields a rule may use.
 ⤜ time-formats......................................: explains time formats for 'metric data' and 'agent get-trace-sumaries'.
@@ -271,7 +275,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ```
 #### alert
 ```alert
-⤜ analyze...........................................: analyzes an alert and it's threshold
+⤜ analyze...........................................: analyzes an APM alert’s thresholds: replays the alert over its metrics’ data to tune them, % of time over and crossings per metric
 ⤜ copy..............................................: copy an alert
 ⤜ copy-with-metric-grouping.........................: copy an alert with it's metric grouping
 ⤜ create............................................: creates a new APM simple alert (dry-run by default)
@@ -284,6 +288,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ enable-all........................................: enable all alerts for a management module
 ⤜ list..............................................: lists all alerts.
 ⤜ list-by-management-module.........................: lists all alerts in a management module.
+⤜ screen............................................: screens every alert (APM and platform) over a window from its status metric: which never fire, fire most of the time, or watch nothing
 ⤜ update-simple.....................................: update an APM simple alert (dry-run by default).
 ⤜ update-summary....................................: update an APM summary alert (dry-run by default).
 ```
@@ -302,7 +307,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ```service
 ⤜ all-services......................................: shows all services
 ⤜ dependency-graph..................................: shows a dependency graph for a service
-⤜ detail............................................: retrieves a service (optionally with its subservices) as json
+⤜ detail............................................: retrieves a service (optionally with every hierarchy that contains it) as json
 ⤜ inventory.........................................: shows inventory for a service
 ⤜ inventory-overlap.................................: shows inventory overlaps for services
 ⤜ list..............................................: lists the services in the tenant, optionally filtered by name
@@ -407,7 +412,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ create............................................: create a new tenant configuration profile (interactive on a TTY, or non-interactive via gatewayHost=/userToken=/cohortId=)
 ⤜ debug.............................................: shows configuration details
 ⤜ debug-token.......................................: shows decoded token
-⤜ doctor............................................: Health checks for this installation: binary version and PATH, tenant profiles, shell completion.
+⤜ doctor............................................: Health checks for this installation: binary version and PATH, tenant profiles, shell completion, the browser for dashboard render.
 ⤜ generate-agent-token..............................: generates an agent token
 ⤜ generate-user-token...............................: generates an user token
 ⤜ upgrade...........................................: upgrade legacy dx-do configuration to current version
@@ -623,9 +628,12 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ```
 #### o2-alert
 ```o2-alert
+⤜ analyze...........................................: analyzes a platform alert spec’s thresholds: replays the spec over its metrics’ data within a source, % of time over and crossings per metric
 ⤜ create............................................: creates a new platform alert spec (dry-run by default)
 ⤜ delete............................................: deletes a platform alert spec (dry-run by default)
 ⤜ detail............................................: shows full detail of a platform alert spec
+⤜ disable...........................................: disables a platform alert spec, or every alert in a management module (dry-run by default)
+⤜ enable............................................: enables a platform alert spec, or every alert in a management module (dry-run by default)
 ⤜ list..............................................: lists platform alert specs, optionally filtered by management module
 ⤜ update............................................: updates a platform alert spec (dry-run by default)
 ```
@@ -902,7 +910,7 @@ To see which commands are experimental, run any of:
 * `DXDO_ENABLE_EXPERIMENTAL_COMMANDS=true dx-do help commands` — list with `[experimental]` tag.
 * The `README.md` shipped with the binary — generated with experimental commands always included; each is suffixed with `[experimental]`.
 
-When an MCP client (Claude Code, Cursor, mcp-inspector) spawns `dx-do` as a subprocess for a currently-experimental command (e.g. `ui start`), set the env var in the spawn config so the gate is open for the child process. (`agentic mcp` and the other `agentic` commands graduated in 7.0 and need no gate.)
+When an MCP client (Claude Code, Cursor, mcp-inspector) spawns `dx-do` as a subprocess for a currently-experimental command, set the env var in the spawn config so the gate is open for the child process. (`ui start`, `agentic mcp` and the other `agentic` commands need no gate.)
 
 
 #### version 3 configuration
