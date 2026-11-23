@@ -56,7 +56,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 #### Output
 
 ```
-ℹ  info      dx-do v9.2.1-beta.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
+ℹ  info      dx-do v9.3.0 on node v26.3.0 on linux-x64 via node (ssl: 1.1.0)
 ⚠  warning   Not loading configuration
 ✖  error     Usage: dx-do --option[=value]... <command-group> <command> <command-param>=<value>...
 ⚠  warning   no tenant profile configured — run 'dx-do config create alias=default gatewayHost=... userToken=... cohortId=...'
@@ -138,14 +138,14 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ dashboard-import..................................: creates a new dashboard from an export file.
 ⤜ dashboard-list-by-folder..........................: lists dashboards in folder
 ⤜ dashboard-list-by-meta............................: lists every dashboard whose meta.<field> matches one of the given values
-⤜ dashboard-search..................................: finds dashboards
+⤜ dashboard-search..................................: finds dashboards by a search term, or lists them all
 ⤜ dashboard-update..................................: updates a dashboard from an export file.
 ⤜ dashboard-variables-list..........................: shows current values of dashboard variables
 ⤜ describe..........................................: describes a saved dashboard as a dashboard spec (the input of `dashboard build`), listing what could not be described in the spec's own terms
 ⤜ get-dashboard-refresh-options.....................: shows current dashboard refresh options
-⤜ render............................................: renders a dashboard in a headless browser: per-panel status (ok, error, plugin-not-found, no-data, not-rendered, blank) and an image of each panel
+⤜ render............................................: renders a dashboard in a headless browser: per-panel status (ok, error, plugin-not-found, no-data, unresolved, not-rendered, blank) and an image of each panel
 ⤜ set-dashboard-refresh-options.....................: sets dashboard refresh options
-⤜ spec-schema.......................................: prints the JSON Schema of the dashboard spec that `dashboard build` takes (every field described)
+⤜ spec-schema.......................................: prints the JSON Schema of the dashboard spec that `dashboard build` takes (every field described): the dashboard level, or the panel kinds you name
 ```
 ##### Folders
 ```dashboard
@@ -350,6 +350,17 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ export-hierarchy..................................: exports a service and its entire subtree (descendants + association edges) to a re-importable JSON file
 ⤜ import............................................: imports a service export file (from export / export-hierarchy) into this tenant or another one (dry-run by default)
 ```
+##### Templates
+```service
+⤜ get-template......................................: shows one service template: its content rules, service name pattern, tags and SLI settings
+⤜ list-templates....................................: lists the service templates (name, custom or out-of-the-box, type, description)
+```
+#### attribute
+```attribute
+⤜ dump..............................................: dumps all attributes by layer
+⤜ get-tagging-rule..................................: shows one attribute tagging rule: its condition, the attribute it sets, universe and vertex counts
+⤜ list-tagging-rules................................: lists the attribute tagging rules that set a custom attribute on matching vertices
+```
 #### inventory
 ##### General
 ```inventory
@@ -392,16 +403,28 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ user-search.......................................: searches for users
 ⤜ validate-configuration-keys.......................: validates keys
 ```
+##### Service accounts
+```auth
+⤜ create-service-account............................: creates a service account holding one role (dry-run by default)
+⤜ create-service-account-token......................: creates a token for a service account into a token file, a dx-do profile, or stdout (people only)
+⤜ delete-service-account............................: deletes a service account (dry-run by default)
+⤜ list-service-account-tokens.......................: lists service account tokens (labels and dates, never the values)
+⤜ list-service-accounts.............................: lists the service accounts with their role and live token count
+⤜ update-service-account............................: changes a service account's role (dry-run by default)
+```
 ##### User groups and roles
 ```auth
 ⤜ audit-access......................................: lists roles and synthetics access that name user groups which do not exist
+⤜ create-role.......................................: creates a custom role from another role's permissions or a role file (dry-run by default)
 ⤜ create-user-group.................................: creates a user group (dry-run by default)
+⤜ delete-role.......................................: deletes a custom role (dry-run by default)
 ⤜ delete-user-group.................................: deletes a user group (dry-run by default; refused while a role or synthetics access names it)
 ⤜ grant-role........................................: grants a role to a user group (dry-run by default)
 ⤜ list-roles........................................: lists the roles (built-in and custom) with the groups and users holding each
 ⤜ list-user-groups..................................: lists the user groups, with the roles and synthetics access that name each
 ⤜ revoke-role.......................................: revokes a role from a user group (dry-run by default)
-⤜ role-detail.......................................: shows one role's holders (groups and users) and description
+⤜ role-detail.......................................: shows one role's holders or permissions, or writes its permissions to a file
+⤜ update-role.......................................: changes a custom role's permissions, label, description or active state (dry-run by default)
 ⤜ update-user-group.................................: adds or removes a user group's members, renames it or changes its description (dry-run by default)
 ⤜ user-group-detail.................................: shows one user group's members and the roles and synthetics access that name it
 ```
@@ -418,6 +441,12 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ upgrade...........................................: upgrade legacy dx-do configuration to current version
 ```
 #### axa
+##### Alerts
+```axa
+⤜ get-alert.........................................: shows one configured EUM alert condition (rule) in full
+⤜ list-alerts.......................................: lists the configured EUM alert conditions (rules) of the tenant and its applications
+⤜ list-triggered-alerts.............................: lists the firing history of EUM alerts in a time range (default: the last day): one row each time a condition breached
+```
 ##### Applications
 ```axa
 ⤜ create-application................................: creates a new AXA application definition.
@@ -460,6 +489,14 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ```axa
 ⤜ dump-sessions-events..............................: dumps filtered AXA session events
 ⤜ list-sessions.....................................: dumps filtered AXA session events
+```
+#### capacity
+```capacity
+⤜ get-config........................................: shows one capacity analytics configuration in full, by id or name
+⤜ health............................................: shows the capacity health counts: entities under capacity analytics and how many are critical, healthy or underutilized
+⤜ list-configs......................................: lists capacity analytics configurations: name, enabled, alarms, the services and metrics each forecasts
+⤜ list-consumers....................................: lists the top capacity consumers: hosts and other items closest to their capacity threshold, with status and days left
+⤜ list-services.....................................: lists the services under capacity analytics: devices, critical devices, the most critical one and days left to the capacity threshold
 ```
 #### channel
 ##### General
@@ -554,10 +591,6 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ explain...........................................: Explain every diagnostic rule (or filter to one scope). Pure metadata — no tenant binding required. [experimental]
 ⤜ services..........................................: Audit the bound tenant's DXO2 service organization. Returns severity-tagged findings (errors / warnings / recommendations) per service. Optionally scope by serviceName (with or without descendants). [experimental]
 ```
-#### attribute
-```attribute
-⤜ dump..............................................: dumps all attributes by layer
-```
 #### event
 ```event
 ⤜ create-change-event...............................: creates a change event
@@ -576,17 +609,29 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 #### log
 ```log
 ⤜ apply-metrics.....................................: makes the log-based metrics in a scope match a file (dry-run by default)
+⤜ create-alert......................................: creates a log alert: a scheduled log search that raises a DXO2 alarm on a threshold (dry-run by default)
 ⤜ create-metric.....................................: creates a log-based metric definition (dry-run by default)
+⤜ delete-alert......................................: permanently deletes a log alert (dry-run by default)
 ⤜ delete-metric.....................................: permanently deletes a log-based metric definition (dry-run by default)
+⤜ disable-alert.....................................: pauses a log alert: it stops running and raising alarms, the definition stays (dry-run by default)
+⤜ enable-alert......................................: turns a log alert on so it runs and raises alarms again (dry-run by default)
+⤜ example-alert-condition...........................: writes a commented Painless log alert condition for condition-file=, with the logtype's real field names
+⤜ example-alert-query...............................: writes a commented JSON5 log alert search body for query-file=, with the logtype's real field names
+⤜ get-alert.........................................: shows one log alert: what it searches, how often, and when it raises an alarm
 ⤜ get-metric........................................: shows one log-based metric definition, and with values=true its recent per-minute counts
+⤜ get-parsing-rule..................................: shows one log parsing rule with its grok patterns
 ⤜ import............................................: imports exported log data (OpenSearch Dashboards CSV, NDJSON/JSON hits, or any CSV) into DXO2 Log Analytics — dry-run by default
 ⤜ ingest............................................: ingest one or more log entries directly into the DXO2 log analytics gateway
+⤜ list-alerts.......................................: lists the log alerts (log searches that raise alarms on a record-count threshold)
 ⤜ list-fields.......................................: lists the indexed fields of one log analytics logtype with their index type
 ⤜ list-logtypes.....................................: lists the tenant's log analytics logtypes — one per log index family *_logs_<logtype>_*
 ⤜ list-metrics......................................: lists the log-based metric definitions (metrics counted from logs)
+⤜ list-parsing-rules................................: lists the log parsing rules (grok patterns that extract fields from logs at ingestion)
 ⤜ preview-metric....................................: runs a log-based metric definition over recent logs without saving it
 ⤜ query.............................................: queries DXO2 Log analytics
 ⤜ set-metric-status.................................: turns a log-based metric on or off (dry-run by default)
+⤜ test-alert........................................: runs a log alert once now, saved or not, and shows what it matches and whether it would fire (saves nothing)
+⤜ update-alert......................................: changes a log alert: its search, schedule or thresholds (dry-run by default)
 ⤜ update-metric.....................................: changes a log-based metric definition (dry-run by default)
 ```
 #### maintenance
@@ -598,6 +643,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ delete............................................: deletes a maintenance window by id (dry-run by default)
 ⤜ detail............................................: shows a maintenance window: its target members/filter, schedule, and upcoming windows
 ⤜ list..............................................: lists the maintenance windows (schedules) configured in the tenant
+⤜ radius............................................: what a maintenance window affects: the vertices, services and alarms it covers, and the alarms it suppressed
 ```
 #### managementmodule
 ```managementmodule
@@ -673,6 +719,12 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ preview...........................................: previews what DXO2 will do with an event, a dry run of the payload: runs it through a push-based integration mapping on the server and returns the documents it would ingest, or why they would be refused, per input (stores and sends nothing)
 ⤜ send..............................................: sends one event to a push-based integration's webhook, as the source would (dry-run by default: previews it and shows what should land)
 ⤜ webhook...........................................: shows the webhook URLs a source POSTs events to for a push-based integration, with token guidance (never a token)
+```
+#### prediction
+```prediction
+⤜ get-insight.......................................: shows one prediction (Predictive Insights alarm) in full, by its alarmId
+⤜ list-definitions..................................: lists predictive definitions: which metrics of which product have forecasting enabled, and the threshold each forecast is compared against
+⤜ list-insights.....................................: lists predictions (Predictive Insights): when a metric is forecast to cross its threshold, on which device, and the time to threshold
 ```
 #### queries
 ```queries
@@ -761,6 +813,7 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ```sli
 ⤜ add-sli...........................................: adds an SLI (a computed service-level metric) to an existing SLI group (dry-run by default)
 ⤜ remove-sli........................................: removes an SLI from a group, cascading to its SLO and alerts (dry-run by default)
+⤜ set-skew..........................................: sets the skew (seconds an SLI waits after each interval before computing it) on one or every SLI of a group (dry-run by default)
 ⤜ set-sli-filter....................................: replaces one SLI's refinement filter, previewing the resulting metric matches (dry-run by default)
 ```
 ##### SLOs and alerts
@@ -769,6 +822,17 @@ dx-do [--config=<alias|path>] <command-group> <command> <parameter>=<value>...
 ⤜ add-slo...........................................: adds an SLO (objective + error budget) derived from an existing SLI (dry-run by default)
 ⤜ remove-alert......................................: removes an alert from an SLI (dry-run by default)
 ⤜ remove-slo........................................: removes an SLI's SLO (objective, percentage, and error budget) from a group (dry-run by default)
+```
+#### survey
+```survey
+⤜ cluster...........................................: what's related to a k8s cluster: its entities, metrics, alarms, logs (with the newest), and the services and SLIs they belong to
+⤜ host..............................................: what's related to a host: its entities, metrics, alarms, logs, and the services and SLIs they belong to
+⤜ host-catalog......................................: every host-like name on the tenant (hosts, network devices, k8s clusters and nodes, IPs, endpoints) with where its data is
+⤜ host-search.......................................: is there anything on this host? every host-like name containing a name or fragment, with where its data is
+⤜ render............................................: renders a tenant survey file as an HTML overview and an xlsx breakdown, without tenant access
+⤜ service...........................................: what's related to a service: its members, metrics, alarms, logs, SLIs and the other services it shares members with
+⤜ source............................................: what's related to a metric source (an agent): its entities, metrics, alarms, logs, and the services and SLIs they belong to
+⤜ tenant............................................: what's on this tenant: a read-only inventory of what it is configured with and what it actually uses
 ```
 #### synthetic
 ##### General

@@ -1,3 +1,128 @@
+## 9.3.0 (2026-11-23)
+
+### 🚀 Features
+
+- **cli:** dashboard dashboard-search lists every dashboard when searchTerm is left out
+- **cli:** odc get file= writes the mapping or metadata to a file for scripts
+- **cli:** survey prints a report for people on a terminal (output.format=text)
+- **cli,mcp,corpus:** survey host-catalog and host-search, discovery_host_catalog and discovery_host_find
+- **cli,session-core:** odc command group — list, get, describe, render
+- **cli,session-core:** odc activity — what an integration received and published
+- **cli,session-core:** odc export and odc save (mapping-as-code)
+- **cli,session-core:** odc duplicate, enable, disable, delete
+- **cli,session-core:** odc endpoint and odc send
+- **client:** legacy name and path selection, first-class in the dashboard spec
+- **client:** OdcService + Zod models for push-based integrations (read + render)
+- **client:** OdcService writes and ingest with typed errors
+- **client:** path dropdowns, values cut out of metric names
+- **client:** WQL (AIOps_Advanced_Query) queries and dropdowns in the dashboard spec
+- **client:** dashboard spec carries the dashboard description
+- **client:** dashboard build returns design findings; dashboard-bench compare and round 2
+- **client:** DXO2 logs links and table row links; alarms and logs tables on the pandemetrikos overview
+- **client:** dashboard spec colour and state — reduce, states, thresholds, noData
+- **client:** alarm and log tables as dashboard spec panels
+- **client:** dashboard links carry a variable under another name
+- **client:** dashboard spec schema split by panel kind
+- **client:** polystat as a dashboard spec kind
+- **client:** entity tables with alarm status as a dashboard spec form
+- **client:** flow maps laid out from their edges
+- **client,cli:** tenant-survey construct reads — log alerts, parsing rules, EUM alerts, service templates, predictions, tagging rules (TSV-P2)
+- **client,cli,corpus:** log alert authoring — create, update, enable/disable, delete, test, backtest and starters
+- **client,cli,corpus:** warn when a log alert would alarm all the time
+- **client,cli,corpus:** create, copy, edit and delete custom roles
+- **client,corpus:** flow maps follow topology and the time picker; duration sums (#1997, #1998)
+- **client,corpus,dashboard-bench:** a dedicated page per service by default
+- **client,session-core:** DXO2 alarms links filter like a queue
+- **client,session-core:** describe old graph panels as timeseries, by Grafana 7.5's own migration
+- **dashboard-bench:** set case, coverage lint, survey arms, kept tagged folders (#1840, #1861)
+- **dashboard-bench:** set prompt asks for a dedicated page per service
+- **dashboards:** canvas spec kind — flow maps with stable value bindings
+- **harness:** dashboard-building agent benchmark, round 1 baseline; render fix (#1699, #1830)
+- **harness:** --no-survey hides discovery_survey (the #1861 off arm)
+- **harness:** survey-bench, the discovery_survey A/B answer cases
+- **harness:** read-only DXO2 UI inventory for the tenant survey (TSV-P1)
+- **mcp:** odc module — read, render, activity and gated writes
+- **mcp:** discovery_scope_footprint — what a service has, before building on it
+- **scope:** list_alarms filters by service
+- **scope:** survey a service, source, host or k8s cluster (discovery_survey + survey CLI group)
+- **scope:** survey maintenance, synthetics and end-user sections; maintenance radius (#1866, #1868)
+- **scope:** survey constructs section — applied here and adopted on the tenant
+- **session-core:** static ODC mapping analysis (describeMapping) over the JSONata AST
+- **session-core:** odc render returns where the documents land
+- **session-core:** host lookup — is there anything on <name>?
+- **session-core:** tenant survey sections 2-22
+- **session-core,cli:** tenant survey in-use signals, HTML/xlsx reports, survey render (TSV-P4)
+- **session-core,cli:** survey tenant — alarm processing names in the redacted summary; progress every 5 s
+- **session-core,cli,mcp:** survey include=hosts — the host catalog within a scope
+- **session-core,cli,mcp:** host search matches part of a name
+- **session-core,cli,mcp,corpus:** survey SLOs with their window, direct sub-services' SLIs, log severity per service
+- **session-core,cli,mcp,corpus:** survey SLI values in percent and the service's own SLI count
+- **session-core,cli,mcp,corpus:** survey tenant foundation — format, section runner, redaction, command
+- **session-core,client:** host catalog core — every host-like name with kind and evidence
+- **session-core,client,cli,mcp,corpus:** log volume now, a day and a week earlier
+- **session-core,mcp,corpus:** SLOs first on dashboard sets, read from the SLI metric store
+- **sli:** default skew 60, skew= on create-group/add-sli, sli set-skew
+- **util,client,cli,corpus:** service accounts, their tokens, and people-only credential commands
+
+### 🩹 Fixes
+
+- **alerting:** platform coverage asks the store about the last 24 h
+- **cli:** show the real build error instead of the playwright inliner's
+- **cli:** validation errors in agent, odc and metric commands fail the command
+- **cli:** survey and maintenance radius stop skewing command search
+- **cli:** survey host-catalog/host-search usage no longer outranks inventorize help
+- **cli:** colour follows the CLI's policy in JSON and help listings (#1950, #1954)
+- **client:** odc render tells an evaluation error from a syntax error
+- **client:** title guard checks only titles AIOps_Metrics sends; describe gives copies plain titles
+- **client:** dashboard build reports a plotted min/max over metrics that keep none
+- **client:** entity tables sort open alarms first, never-alarmed rows last
+- **client:** describe reads dx-do-built panels back inside a section
+- **client,cli:** EUM firings reach DXO2 alarms; infer each rule's notification route
+- **client,cli,corpus:** log alert every= defaults to the window
+- **client,session-core:** auto legends tell series apart by an attribute on some of them
+- **dashboard-bench:** see a CLI build whose arguments are quoted
+- **odc:** honour a mapped externalId in odc send, describe every write/render field
+- **session-core,cli,mcp,corpus:** survey log counts per service.name found in the logs
+- **sli:** every sli write leaves out orphaned SLO legs
+
+### 💅 Refactors
+
+- **odc:** rename render, save, describe, endpoint to preview, import, attributes, webhook
+
+### 📖 Documentation
+
+- **benchmarks:** pre-register round 20261121-r1 for #1840 and #1861
+- **cli:** EUM triggered alerts are a firing history; Insights rows are predictions
+- **corpus:** odc-mappings cookbook and ODC lexicon, routed to the odc group
+- **corpus:** odc authoring loop with measured pitfalls, end-to-end agentic run
+- **corpus:** dashboard-design cookbook from the design research
+- **corpus:** dashboard-sets recipe, every service page with its alarms, entities and logs
+- **corpus:** aggregate combines series by metric type; totals of current values need WQL sum
+- **corpus:** dashboard-sets — select APM-agent workloads by agent path
+- **corpus:** dashboard-design — when a canvas fits, and its binding caveat
+- **corpus:** canvas — pick signals that exist under every dropdown value
+- **corpus:** short titles for shifted log-volume stats
+- **corpus,cli:** log alert troubleshooting, measured on the lab
+- **corpus,cli:** tenant survey cookbook, MCP routing and help wording
+- **internal:** scope survey findings; retract the cumulative first-point note (#1855, #1839)
+- **internal:** pandemetrikos mutual session — conversation, replayable turns and the owner brief
+- **internal:** wave-1 measurements and designs for #1859, #1861, #1862, #1866/#1868, #1870, #1872
+- **internal:** pandemetrikos mutual session — turn 10 and the skew fix
+- **internal:** host catalog findings and the read-only probes
+- **odc:** ODC surface design with measured odcconnector API facts
+- **odc:** correct two measured claims in the surface design
+
+### ✅ Tests
+
+- **benchmarks:** re-establish survey truth after an argus-tracking pod left
+- **cli:** trace e2e reads a 10-minute window
+- **cli:** drop a stray duplicate testName key from the survey e2e catalog
+
+### ❤️ Thank You
+
+- z
+- zoobroker
+
 ## 9.2.1-beta.0 (2026-11-18)
 
 ### 🚀 Features
